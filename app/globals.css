@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================
+   KA DIGITAL — Design tokens
+   Thème clair (par défaut) et thème sombre (.dark)
+   ============================================ */
+
+:root {
+  --background: #fafafa;
+  --foreground: #0b0b0b;
+  --muted: #52525b;
+  --card: #ffffff;
+  --card-hover: #f4f4f5;
+  --border-subtle: rgba(9, 9, 11, 0.08);
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --accent-soft: rgba(37, 99, 235, 0.08);
+  --glow: rgba(37, 99, 235, 0.14);
+}
+
+.dark {
+  --background: #0b0b0b;
+  --foreground: #fafafa;
+  --muted: #a1a1aa;
+  --card: #141414;
+  --card-hover: #1a1a1a;
+  --border-subtle: rgba(250, 250, 250, 0.08);
+  --accent: #3b82f6;
+  --accent-strong: #60a5fa;
+  --accent-soft: rgba(59, 130, 246, 0.12);
+  --glow: rgba(59, 130, 246, 0.22);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border-subtle: var(--border-subtle);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif,
+    sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee: marquee 45s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* ============================================
+   Styles de base
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Halo lumineux réutilisable derrière les sections */
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Texte en dégradé accent (titres) */
+.text-gradient-accent {
+  background: linear-gradient(
+    120deg,
+    var(--accent) 0%,
+    var(--accent-strong) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Trame de grille subtile pour le hero */
+.bg-grid {
+  background-image: linear-gradient(var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Code qui défile en fond du hero — animation CSS pure */
+.anim-code-scroll {
+  animation: code-scroll 22s linear infinite;
+  will-change: transform;
+}
+
+@keyframes code-scroll {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-code-scroll {
+    animation: none;
+  }
+}
