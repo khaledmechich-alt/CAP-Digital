@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
+import { submitContact } from "@/app/contact/actions";
 
 const inputClasses =
   "w-full rounded-xl border border-border-subtle bg-background px-4 py-3 text-sm placeholder:text-muted/60 transition-colors focus:border-accent focus:outline-none";
@@ -24,40 +25,51 @@ const budgets = [
   "Je ne sais pas encore",
 ];
 
+type Status = "idle" | "sending" | "sent" | "error";
+
 export function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (status === "sending") return;
+
+    // On lit les valeurs de façon synchrone, avant tout await.
     const data = new FormData(event.currentTarget);
+    const input = {
+      name: String(data.get("name") ?? ""),
+      email: String(data.get("email") ?? ""),
+      phone: String(data.get("phone") ?? ""),
+      company: String(data.get("company") ?? ""),
+      projectType: String(data.get("projectType") ?? ""),
+      budget: String(data.get("budget") ?? ""),
+      message: String(data.get("message") ?? ""),
+    };
 
-    const subject = `Demande de devis — ${data.get("projectType")}`;
-    const body = [
-      `Nom : ${data.get("name")}`,
-      `E-mail : ${data.get("email")}`,
-      `Téléphone : ${data.get("phone") || "Non renseigné"}`,
-      `Entreprise : ${data.get("company") || "Non renseignée"}`,
-      `Type de projet : ${data.get("projectType")}`,
-      `Budget envisagé : ${data.get("budget")}`,
-      "",
-      "Message :",
-      String(data.get("message")),
-    ].join("\n");
+    setStatus("sending");
+    setErrorMsg(null);
 
-    window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    const result = await submitContact(input);
+
+    if (result.ok) {
+      setStatus("sent");
+    } else {
+      setErrorMsg(result.error ?? null);
+      setStatus("error");
+    }
   }
 
-  if (sent) {
+  if (status === "sent") {
     return (
       <div className="flex flex-col items-center gap-4 rounded-2xl border border-border-subtle bg-card p-10 text-center">
         <h3 className="font-display text-2xl font-semibold">
-          Votre message est prêt !
+          Merci, votre demande est bien partie&nbsp;! 🎉
         </h3>
         <p className="max-w-md leading-relaxed text-muted">
-          Votre logiciel de messagerie vient de s&apos;ouvrir avec votre demande
-          pré-remplie : il ne reste qu&apos;à cliquer sur « Envoyer ». Si rien ne
-          s&apos;est ouvert, écrivez-nous directement à{" "}
+          Nous avons bien reçu votre message et nous vous recontactons très vite
+          (sous 24&nbsp;h ouvrées). Une question urgente&nbsp;? Écrivez-nous
+          directement à{" "}
           <a
             href={`mailto:${siteConfig.email}`}
             className="font-medium text-accent hover:underline"
@@ -66,12 +78,14 @@ export function ContactForm() {
           </a>
           .
         </p>
-        <Button variant="secondary" onClick={() => setSent(false)}>
-          Renvoyer un message
+        <Button variant="secondary" onClick={() => setStatus("idle")}>
+          Envoyer une autre demande
         </Button>
       </div>
     );
   }
+
+  const isSending = status === "sending";
 
   return (
     <form
@@ -184,13 +198,31 @@ export function ContactForm() {
         />
       </div>
 
-      <Button type="submit" size="lg" className="w-full sm:w-auto">
-        Envoyer ma demande
+      {status === "error" && (
+        <p className="rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-500">
+          {errorMsg ?? "Une erreur est survenue."} Vous pouvez aussi nous écrire
+          directement à{" "}
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="font-medium underline"
+          >
+            {siteConfig.email}
+          </a>
+          .
+        </p>
+      )}
+
+      <Button
+        type="submit"
+        size="lg"
+        className="w-full sm:w-auto"
+        disabled={isSending}
+      >
+        {isSending ? "Envoi en cours…" : "Envoyer ma demande"}
       </Button>
       <p className="text-xs leading-relaxed text-muted">
-        En envoyant ce formulaire, votre logiciel de messagerie s&apos;ouvrira
-        avec votre demande pré-remplie. Vos informations ne sont utilisées que
-        pour répondre à votre demande — jamais revendues, jamais de spam.
+        Vos informations ne sont utilisées que pour répondre à votre demande —
+        jamais revendues, jamais de spam.
       </p>
     </form>
   );

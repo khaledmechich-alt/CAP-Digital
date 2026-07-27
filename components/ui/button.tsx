@@ -26,6 +26,7 @@ type ButtonProps = {
   onClick?: () => void;
   type?: "button" | "submit";
   ariaLabel?: string;
+  disabled?: boolean;
 };
 
 export function Button({
@@ -37,9 +38,10 @@ export function Button({
   onClick,
   type = "button",
   ariaLabel,
+  disabled,
 }: ButtonProps) {
   const classes = cn(
-    "group inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300",
+    "group inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60",
     variantClasses[variant],
     sizeClasses[size],
     className
@@ -57,6 +59,7 @@ export function Button({
     <button
       type={type}
       onClick={onClick}
+      disabled={disabled}
       className={classes}
       aria-label={ariaLabel}
     >
