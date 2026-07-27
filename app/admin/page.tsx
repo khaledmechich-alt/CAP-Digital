@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { isAdminEmail } from "@/lib/admin";
 import { Container } from "@/components/ui/container";
-import { signOut } from "./actions";
+import { AdminNav } from "@/components/admin/admin-nav";
 
 // Toujours rendre à la demande (on lit la session + la base à chaque visite).
 export const dynamic = "force-dynamic";
@@ -49,24 +49,16 @@ export default async function AdminPage() {
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h1 className="font-display text-3xl font-semibold">
-              Vos demandes de contact
-            </h1>
-            <p className="mt-1 text-sm text-muted">
-              {contacts.length} demande{contacts.length > 1 ? "s" : ""} —
-              connecté en tant que {user.email}
-            </p>
-          </div>
-          <form action={signOut}>
-            <button
-              type="submit"
-              className="rounded-full border border-border-subtle bg-card px-5 py-2.5 text-sm font-medium transition-colors hover:bg-card-hover"
-            >
-              Se déconnecter
-            </button>
-          </form>
+        <AdminNav actif="demandes" email={user.email} />
+
+        <div className="mb-8">
+          <h1 className="font-display text-3xl font-semibold">
+            Vos demandes de contact
+          </h1>
+          <p className="mt-1 text-sm text-muted">
+            {contacts.length} demande{contacts.length > 1 ? "s" : ""} reçue
+            {contacts.length > 1 ? "s" : ""}
+          </p>
         </div>
 
         {error && (

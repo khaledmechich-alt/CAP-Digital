@@ -35,32 +35,48 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const isLoginPage = request.nextUrl.pathname === "/admin/login";
+  const { pathname } = request.nextUrl;
   const isAdmin = isAdminEmail(user?.email);
 
-  if (!user && !isLoginPage) {
+  const redirection = (chemin: string, erreur?: string) => {
     const url = request.nextUrl.clone();
-    url.pathname = "/admin/login";
+    url.pathname = chemin;
+    url.search = "";
+    if (erreur) url.searchParams.set("erreur", erreur);
     return NextResponse.redirect(url);
+  };
+
+  // --- Zone administrateur : réservée à l'adresse déclarée dans ADMIN_EMAIL ---
+  if (pathname.startsWith("/admin")) {
+    const isLoginPage = pathname === "/admin/login";
+
+    if (!user && !isLoginPage) return redirection("/admin/login");
+
+    // Connecté, mais avec un compte qui n'est pas administrateur.
+    if (user && !isAdmin && !isLoginPage) {
+      return redirection("/admin/login", "acces");
+    }
+
+    if (isAdmin && isLoginPage) return redirection("/admin");
+
+    return supabaseResponse;
   }
 
-  // Connecté, mais avec un compte qui n'est pas administrateur.
-  if (user && !isAdmin && !isLoginPage) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/admin/login";
-    url.searchParams.set("erreur", "acces");
-    return NextResponse.redirect(url);
-  }
+  // --- Espace client : ouvert à tout compte connecté ---
+  // Chacun ne voit que les projets rattachés à son adresse (règles Supabase).
+  const isConnexionPage = pathname === "/espace-client/connexion";
 
-  if (isAdmin && isLoginPage) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/admin";
-    return NextResponse.redirect(url);
-  }
+  if (!user && !isConnexionPage) return redirection("/espace-client/connexion");
+  if (user && isConnexionPage) return redirection("/espace-client");
 
   return supabaseResponse;
 }
 
 export const config = {
-  matcher: ["/admin", "/admin/:path*"],
+  matcher: [
+    "/admin",
+    "/admin/:path*",
+    "/espace-client",
+    "/espace-client/:path*",
+  ],
 };

@@ -75,6 +75,11 @@ export function Header() {
         <div className="flex items-center gap-3">
           <ThemeToggle />
           <span className="hidden lg:block">
+            <Button href="/espace-client" size="md" variant="secondary">
+              Espace client
+            </Button>
+          </span>
+          <span className="hidden lg:block">
             <Button href="/contact" size="md">
               Devis gratuit
             </Button>
@@ -123,9 +128,19 @@ export function Header() {
                 </motion.li>
               ))}
             </ul>
-            <Button href="/contact" size="lg" className="w-full">
-              Demander un devis gratuit
-            </Button>
+            <div className="flex flex-col gap-3">
+              <Button
+                href="/espace-client"
+                size="lg"
+                variant="secondary"
+                className="w-full"
+              >
+                Espace client
+              </Button>
+              <Button href="/contact" size="lg" className="w-full">
+                Demander un devis gratuit
+              </Button>
+            </div>
           </motion.nav>
         ) : null}
       </AnimatePresence>
