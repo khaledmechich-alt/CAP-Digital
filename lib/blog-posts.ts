@@ -102,21 +102,21 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Les fourchettes constatées sur le marché",
+        heading: "Nos fourchettes de prix",
         paragraphs: [
-          "À titre indicatif, voici les fourchettes généralement pratiquées par les agences et indépendants sérieux en France :",
+          "À titre indicatif, voici les fourchettes que nous pratiquons chez KA DIGITAL :",
         ],
         list: [
-          "Site vitrine professionnel : entre 1 500 € et 5 000 €",
-          "Boutique e-commerce : entre 3 000 € et 15 000 €",
-          "Refonte complète : entre 2 000 € et 8 000 €",
-          "Maintenance mensuelle : entre 50 € et 300 € par mois",
+          "Site vitrine professionnel : entre 800 € et 2 500 €",
+          "Boutique e-commerce : entre 2 000 € et 6 000 €",
+          "Refonte complète : entre 1 000 € et 3 500 €",
+          "Maintenance mensuelle : entre 30 € et 150 € par mois",
         ],
       },
       {
         heading: "Le bon réflexe : raisonner en investissement",
         paragraphs: [
-          "La vraie question n'est pas « combien ça coûte » mais « combien ça rapporte ». Un site à 3 000 € qui vous amène deux clients par mois est bien plus rentable qu'un site à 500 € qui n'en amène aucun.",
+          "La vraie question n'est pas « combien ça coûte » mais « combien ça rapporte ». Un site à 1 500 € qui vous amène deux clients par mois est bien plus rentable qu'un site à 300 € qui n'en amène aucun.",
           "C'est pourquoi nous chiffrons chaque projet après un échange gratuit, avec un devis détaillé ligne par ligne. Vous savez exactement ce que vous payez, et pourquoi.",
         ],
       },

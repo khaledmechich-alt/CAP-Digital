@@ -17,10 +17,10 @@ const projectTypes = [
 ];
 
 const budgets = [
-  "Moins de 1 500 €",
-  "1 500 € — 3 000 €",
-  "3 000 € — 5 000 €",
-  "Plus de 5 000 €",
+  "Moins de 800 €",
+  "800 € — 1 500 €",
+  "1 500 € — 2 500 €",
+  "Plus de 2 500 €",
   "Je ne sais pas encore",
 ];
 

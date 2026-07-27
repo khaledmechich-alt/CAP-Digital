@@ -27,3 +27,5 @@ next-env.d.ts
 
 # config outils locaux
 /.claude/
+
+.vercel
