@@ -145,6 +145,15 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            {/* Accès discret à l'espace privé (réservé à l'administrateur) */}
+            <li>
+              <Link
+                href="/admin"
+                className="transition-colors hover:text-foreground"
+              >
+                Espace admin
+              </Link>
+            </li>
           </ul>
         </div>
       </Container>
