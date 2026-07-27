@@ -1,10 +1,12 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { isAdminEmail } from "@/lib/admin";
 
 // Gardien de la zone /admin :
 //  - rafraîchit la session à chaque visite,
 //  - renvoie vers /admin/login si on n'est pas connecté,
-//  - renvoie vers /admin si on est déjà connecté et qu'on ouvre la page de login.
+//  - refuse les comptes connectés qui ne sont pas administrateurs,
+//  - renvoie vers /admin si l'administrateur ouvre la page de login.
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
@@ -34,6 +36,7 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const isLoginPage = request.nextUrl.pathname === "/admin/login";
+  const isAdmin = isAdminEmail(user?.email);
 
   if (!user && !isLoginPage) {
     const url = request.nextUrl.clone();
@@ -41,7 +44,15 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (user && isLoginPage) {
+  // Connecté, mais avec un compte qui n'est pas administrateur.
+  if (user && !isAdmin && !isLoginPage) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/admin/login";
+    url.searchParams.set("erreur", "acces");
+    return NextResponse.redirect(url);
+  }
+
+  if (isAdmin && isLoginPage) {
     const url = request.nextUrl.clone();
     url.pathname = "/admin";
     return NextResponse.redirect(url);

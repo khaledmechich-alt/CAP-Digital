@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { isAdminEmail } from "@/lib/admin";
 import { Container } from "@/components/ui/container";
 import { signOut } from "./actions";
 
@@ -33,8 +34,9 @@ export default async function AdminPage() {
   } = await supabase.auth.getUser();
 
   // Sécurité : le middleware protège déjà /admin, mais on revérifie ici.
-  if (!user) {
-    redirect("/admin/login");
+  // Être connecté ne suffit pas — il faut être l'administrateur.
+  if (!user || !isAdminEmail(user.email)) {
+    redirect("/admin/login?erreur=acces");
   }
 
   const { data, error } = await supabase
