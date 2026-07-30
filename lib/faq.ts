@@ -32,7 +32,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     category: "Délais & processus",
-    question: "Comment se déroule un projet avec KA DIGITAL ?",
+    question: "Comment se déroule un projet avec CAP DIGITAL ?",
     answer:
       "En quatre étapes : un échange pour comprendre votre activité et vos objectifs, une proposition de design que vous validez, le développement du site, puis la mise en ligne. Vous êtes impliqué à chaque étape et rien n'est publié sans votre accord.",
   },

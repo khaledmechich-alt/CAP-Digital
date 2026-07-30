@@ -110,7 +110,7 @@ export default async function AdminPage() {
 
                 <a
                   href={`mailto:${contact.email}?subject=${encodeURIComponent(
-                    "Votre demande — KA DIGITAL"
+                    "Votre demande — CAP DIGITAL"
                   )}`}
                   className="mt-4 inline-block text-sm font-medium text-accent hover:underline"
                 >

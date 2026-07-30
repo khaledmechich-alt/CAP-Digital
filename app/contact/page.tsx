@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Contact — Devis gratuit sous 48h",
   description:
-    "Contactez KA DIGITAL pour votre projet de site internet : devis gratuit et détaillé sous 48h, réponse garantie sous 24h. Premier échange sans engagement.",
+    "Contactez CAP DIGITAL pour votre projet de site internet : devis gratuit et détaillé sous 48h, réponse garantie sous 24h. Premier échange sans engagement.",
 };
 
 const contactCards = [

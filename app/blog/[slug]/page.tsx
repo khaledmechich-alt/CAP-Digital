@@ -126,7 +126,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <Logo />
               </div>
               <p className="text-sm text-muted">
-                Article rédigé par l&apos;équipe KA DIGITAL
+                Article rédigé par l&apos;équipe CAP DIGITAL
               </p>
             </div>
           </Reveal>

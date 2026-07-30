@@ -9,7 +9,7 @@ import { TestimonialCard } from "@/components/ui/testimonial-card";
 export const metadata: Metadata = {
   title: "Témoignages clients",
   description:
-    "Découvrez ce que nos clients disent de KA DIGITAL : des sites livrés dans les temps, des résultats concrets et un accompagnement humain.",
+    "Découvrez ce que nos clients disent de CAP DIGITAL : des sites livrés dans les temps, des résultats concrets et un accompagnement humain.",
 };
 
 export default function TemoignagesPage() {
@@ -23,7 +23,7 @@ export default function TemoignagesPage() {
             <span className="text-gradient-accent">mieux que nous</span>
           </>
         }
-        description="Voici ce que nos clients retiennent de leur collaboration avec KA DIGITAL."
+        description="Voici ce que nos clients retiennent de leur collaboration avec CAP DIGITAL."
       />
 
       <section className="py-16 md:py-24">

@@ -28,7 +28,7 @@ export type Project = {
   shortDescription: string;
   /** Le problème du client avant le projet */
   challenge: string;
-  /** Ce que KA DIGITAL a réalisé */
+  /** Ce que CAP DIGITAL a réalisé */
   solution: string;
   technologies: string[];
   /** Résultats chiffrés — l'argument commercial le plus fort */

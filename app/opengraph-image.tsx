@@ -35,11 +35,11 @@ export default function OpengraphImage() {
               borderRadius: 22,
               backgroundColor: "#3b82f6",
               color: "#ffffff",
-              fontSize: 40,
+              fontSize: 32,
               fontWeight: 700,
             }}
           >
-            KA
+            CAP
           </div>
           <div style={{ fontSize: 56, fontWeight: 700, letterSpacing: -1 }}>
             DIGITAL

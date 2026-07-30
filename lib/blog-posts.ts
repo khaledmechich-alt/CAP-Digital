@@ -68,7 +68,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Par où commencer ?",
         paragraphs: [
           "Pas besoin de commencer par un site complexe. Un site vitrine bien conçu — qui présente clairement vos services, vos réalisations et un moyen de vous contacter — suffit souvent à faire une vraie différence.",
-          "Chez KA DIGITAL, le premier échange est gratuit et sans engagement : nous analysons votre situation et vous disons honnêtement ce qui aurait le plus d'impact pour votre activité.",
+          "Chez CAP DIGITAL, le premier échange est gratuit et sans engagement : nous analysons votre situation et vous disons honnêtement ce qui aurait le plus d'impact pour votre activité.",
         ],
       },
     ],
@@ -104,7 +104,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Nos fourchettes de prix",
         paragraphs: [
-          "À titre indicatif, voici les fourchettes que nous pratiquons chez KA DIGITAL :",
+          "À titre indicatif, voici les fourchettes que nous pratiquons chez CAP DIGITAL :",
         ],
         list: [
           "Site vitrine professionnel : entre 800 € et 2 500 €",

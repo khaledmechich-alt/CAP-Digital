@@ -143,7 +143,7 @@ function CarteProjet({ projet }: { projet: Projet }) {
 
       {projet.note && (
         <div className="mt-8 rounded-xl border border-border-subtle bg-background p-5">
-          <h3 className="mb-2 text-sm font-semibold">Message de KA DIGITAL</h3>
+          <h3 className="mb-2 text-sm font-semibold">Message de CAP DIGITAL</h3>
           <p className="whitespace-pre-wrap text-sm leading-relaxed text-muted">
             {projet.note}
           </p>

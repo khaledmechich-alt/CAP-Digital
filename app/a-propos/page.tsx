@@ -6,9 +6,9 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
-  title: "À propos — L'agence KA DIGITAL",
+  title: "À propos — L'agence CAP DIGITAL",
   description:
-    "KA DIGITAL est une agence web à taille humaine qui aide PME, artisans et entrepreneurs à développer leur activité grâce à des sites web premium et un accompagnement honnête.",
+    "CAP DIGITAL est une agence web à taille humaine qui aide PME, artisans et entrepreneurs à développer leur activité grâce à des sites web premium et un accompagnement honnête.",
 };
 
 const values = [
@@ -55,7 +55,7 @@ export default function AProposPage() {
             </span>
           </>
         }
-        description="KA DIGITAL est née d'une conviction : les PME, artisans et indépendants méritent des sites aussi soignés que ceux des grandes entreprises — sans les budgets démesurés ni le jargon."
+        description="CAP DIGITAL est née d'une conviction : les PME, artisans et indépendants méritent des sites aussi soignés que ceux des grandes entreprises — sans les budgets démesurés ni le jargon."
       />
 
       <section className="py-16 md:py-24">
@@ -73,7 +73,7 @@ export default function AProposPage() {
                 ressemblaient pas.
               </p>
               <p className="leading-relaxed text-muted text-pretty">
-                KA DIGITAL a été créée pour changer cela : mettre le design
+                CAP DIGITAL a été créée pour changer cela : mettre le design
                 premium, la performance technique et le référencement Google au
                 service des entreprises de proximité. Pas de production à la
                 chaîne, pas de modèles réutilisés : chaque site est conçu sur

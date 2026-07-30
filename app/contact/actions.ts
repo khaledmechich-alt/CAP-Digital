@@ -19,7 +19,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Expéditeur de test fourni par Resend : fonctionne immédiatement, sans domaine
 // à vérifier. À remplacer plus tard par une adresse de ton propre domaine.
-const EMAIL_FROM = "KA DIGITAL <onboarding@resend.dev>";
+const EMAIL_FROM = "CAP DIGITAL <onboarding@resend.dev>";
 
 function escapeHtml(value: string): string {
   return value
@@ -39,7 +39,7 @@ function buildEmailHtml(input: ContactInput): string {
   return `
   <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;padding:24px;color:#0f172a;">
     <h2 style="margin:0 0 4px;font-size:20px;">📬 Nouvelle demande de contact</h2>
-    <p style="margin:0 0 20px;color:#64748b;font-size:14px;">Reçue depuis le site KA DIGITAL</p>
+    <p style="margin:0 0 20px;color:#64748b;font-size:14px;">Reçue depuis le site CAP DIGITAL</p>
     <table style="border-collapse:collapse;margin-bottom:20px;">
       ${line("Nom", input.name)}
       ${line("E-mail", input.email)}

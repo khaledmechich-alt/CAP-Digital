@@ -111,7 +111,7 @@ export function Hero() {
           transition={{ delay: 0.7 }}
         >
           Sites vitrines, boutiques e-commerce et référencement Google.
-          KA&nbsp;DIGITAL conçoit des sites rapides et élégants qui développent
+          CAP&nbsp;DIGITAL conçoit des sites rapides et élégants qui développent
           l&apos;activité des PME, artisans et entrepreneurs.
         </motion.p>
 

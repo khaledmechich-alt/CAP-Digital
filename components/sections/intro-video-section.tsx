@@ -11,10 +11,10 @@ export function IntroVideoSection() {
       />
       <Container className="flex flex-col items-center gap-14">
         <SectionHeading
-          eyebrow="Découvrir KA Digital"
+          eyebrow="Découvrir CAP Digital"
           title={
             <>
-              KA Digital en <span className="text-gradient-accent">une minute</span>
+              CAP Digital en <span className="text-gradient-accent">une minute</span>
             </>
           }
           description="Une courte vidéo pour comprendre qui nous sommes et comment nous transformons votre présence en ligne."
@@ -27,9 +27,9 @@ export function IntroVideoSection() {
               controls
               playsInline
               preload="metadata"
-              poster="/video/ka-digital-intro-poster.jpg"
+              poster="/video/cap-digital-intro-poster.jpg"
             >
-              <source src="/video/ka-digital-intro.mp4" type="video/mp4" />
+              <source src="/video/cap-digital-intro.mp4" type="video/mp4" />
               Votre navigateur ne prend pas en charge la lecture vidéo.
             </video>
           </div>

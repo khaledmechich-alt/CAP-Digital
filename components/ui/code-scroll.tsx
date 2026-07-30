@@ -16,9 +16,9 @@ const COLORS = {
 } as const;
 
 const LINES: Segment[][] = [
-  [["// Déploiement — ka-digital.fr", "com"]],
-  [["import", "kw"], [" { createSite } ", "txt"], ["from", "kw"], [" \"@ka-digital/core\"", "str"], [";", "txt"]],
-  [["import", "kw"], [" { seo, performance } ", "txt"], ["from", "kw"], [" \"@ka-digital/web\"", "str"], [";", "txt"]],
+  [["// Déploiement — cap-digital.fr", "com"]],
+  [["import", "kw"], [" { createSite } ", "txt"], ["from", "kw"], [" \"@cap-digital/core\"", "str"], [";", "txt"]],
+  [["import", "kw"], [" { seo, performance } ", "txt"], ["from", "kw"], [" \"@cap-digital/web\"", "str"], [";", "txt"]],
   [[""]],
   [["const", "kw"], [" site ", "txt"], ["=", "kw"], [" ", "txt"], ["createSite", "fn"], ["({", "txt"]],
   [["  client: ", "txt"], ["\"votre-entreprise\"", "str"], [",", "txt"]],

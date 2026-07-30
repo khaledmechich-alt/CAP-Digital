@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Nos réalisations — Portfolio de sites web",
   description:
-    "Découvrez les sites vitrines, boutiques e-commerce et refontes réalisés par KA DIGITAL, avec les résultats concrets obtenus pour chaque client.",
+    "Découvrez les sites vitrines, boutiques e-commerce et refontes réalisés par CAP DIGITAL, avec les résultats concrets obtenus pour chaque client.",
 };
 
 export default function RealisationsPage() {
