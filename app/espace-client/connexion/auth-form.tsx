@@ -138,8 +138,9 @@ export function AuthForm() {
           />
           {mode === "inscription" && (
             <p className="text-xs text-muted">
-              6 caractères minimum. Utilisez l&apos;adresse e-mail que vous
-              m&apos;avez communiquée pour votre projet.
+              6 caractères minimum. Si vous avez déjà un projet en cours avec
+              nous, créez votre compte avec l&apos;adresse e-mail que vous nous
+              avez communiquée : votre site s&apos;y affichera automatiquement.
             </p>
           )}
         </div>
