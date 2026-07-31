@@ -53,9 +53,15 @@ export function AuthForm() {
       return;
     }
 
-    const { data, error: signUpError } = await supabase.auth.signUp(
-      identifiants
-    );
+    // emailRedirectTo : l'adresse où atterrit le lien de confirmation.
+    // On la calcule depuis la page en cours pour que le lien ramène au bon
+    // endroit, aussi bien en local qu'en ligne.
+    const { data, error: signUpError } = await supabase.auth.signUp({
+      ...identifiants,
+      options: {
+        emailRedirectTo: `${window.location.origin}/auth/callback?next=/espace-client`,
+      },
+    });
 
     if (signUpError) {
       setError(
