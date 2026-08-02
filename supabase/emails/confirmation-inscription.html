@@ -3,32 +3,85 @@
     <td align="center">
       <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;background-color:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e5e7eb;">
 
-        <!-- Bandeau haut -->
+        <!-- Bandeau haut : le logo. L'image est servie par le site en ligne,
+             son adresse doit rester absolue (https://…) pour s'afficher dans
+             les boîtes mail. L'attribut alt prend le relais si la messagerie
+             bloque les images. -->
         <tr>
-          <td style="background-color:#2563eb;padding:28px 32px;">
-            <p style="margin:0;font-size:22px;font-weight:bold;color:#ffffff;letter-spacing:0.5px;">
-              CAP&nbsp;DIGITAL
-            </p>
-            <p style="margin:4px 0 0;font-size:13px;color:#dbeafe;">
+          <td align="center" style="background-color:#ffffff;padding:32px 32px 24px;">
+            <img src="https://k-a-digital-ctvy.vercel.app/logo/cap-digital-complet.png"
+                 alt="CAP DIGITAL"
+                 width="210"
+                 style="display:block;width:210px;max-width:70%;height:auto;border:0;" />
+            <p style="margin:14px 0 0;font-size:13px;color:#64748b;">
               L'agence web qui transforme vos visiteurs en clients
             </p>
           </td>
         </tr>
 
+        <!-- Filet de couleur sous le logo -->
+        <tr>
+          <td style="background-color:#2563eb;font-size:0;line-height:0;height:4px;">&nbsp;</td>
+        </tr>
+
         <!-- Message -->
         <tr>
           <td style="padding:36px 32px 8px;">
-            <h1 style="margin:0 0 16px;font-size:24px;line-height:1.3;color:#0f172a;font-weight:bold;">
+            <h1 style="margin:0 0 18px;font-size:26px;line-height:1.3;color:#0f172a;font-weight:bold;">
               Bienvenue chez CAP DIGITAL 👋
             </h1>
-            <p style="margin:0 0 16px;font-size:15px;line-height:1.7;color:#334155;">
-              Merci d'avoir créé votre compte. Votre espace client est l'endroit où
-              vous suivrez votre projet de A à Z : l'avancement étape par étape, la
-              date de livraison prévue, nos messages et toutes les informations de
-              votre site une fois qu'il sera en ligne.
+            <p style="margin:0 0 16px;font-size:16px;line-height:1.7;color:#334155;">
+              Nous sommes ravis de vous accueillir. Un site web, ce n'est pas juste
+              une vitrine de plus sur Internet : c'est votre meilleur commercial,
+              celui qui travaille pour vous 24h/24, même quand vous dormez. Et à
+              partir d'aujourd'hui, on le construit ensemble.
             </p>
-            <p style="margin:0 0 28px;font-size:15px;line-height:1.7;color:#334155;">
-              Il ne reste qu'une chose à faire : confirmer votre adresse e-mail.
+            <p style="margin:0 0 20px;font-size:16px;line-height:1.7;color:#334155;">
+              Votre compte vous ouvre les portes de <strong style="color:#0f172a;">votre espace
+              client</strong> : un tableau de bord rien qu'à vous, accessible à tout
+              moment, sans avoir à nous écrire pour demander « où en est mon site ? ».
+            </p>
+          </td>
+        </tr>
+
+        <!-- Ce que contient l'espace client -->
+        <tr>
+          <td style="padding:0 32px 8px;">
+            <div style="background-color:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:22px 24px;">
+              <p style="margin:0 0 14px;font-size:13px;font-weight:bold;color:#0f172a;letter-spacing:0.4px;">
+                CE QUE VOUS Y TROUVEREZ
+              </p>
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td style="padding:0 0 10px;font-size:15px;line-height:1.6;color:#334155;">
+                    <span style="color:#2563eb;font-weight:bold;">✓</span>&nbsp;&nbsp;L'avancement de votre site, étape par étape
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0 0 10px;font-size:15px;line-height:1.6;color:#334155;">
+                    <span style="color:#2563eb;font-weight:bold;">✓</span>&nbsp;&nbsp;La date de livraison prévue, mise à jour en temps réel
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0 0 10px;font-size:15px;line-height:1.6;color:#334155;">
+                    <span style="color:#2563eb;font-weight:bold;">✓</span>&nbsp;&nbsp;Nos messages et nos questions au fil du projet
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0;font-size:15px;line-height:1.6;color:#334155;">
+                    <span style="color:#2563eb;font-weight:bold;">✓</span>&nbsp;&nbsp;Toutes les infos de votre site une fois en ligne : domaine, accès, maintenance
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Appel à l'action -->
+        <tr>
+          <td style="padding:28px 32px 20px;">
+            <p style="margin:0;font-size:16px;line-height:1.7;color:#334155;">
+              Il ne reste qu'un clic pour activer votre compte :
             </p>
           </td>
         </tr>
@@ -59,14 +112,30 @@
 
         <!-- Prochaine étape -->
         <tr>
-          <td style="padding:0 32px 32px;">
-            <p style="margin:0;font-size:14px;line-height:1.7;color:#334155;">
-              <strong style="color:#0f172a;">Et ensuite ?</strong><br />
-              Vous serez connecté automatiquement à votre espace client. Si votre
-              projet n'a pas encore démarré, vous pourrez nous en parler en quelques
-              clics — réponse sous 24h, devis gratuit sous 48h.
+          <td style="padding:0 32px 8px;">
+            <p style="margin:0 0 12px;font-size:16px;line-height:1.7;color:#334155;">
+              <strong style="color:#0f172a;">Et après ?</strong>
+            </p>
+            <p style="margin:0 0 16px;font-size:16px;line-height:1.7;color:#334155;">
+              Vous arrivez directement dans votre espace. Si votre projet n'a pas
+              encore démarré, vous pourrez nous le décrire en quelques clics :
+              on vous répond <strong style="color:#0f172a;">sous 24h</strong> et vous
+              recevez un devis clair et détaillé
+              <strong style="color:#0f172a;">sous 48h</strong> — gratuitement et sans
+              engagement.
+            </p>
+            <p style="margin:0 0 4px;font-size:16px;line-height:1.7;color:#334155;">
+              Au plaisir de donner vie à votre projet,
+            </p>
+            <p style="margin:0;font-size:16px;line-height:1.7;color:#0f172a;font-weight:bold;">
+              L'équipe CAP DIGITAL
             </p>
           </td>
+        </tr>
+
+        <!-- Espace avant le pied de page -->
+        <tr>
+          <td style="height:32px;font-size:0;line-height:0;">&nbsp;</td>
         </tr>
 
         <!-- Pied de page -->
