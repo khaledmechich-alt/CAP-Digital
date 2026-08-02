@@ -14,6 +14,7 @@ type Mode = "connexion" | "inscription";
 export function AuthForm() {
   const router = useRouter();
   const [mode, setMode] = useState<Mode>("connexion");
+  const [prenom, setPrenom] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -60,6 +61,9 @@ export function AuthForm() {
       ...identifiants,
       options: {
         emailRedirectTo: `${window.location.origin}/auth/callback?next=/espace-client`,
+        // Le prénom sert à l'accueil de l'espace client. Il est facultatif :
+        // sans lui, la page salue simplement « Bonjour 👋 ».
+        data: { prenom: prenom.trim() },
       },
     });
 
@@ -109,6 +113,23 @@ export function AuthForm() {
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        {mode === "inscription" && (
+          <div className="flex flex-col gap-2">
+            <label htmlFor="prenom" className="text-sm font-medium">
+              Prénom
+            </label>
+            <input
+              id="prenom"
+              type="text"
+              autoComplete="given-name"
+              value={prenom}
+              onChange={(event) => setPrenom(event.target.value)}
+              placeholder="Jean"
+              className={inputClasses}
+            />
+          </div>
+        )}
+
         <div className="flex flex-col gap-2">
           <label htmlFor="email" className="text-sm font-medium">
             E-mail

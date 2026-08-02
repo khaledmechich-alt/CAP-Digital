@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site-config";
 import {
   DERNIERE_ETAPE,
   ETAPES,
@@ -21,6 +22,23 @@ export const metadata: Metadata = {
 
 // On lit la session et la base à chaque visite.
 export const dynamic = "force-dynamic";
+
+// Le prénom pour dire bonjour. Deux sources possibles : ce que la personne a
+// saisi à l'inscription, ou le nom que nous avons nous-mêmes renseigné sur son
+// projet. Si les deux manquent (comptes créés avant l'ajout du champ), on salue
+// sans prénom plutôt que d'afficher un début d'adresse e-mail.
+function prenomDe(
+  metadata: Record<string, unknown> | undefined,
+  projets: Projet[]
+): string | null {
+  const saisi = typeof metadata?.prenom === "string" ? metadata.prenom : "";
+  const surProjet = projets.find((p) => p.client_name)?.client_name ?? "";
+
+  const premier = (saisi.trim() || surProjet.trim()).split(/\s+/)[0];
+  if (!premier) return null;
+
+  return premier.charAt(0).toUpperCase() + premier.slice(1);
+}
 
 function InfoSite({ projet }: { projet: Projet }) {
   const infos = [
@@ -194,16 +212,19 @@ export default async function EspaceClientPage() {
   const enCours = projets.filter((p) => etapeValide(p.etape) < DERNIERE_ETAPE);
   const livres = projets.filter((p) => etapeValide(p.etape) === DERNIERE_ETAPE);
 
+  const prenom = prenomDe(user.user_metadata, projets);
+
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
+        <div className="mb-12 flex flex-wrap items-start justify-between gap-4">
           <div>
-            <h1 className="font-display text-3xl font-semibold">
-              Votre espace client
+            <h1 className="font-display text-3xl font-semibold md:text-4xl">
+              Bonjour{prenom ? ` ${prenom}` : ""} 👋
             </h1>
-            <p className="mt-1 text-sm text-muted">
-              Connecté en tant que {user.email}
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
+              Bienvenue dans votre espace client. Vous y suivez l&apos;avancement
+              de votre projet et retrouvez toutes les informations de votre site.
             </p>
           </div>
           <form action={signOutClient}>
@@ -223,27 +244,34 @@ export default async function EspaceClientPage() {
           </p>
         )}
 
-        {/* Aucun site : on l'annonce clairement et on propose d'en lancer un. */}
+        {/* Aucun site : on reste sobre. Pas de rubriques vides ni d'étapes
+            cochées d'avance — rien n'a encore commencé, on le dit simplement
+            et on donne la seule action utile. */}
         {!error && projets.length === 0 && (
-          <div className="rounded-2xl border border-border-subtle bg-card p-10 text-center">
-            <p className="font-display text-xl font-semibold">
-              Aucun site n&apos;a encore été créé
-            </p>
-            <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted">
-              Vous n&apos;avez pas encore de projet chez CAP DIGITAL. Dès
-              qu&apos;un site sera lancé, vous suivrez ici son avancement étape
-              par étape, puis vous y retrouverez toutes ses informations.
-            </p>
-            <div className="mt-8">
-              <Button href="/contact" size="lg">
-                Créer un site
-              </Button>
+          <div className="border-t border-border-subtle">
+            <div className="py-10">
+              <h2 className="text-sm font-semibold uppercase tracking-widest text-muted">
+                Votre projet
+              </h2>
+              <p className="mt-4 font-display text-2xl font-semibold">
+                Aucun projet en cours
+              </p>
+              <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted">
+                Racontez-nous le vôtre : nous vous répondons sous 24h et vous
+                recevez un devis détaillé sous 48h, gratuitement et sans
+                engagement.
+              </p>
+              <div className="mt-7">
+                <Button href="/contact" size="lg">
+                  Lancer mon projet
+                </Button>
+              </div>
+              <p className="mt-7 max-w-lg text-xs leading-relaxed text-muted">
+                Vous avez déjà un projet avec nous ? Vérifiez que vous êtes
+                connecté avec l&apos;adresse e-mail communiquée lors de votre
+                demande : c&apos;est elle qui relie votre site à ce compte.
+              </p>
             </div>
-            <p className="mx-auto mt-6 max-w-md text-xs text-muted">
-              Vous avez déjà un projet en cours avec nous ? Vérifiez que vous
-              êtes connecté avec l&apos;adresse e-mail communiquée lors de votre
-              demande.
-            </p>
           </div>
         )}
 
@@ -282,10 +310,30 @@ export default async function EspaceClientPage() {
               Envie d&apos;un nouveau site ou d&apos;une refonte ?
             </p>
             <Button href="/contact" variant="secondary">
-              Créer un site
+              Nouveau projet
             </Button>
           </div>
         )}
+
+        {/* Le support : une vraie adresse, pas une rubrique décorative. */}
+        <div className="mt-12 border-t border-border-subtle pt-10">
+          <h2 className="text-sm font-semibold uppercase tracking-widest text-muted">
+            Besoin d&apos;aide ?
+          </h2>
+          <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted">
+            Une question sur votre projet ? Écrivez-nous à{" "}
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="text-accent hover:underline"
+            >
+              {siteConfig.email}
+            </a>
+            . Nous répondons sous 24h.
+          </p>
+          <p className="mt-6 text-xs text-muted">
+            Connecté en tant que {user.email}
+          </p>
+        </div>
       </Container>
     </section>
   );
