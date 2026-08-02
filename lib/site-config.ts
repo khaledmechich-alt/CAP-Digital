@@ -30,7 +30,7 @@ export const siteConfig: SiteConfig = {
   // Remplacez par votre vrai nom de domaine une fois le site en ligne
   url: "https://www.cap-digital.fr",
 
-  email: "contact.autosearchpro@gmail.com",
+  email: "capdigital4118@gmail.com",
 
   // Remplacez par votre vrai numéro de téléphone
   phone: "+33 6 00 00 00 00",
