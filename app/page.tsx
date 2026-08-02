@@ -1,6 +1,8 @@
 import { Hero } from "@/components/sections/hero";
 import { ClientsMarquee } from "@/components/sections/clients-marquee";
-import { StatsSection } from "@/components/sections/stats-section";
+// Bloc de chiffres cles masque : les valeurs affichees n'etaient pas reelles.
+// Le composant et lib/stats.ts sont conserves pour le reactiver plus tard.
+// import { StatsSection } from "@/components/sections/stats-section";
 import { IntroVideoSection } from "@/components/sections/intro-video-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { FeaturedProjects } from "@/components/sections/featured-projects";
@@ -14,7 +16,6 @@ export default function HomePage() {
     <>
       <Hero />
       <ClientsMarquee />
-      <StatsSection />
       <IntroVideoSection />
       <ServicesSection />
       <FeaturedProjects />
