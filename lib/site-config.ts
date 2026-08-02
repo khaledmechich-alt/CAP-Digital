@@ -32,8 +32,8 @@ export const siteConfig: SiteConfig = {
 
   email: "capdigital4118@gmail.com",
 
-  // Remplacez par votre vrai numéro de téléphone
-  phone: "+33 6 00 00 00 00",
+  // Les espaces sont automatiquement retirés pour les liens « appeler ».
+  phone: "+33 1 85 78 29 41",
 
   // Ville / zone d'activité (utilisée pour le SEO local)
   location: "France",

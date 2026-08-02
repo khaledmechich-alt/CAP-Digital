@@ -45,7 +45,7 @@ Contraintes techniques : Next.js 16, TypeScript, Tailwind CSS v4, Motion, next-t
 Un seul compte administrateur (le propriétaire). Les clients ont chacun leur compte et ne voient que leur propre projet.
 
 **Faits produit non tranchés** — à ne jamais inventer :
-- Numéro de téléphone : placeholder (`+33 6 00 00 00 00`) dans `lib/site-config.ts`.
+- ~~Numéro de téléphone~~ : réglé le 02/08/2026 — `+33 1 85 78 29 41`.
 - Nom de domaine : `www.cap-digital.fr` n'est pas actif ; le site tourne sur une URL Vercel.
 - Mentions légales : SIRET, forme juridique et adresse sont encore entre crochets.
 - Réseaux sociaux : les liens pointent vers les accueils génériques, aucun compte réel.
