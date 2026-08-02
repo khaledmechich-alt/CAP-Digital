@@ -220,7 +220,7 @@ export default async function EspaceClientPage() {
         <div className="mb-12 flex flex-wrap items-start justify-between gap-4">
           <div>
             <h1 className="font-display text-3xl font-semibold md:text-4xl">
-              Bonjour{prenom ? ` ${prenom}` : ""} 👋
+              Bonjour{prenom ? ` ${prenom}` : ""}
             </h1>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
               Bienvenue dans votre espace client. Vous y suivez l&apos;avancement
