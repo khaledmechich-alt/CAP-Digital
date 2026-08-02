@@ -1,0 +1,25 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "app/globals.css"
+        ],
+        "createdAt": "2026-08-02T16:36:45.522Z"
+      },
+      {
+        "rule": "overused-font",
+        "value": "arial",
+        "files": [
+          "app/contact/actions.ts"
+        ],
+        "createdAt": "2026-08-02T16:38:59.778Z",
+        "reason": "HTML d'e-mail (Resend) : les clients de messagerie ne chargent pas de polices web, Arial est le choix correct"
+      }
+    ]
+  }
+}

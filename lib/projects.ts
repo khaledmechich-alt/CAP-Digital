@@ -40,6 +40,13 @@ export type Project = {
   /** Uniquement pour les refontes : images avant / après */
   beforeImage?: string;
   afterImage?: string;
+  /**
+   * `true` pour un projet de démonstration, qui n'est pas une réalisation
+   * client. Le site affiche alors une mention explicite sur la vignette et
+   * sur la fiche. Un projet de démonstration ne doit porter aucun résultat
+   * chiffré : laissez `results` vide.
+   */
+  demo?: boolean;
 };
 
 export const projects: Project[] = [
@@ -102,20 +109,18 @@ export const projects: Project[] = [
     category: "Refonte",
     year: 2026,
     shortDescription:
-      "Refonte complète du site d'un cabinet d'avocats : image modernisée, contacts multipliés.",
+      "Exemple de refonte pour un cabinet d'avocats : d'un site de 2014 illisible sur mobile à une image à la hauteur du cabinet.",
     challenge:
       "Le site du cabinet datait de 2014 : design dépassé, illisible sur mobile, très lent. Il renvoyait une image en décalage total avec le sérieux du cabinet et ne générait quasiment aucune demande.",
     solution:
       "Refonte intégrale : design sobre et prestigieux, présentation claire des domaines d'expertise, prise de rendez-vous en ligne. Migration soignée pour conserver le référencement acquis, puis amélioration des positions.",
     technologies: ["Next.js", "Refonte", "Prise de RDV en ligne", "SEO"],
-    results: [
-      { value: "-38 %", label: "de taux de rebond" },
-      { value: "+60 %", label: "de demandes de consultation" },
-      { value: "98/100", label: "score de performance Google" },
-    ],
+    // Projet de démonstration : aucun résultat chiffré, ce ne serait pas réel.
+    results: [],
     url: "",
     image: "/projects/cabinet-delcourt.svg",
     featured: true,
+    demo: true,
     beforeImage: "/projects/cabinet-delcourt-avant.svg",
     afterImage: "/projects/cabinet-delcourt-apres.svg",
   },

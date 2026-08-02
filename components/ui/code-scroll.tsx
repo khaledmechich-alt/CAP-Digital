@@ -41,7 +41,7 @@ const LINES: Segment[][] = [
   [["}", "txt"]],
   [[""]],
   [["// Mise en ligne réussie ✓", "com"]],
-  [["// 40+ projets livrés — 98% de clients satisfaits", "com"]],
+  [["// Chaque client suit son projet en temps réel", "com"]],
   [["deployer", "fn"], ["();", "txt"]],
   [[""]],
 ];

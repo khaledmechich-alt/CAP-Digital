@@ -1,0 +1,5 @@
+# Cache local du detecteur de design : propre a chaque machine.
+hook.cache.json
+
+# Reglages personnels, non partages.
+config.local.json

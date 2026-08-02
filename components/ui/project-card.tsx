@@ -21,10 +21,15 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <div className="flex flex-col gap-2.5">
-        <div className="flex items-center gap-3 text-xs">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs">
           <span className="rounded-full bg-accent-soft px-3 py-1 font-medium text-accent">
             {project.category}
           </span>
+          {project.demo ? (
+            <span className="rounded-full border border-border-subtle px-3 py-1 font-medium text-muted">
+              Démonstration
+            </span>
+          ) : null}
           <span className="text-muted">
             {project.client} · {project.year}
           </span>

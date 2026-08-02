@@ -11,7 +11,7 @@ export const ETAPES = [
   {
     numero: 2,
     titre: "Maquette",
-    description: "Je vous présente le design avant d'écrire la moindre ligne.",
+    description: "Nous vous présentons le design avant d'écrire la moindre ligne.",
   },
   {
     numero: 3,
@@ -21,7 +21,7 @@ export const ETAPES = [
   {
     numero: 4,
     titre: "Relecture & corrections",
-    description: "Vous testez, vous me dites, j'ajuste.",
+    description: "Vous testez, vous nous dites, on ajuste.",
   },
   {
     numero: 5,

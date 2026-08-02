@@ -62,6 +62,11 @@ export default async function ProjectPage({ params }: PageProps) {
                 <span className="rounded-full bg-accent-soft px-3 py-1 font-medium text-accent">
                   {project.category}
                 </span>
+                {project.demo ? (
+                  <span className="rounded-full border border-border-subtle px-3 py-1 font-medium text-muted">
+                    Démonstration
+                  </span>
+                ) : null}
                 <span className="text-muted">
                   {project.client} · {project.year}
                 </span>
@@ -72,23 +77,36 @@ export default async function ProjectPage({ params }: PageProps) {
               <p className="max-w-2xl text-lg leading-relaxed text-muted">
                 {project.shortDescription}
               </p>
+              {project.demo ? (
+                <p className="max-w-2xl rounded-2xl border border-border-subtle bg-card p-5 text-sm leading-relaxed text-muted">
+                  <strong className="font-semibold text-foreground">
+                    Projet de démonstration.
+                  </strong>{" "}
+                  Ce cabinet est fictif. Cette fiche illustre notre méthode de
+                  refonte et le rendu que nous produisons — ce n&apos;est pas une
+                  réalisation client, et nous ne lui associons aucun résultat
+                  chiffré.
+                </p>
+              ) : null}
             </Reveal>
 
-            <Reveal delay={0.1}>
-              <div className="grid gap-4 sm:grid-cols-3">
-                {project.results.map((result) => (
-                  <div
-                    key={result.label}
-                    className="flex flex-col gap-1 rounded-2xl border border-border-subtle bg-card p-6"
-                  >
-                    <span className="font-display text-3xl font-bold text-gradient-accent md:text-4xl">
-                      {result.value}
-                    </span>
-                    <span className="text-sm text-muted">{result.label}</span>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
+            {project.results.length > 0 ? (
+              <Reveal delay={0.1}>
+                <div className="grid gap-4 sm:grid-cols-3">
+                  {project.results.map((result) => (
+                    <div
+                      key={result.label}
+                      className="flex flex-col gap-1 rounded-2xl border border-border-subtle bg-card p-6"
+                    >
+                      <span className="font-display text-3xl font-bold text-gradient-accent md:text-4xl">
+                        {result.value}
+                      </span>
+                      <span className="text-sm text-muted">{result.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            ) : null}
 
             <Reveal delay={0.15}>
               {project.beforeImage && project.afterImage ? (
