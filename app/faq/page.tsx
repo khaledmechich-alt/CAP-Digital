@@ -31,28 +31,26 @@ export default function FaqPage() {
       <JsonLd data={faqSchema} />
       <PageHero
         eyebrow="FAQ"
-        title={
-          <>
-            Toutes les réponses,{" "}
-            <span className="text-gradient-accent">sans langue de bois</span>
-          </>
-        }
+        title="Toutes les réponses, sans langue de bois"
+        em="sans langue de bois"
         description="Prix, délais, autonomie, référencement : nous répondons ici aux questions qu'on nous pose tous les jours. Il en manque une ? Écrivez-nous."
       />
 
-      <section className="pb-24 md:pb-32">
-        <Container className="flex max-w-4xl flex-col gap-14">
+      <section className="pt-8 pb-24 md:pb-32">
+        <Container className="flex flex-col gap-16">
           {categories.map((category, index) => (
-            <Reveal key={category} delay={index * 0.05}>
-              <div className="flex flex-col gap-6">
-                <h2 className="font-display text-2xl font-semibold tracking-tight">
+            <Reveal key={category} variant="up" delay={index * 0.05}>
+              <div className="grid gap-6 lg:grid-cols-12 lg:gap-16">
+                <h2 className="font-display text-2xl tracking-[-0.02em] lg:col-span-4 lg:text-3xl">
                   {category}
                 </h2>
+                <div className="lg:col-span-8">
                 <Accordion
                   items={faqItems
                     .filter((item) => item.category === category)
                     .map(({ question, answer }) => ({ question, answer }))}
                 />
+                </div>
               </div>
             </Reveal>
           ))}
@@ -60,12 +58,8 @@ export default function FaqPage() {
       </section>
 
       <CtaSection
-        title={
-          <>
-            Une question qui n&apos;est pas ici&nbsp;?{" "}
-            <span className="text-gradient-accent">Posez-la directement.</span>
-          </>
-        }
+        title="Une question qui n'est pas ici ? Posez-la directement."
+        em="Posez-la directement."
         description="Nous répondons à tous les messages sous 24h, sans exception. Et promis : la réponse sera claire, honnête et sans jargon."
       />
     </>

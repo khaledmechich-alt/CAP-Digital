@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { legalLinks, navLinks, secondaryLinks } from "@/lib/navigation";
 import { Container } from "@/components/ui/container";
@@ -22,8 +21,8 @@ export function Footer() {
   ].filter((social) => social.href !== "");
 
   return (
-    <footer className="border-t border-border-subtle bg-card">
-      <Container className="py-16">
+    <footer className="overflow-hidden border-t border-border-subtle">
+      <Container className="pt-16 pb-10">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Marque */}
           <div className="flex flex-col gap-5">
@@ -40,7 +39,7 @@ export function Footer() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-medium text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
+                    className="link-line text-sm text-muted hover:text-foreground"
                   >
                     {label}
                   </a>
@@ -51,15 +50,13 @@ export function Footer() {
 
           {/* Navigation */}
           <nav aria-label="Navigation pied de page">
-            <h2 className="mb-5 text-sm font-semibold uppercase tracking-widest text-muted">
-              Navigation
-            </h2>
+            <h2 className="label-mono mb-6">Navigation</h2>
             <ul className="flex flex-col gap-3">
               {[...navLinks, ...secondaryLinks].map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted transition-colors hover:text-foreground"
+                    className="link-line text-sm text-muted hover:text-foreground"
                   >
                     {link.label}
                   </Link>
@@ -70,15 +67,13 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h2 className="mb-5 text-sm font-semibold uppercase tracking-widest text-muted">
-              Services
-            </h2>
+            <h2 className="label-mono mb-6">Services</h2>
             <ul className="flex flex-col gap-3">
               {serviceLinks.map((service) => (
                 <li key={service}>
                   <Link
                     href="/services"
-                    className="text-sm text-muted transition-colors hover:text-foreground"
+                    className="link-line text-sm text-muted hover:text-foreground"
                   >
                     {service}
                   </Link>
@@ -89,74 +84,60 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h2 className="mb-5 text-sm font-semibold uppercase tracking-widest text-muted">
-              Contact
-            </h2>
-            <ul className="flex flex-col gap-4 text-sm text-muted">
+            <h2 className="label-mono mb-6">Contact</h2>
+            <ul className="flex flex-col gap-3 text-sm text-muted">
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="flex items-center gap-2 transition-colors hover:text-foreground"
+                  className="link-line hover:text-foreground"
                 >
-                  <Mail
-                    className="h-4 w-4 shrink-0 text-foreground dark:text-accent"
-                    aria-hidden="true"
-                  />
                   {siteConfig.email}
                 </a>
               </li>
               <li>
                 <a
                   href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-2 transition-colors hover:text-foreground"
+                  className="link-line hover:text-foreground"
                 >
-                  <Phone
-                    className="h-4 w-4 shrink-0 text-foreground dark:text-accent"
-                    aria-hidden="true"
-                  />
                   {siteConfig.phone}
                 </a>
               </li>
-              <li className="flex items-center gap-2">
-                <MapPin
-                  className="h-4 w-4 shrink-0 text-foreground dark:text-accent"
-                  aria-hidden="true"
-                />
-                {siteConfig.location}
-              </li>
+              <li>{siteConfig.location}</li>
             </ul>
           </div>
         </div>
 
         {/* Barre inférieure */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border-subtle pt-8 text-xs text-muted md:flex-row">
-          <p>
+        <div className="mt-16 flex flex-col justify-between gap-4 border-t border-border-subtle pt-8 md:flex-row md:items-center">
+          <p className="label-mono">
             © {new Date().getFullYear()} {siteConfig.name}. Tous droits
             réservés.
           </p>
-          <ul className="flex gap-6">
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {legalLinks.map((link) => (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="transition-colors hover:text-foreground"
-                >
+                <Link href={link.href} className="label-mono link-line hover:text-foreground">
                   {link.label}
                 </Link>
               </li>
             ))}
             {/* Accès discret à l'espace privé (réservé à l'administrateur) */}
             <li>
-              <Link
-                href="/admin"
-                className="transition-colors hover:text-foreground"
-              >
+              <Link href="/admin" className="label-mono link-line hover:text-foreground">
                 Espace admin
               </Link>
             </li>
           </ul>
         </div>
       </Container>
+
+      {/* Signature typographique en pied de page */}
+      <p
+        aria-hidden
+        className="font-display -mb-[0.18em] w-full px-6 text-center text-[11vw] leading-none tracking-[-0.04em] text-foreground/[0.06] select-none lg:px-8"
+      >
+        CAP DIGITAL
+      </p>
     </footer>
   );
 }

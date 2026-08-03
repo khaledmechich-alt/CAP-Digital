@@ -1,22 +1,25 @@
-import { projects } from "@/lib/projects";
+import { services } from "@/lib/services";
 import { Marquee } from "@/components/ui/marquee";
-import { Container } from "@/components/ui/container";
 
+/**
+ * Bandeau défilant listant ce que nous fabriquons.
+ * (Volontairement pas une liste de logos clients : nous n'en affichons
+ * que si ce sont de vrais clients.)
+ */
 export function ClientsMarquee() {
   return (
-    <section className="border-y border-border-subtle py-10">
-      <Container>
-        <p className="mb-8 text-center text-xs font-medium uppercase tracking-widest text-muted">
-          Ils nous font confiance
-        </p>
-      </Container>
+    <section
+      aria-label="Ce que nous réalisons"
+      className="overflow-hidden border-y border-border-subtle bg-background-alt py-7"
+    >
       <Marquee>
-        {projects.map((project) => (
+        {services.map((service) => (
           <span
-            key={project.slug}
-            className="font-display text-2xl font-semibold whitespace-nowrap text-muted/70"
+            key={service.slug}
+            className="font-display flex items-center gap-16 text-2xl whitespace-nowrap text-muted md:text-3xl"
           >
-            {project.title}
+            {service.title}
+            <span className="size-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
           </span>
         ))}
       </Marquee>

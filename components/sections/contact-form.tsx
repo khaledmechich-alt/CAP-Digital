@@ -1,12 +1,16 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
 import { submitContact } from "@/app/contact/actions";
 
+// Champs « papier » : un simple filet sous le texte, qui s'épaissit
+// et passe à l'accent quand on écrit dedans.
 const inputClasses =
-  "w-full rounded-xl border border-border-subtle bg-background px-4 py-3 text-sm placeholder:text-muted/60 transition-colors focus:border-accent focus:outline-none";
+  "w-full border-0 border-b border-border-subtle bg-transparent px-0 py-3 text-base placeholder:text-muted/50 transition-colors focus:border-foreground focus:outline-none";
+
+const labelClasses = "label-mono";
 
 const projectTypes = [
   "Site vitrine",
@@ -62,9 +66,9 @@ export function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-2xl border border-border-subtle bg-card p-10 text-center">
-        <h3 className="font-display text-2xl font-semibold">
-          Merci, votre demande est bien partie&nbsp;! 🎉
+      <div className="flex flex-col items-start gap-6 border-y border-border-subtle py-12">
+        <h3 className="font-display text-3xl leading-[1.1] tracking-[-0.02em] md:text-4xl">
+          Merci, votre demande est <span className="em-serif">bien partie</span>.
         </h3>
         <p className="max-w-md leading-relaxed text-muted">
           Nous avons bien reçu votre message et nous vous recontactons très vite
@@ -72,7 +76,7 @@ export function ContactForm() {
           directement à{" "}
           <a
             href={`mailto:${siteConfig.email}`}
-            className="font-medium text-accent hover:underline"
+            className="link-line text-accent"
           >
             {siteConfig.email}
           </a>
@@ -90,11 +94,11 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-5 rounded-2xl border border-border-subtle bg-card p-8"
+      className="flex flex-col gap-8"
     >
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-8 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="text-sm font-medium">
+          <label htmlFor="name" className={labelClasses}>
             Votre nom <span className="text-accent">*</span>
           </label>
           <input
@@ -108,7 +112,7 @@ export function ContactForm() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="text-sm font-medium">
+          <label htmlFor="email" className={labelClasses}>
             Votre e-mail <span className="text-accent">*</span>
           </label>
           <input
@@ -122,7 +126,7 @@ export function ContactForm() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="phone" className="text-sm font-medium">
+          <label htmlFor="phone" className={labelClasses}>
             Téléphone
           </label>
           <input
@@ -135,7 +139,7 @@ export function ContactForm() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="company" className="text-sm font-medium">
+          <label htmlFor="company" className={labelClasses}>
             Votre entreprise
           </label>
           <input
@@ -148,7 +152,7 @@ export function ContactForm() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="projectType" className="text-sm font-medium">
+          <label htmlFor="projectType" className={labelClasses}>
             Type de projet <span className="text-accent">*</span>
           </label>
           <select
@@ -166,7 +170,7 @@ export function ContactForm() {
           </select>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="budget" className="text-sm font-medium">
+          <label htmlFor="budget" className={labelClasses}>
             Budget envisagé
           </label>
           <select
@@ -185,7 +189,7 @@ export function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="message" className="text-sm font-medium">
+        <label htmlFor="message" className={labelClasses}>
           Parlez-nous de votre projet <span className="text-accent">*</span>
         </label>
         <textarea
@@ -199,7 +203,7 @@ export function ContactForm() {
       </div>
 
       {status === "error" && (
-        <p className="rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-500">
+        <p className="border-l-2 border-red-500 py-1 pl-4 text-sm leading-relaxed text-red-500">
           {errorMsg ?? "Une erreur est survenue."} Vous pouvez aussi nous écrire
           directement à{" "}
           <a

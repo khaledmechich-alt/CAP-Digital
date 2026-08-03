@@ -9,6 +9,10 @@ export type AccordionItem = {
   answer: string;
 };
 
+/**
+ * Questions/réponses en lignes séparées par des filets — pas de cartes.
+ * Le « + » pivote en croix et la réponse se déplie en hauteur.
+ */
 export function Accordion({
   items,
   className,
@@ -19,27 +23,31 @@ export function Accordion({
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className={cn("flex flex-col gap-3", className)}>
+    <div className={cn("flex flex-col border-t border-border-subtle", className)}>
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         return (
-          <div
-            key={item.question}
-            className="overflow-hidden rounded-2xl border border-border-subtle bg-card transition-colors hover:bg-card-hover"
-          >
+          <div key={item.question} className="border-b border-border-subtle">
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+              className="group flex w-full items-start justify-between gap-6 py-6 text-left"
               aria-expanded={isOpen}
               aria-controls={`accordion-panel-${index}`}
               id={`accordion-trigger-${index}`}
               onClick={() => setOpenIndex(isOpen ? null : index)}
             >
-              <span className="font-medium text-balance">{item.question}</span>
               <span
                 className={cn(
-                  "shrink-0 text-xl leading-none font-medium text-accent transition-transform duration-300",
-                  isOpen && "rotate-45"
+                  "font-display text-lg tracking-[-0.015em] text-balance transition-colors md:text-xl",
+                  isOpen ? "text-foreground" : "text-muted group-hover:text-foreground"
+                )}
+              >
+                {item.question}
+              </span>
+              <span
+                className={cn(
+                  "mt-1 shrink-0 text-xl leading-none text-accent transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  isOpen && "rotate-135"
                 )}
                 aria-hidden
               >
@@ -52,12 +60,13 @@ export function Accordion({
                   id={`accordion-panel-${index}`}
                   role="region"
                   aria-labelledby={`accordion-trigger-${index}`}
+                  className="overflow-hidden"
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <p className="px-6 pb-6 leading-relaxed text-muted">
+                  <p className="max-w-2xl pb-7 leading-relaxed text-muted">
                     {item.answer}
                   </p>
                 </motion.div>

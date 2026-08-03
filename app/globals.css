@@ -9,44 +9,52 @@
 
 :root {
   --background: #fafafa;
+  --background-alt: #f4f4f5;
   --foreground: #0b0b0b;
   --muted: #52525b;
   --card: #ffffff;
   --card-hover: #f4f4f5;
   --border-subtle: rgba(9, 9, 11, 0.08);
+  --border-strong: rgba(9, 9, 11, 0.2);
   --accent: #2563eb;
   --accent-strong: #1d4ed8;
   --accent-soft: rgba(37, 99, 235, 0.08);
   --glow: rgba(37, 99, 235, 0.14);
+  --grain-opacity: 0.022;
 }
 
 .dark {
   --background: #0b0b0b;
+  --background-alt: #121212;
   --foreground: #fafafa;
   --muted: #a1a1aa;
   --card: #141414;
   --card-hover: #1a1a1a;
   --border-subtle: rgba(250, 250, 250, 0.08);
+  --border-strong: rgba(250, 250, 250, 0.2);
   --accent: #3b82f6;
   --accent-strong: #60a5fa;
   --accent-soft: rgba(59, 130, 246, 0.12);
   --glow: rgba(59, 130, 246, 0.22);
+  --grain-opacity: 0.035;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-card: var(--card);
   --color-card-hover: var(--card-hover);
   --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
   --color-accent-soft: var(--accent-soft);
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif,
-    sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -94,6 +102,63 @@ body {
   border-radius: 4px;
 }
 
+/* Le display est un serif à taille optique variable :
+   on laisse le navigateur choisir la coupe selon la taille. */
+.font-display {
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 0, "WONK" 1;
+}
+
+/* ============================================
+   Utilitaires maison
+   ============================================ */
+
+/* Emphase de titre : italique du serif, à la place de
+   l'ancien dégradé de couleur. */
+.em-serif {
+  font-style: italic;
+  letter-spacing: -0.005em;
+}
+
+/* Étiquette monospace en petites capitales espacées */
+.label-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Grain de papier appliqué au corps de page */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Soulignement qui se dessine au survol */
+.link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.4s var(--ease-out-expo);
+}
+
+.link-line:hover,
+.link-line:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Filet horizontal qui se trace à l'entrée dans l'écran */
+.rule-draw {
+  transform-origin: left;
+}
+
 /* Halo lumineux réutilisable derrière les sections */
 .glow-orb {
   position: absolute;
@@ -102,28 +167,9 @@ body {
   pointer-events: none;
 }
 
-/* Texte en dégradé accent (titres) */
-.text-gradient-accent {
-  background: linear-gradient(
-    120deg,
-    var(--accent) 0%,
-    var(--accent-strong) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Trame de grille subtile pour le hero */
-.bg-grid {
-  background-image: linear-gradient(var(--border-subtle) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
-  background-size: 64px 64px;
-}
-
-/* Code qui défile en fond du hero — animation CSS pure */
+/* Code qui défile — animation CSS pure (fonctionne dans l'aperçu) */
 .anim-code-scroll {
-  animation: code-scroll 22s linear infinite;
+  animation: code-scroll 26s linear infinite;
   will-change: transform;
 }
 
@@ -133,8 +179,19 @@ body {
   }
 }
 
+/* Défilement horizontal en sens inverse */
+.anim-marquee-reverse {
+  animation: marquee 60s linear infinite reverse;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .anim-code-scroll {
-    animation: none;
+  .anim-code-scroll,
+  .anim-marquee-reverse,
+  [class*="animate-marquee"] {
+    animation: none !important;
+  }
+
+  .link-line {
+    transition: none;
   }
 }

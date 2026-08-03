@@ -52,16 +52,16 @@ export function Header() {
 
         {/* Navigation bureau */}
         <nav aria-label="Navigation principale" className="hidden lg:block">
-          <ul className="flex items-center gap-1">
+          <ul className="flex items-center gap-7">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   aria-current={isActive(link.href) ? "page" : undefined}
                   className={cn(
-                    "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                    "link-line py-2 text-sm transition-colors",
                     isActive(link.href)
-                      ? "text-foreground"
+                      ? "text-foreground [background-size:100%_1px]"
                       : "text-muted hover:text-foreground"
                   )}
                 >
@@ -86,7 +86,7 @@ export function Header() {
           </span>
           <button
             type="button"
-            className="flex h-10 items-center rounded-full border border-border-subtle bg-card px-4 text-sm font-medium lg:hidden"
+            className="flex h-10 items-center rounded-full border border-border-strong px-4 text-sm font-medium lg:hidden"
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             onClick={() => setMenuOpen((open) => !open)}
@@ -119,8 +119,8 @@ export function Header() {
                     href={link.href}
                     aria-current={isActive(link.href) ? "page" : undefined}
                     className={cn(
-                      "block border-b border-border-subtle py-4 font-display text-2xl font-semibold",
-                      isActive(link.href) ? "text-accent" : "text-foreground"
+                      "block border-b border-border-subtle py-4 font-display text-2xl tracking-[-0.02em]",
+                      isActive(link.href) ? "em-serif text-accent" : "text-foreground"
                     )}
                   >
                     {link.label}
