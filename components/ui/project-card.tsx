@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Project } from "@/lib/projects";
+import { ParallaxMedia } from "@/components/ui/parallax-media";
 
 export function ProjectCard({ project }: { project: Project }) {
   const mainResult = project.results[0];
@@ -7,42 +8,46 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
       href={`/realisations/${project.slug}`}
-      className="group flex flex-col gap-5"
+      className="group flex flex-col gap-6"
     >
-      <div className="relative overflow-hidden rounded-2xl border border-border-subtle">
+      <ParallaxMedia className="aspect-[4/3] border border-border-subtle">
         <img
           src={project.image}
           alt={`Aperçu du site ${project.title}`}
           width={1200}
           height={750}
           loading="lazy"
-          className="h-auto w-full transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          className="h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
         />
-      </div>
+      </ParallaxMedia>
 
-      <div className="flex flex-col gap-2.5">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs">
-          <span className="rounded-full bg-accent-soft px-3 py-1 font-medium text-accent">
-            {project.category}
+      <div className="flex flex-col gap-3">
+        <div className="label-mono flex flex-wrap items-center gap-x-3 gap-y-1">
+          <span>{project.category}</span>
+          <span aria-hidden>·</span>
+          <span>
+            {project.client} — {project.year}
           </span>
           {project.demo ? (
-            <span className="rounded-full border border-border-subtle px-3 py-1 font-medium text-muted">
-              Démonstration
-            </span>
+            <>
+              <span aria-hidden>·</span>
+              <span className="text-accent">Démonstration</span>
+            </>
           ) : null}
-          <span className="text-muted">
-            {project.client} · {project.year}
-          </span>
         </div>
-        <h3 className="font-display text-2xl font-semibold tracking-tight transition-colors group-hover:text-accent">
-          {project.title}
+
+        <h3 className="font-display text-3xl tracking-[-0.02em] md:text-4xl">
+          <span className="link-line">{project.title}</span>
         </h3>
-        <p className="text-sm leading-relaxed text-muted">
+
+        <p className="max-w-md text-sm leading-relaxed text-muted md:text-base">
           {project.shortDescription}
         </p>
+
         {mainResult ? (
-          <p className="text-sm font-semibold text-accent">
-            {mainResult.value} {mainResult.label}
+          <p className="font-display text-lg">
+            <span className="em-serif text-accent">{mainResult.value}</span>{" "}
+            <span className="text-muted">{mainResult.label}</span>
           </p>
         ) : null}
       </div>

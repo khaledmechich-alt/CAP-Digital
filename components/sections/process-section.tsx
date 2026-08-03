@@ -1,6 +1,8 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Reveal } from "@/components/ui/reveal";
 
 const steps = [
   {
@@ -30,42 +32,40 @@ const steps = [
 ];
 
 export function ProcessSection() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="border-t border-border-subtle py-24 md:py-32">
-      <Container className="flex flex-col gap-16">
+    <section className="border-t border-border-subtle py-24 md:py-36">
+      <Container className="flex flex-col gap-16 md:gap-24">
         <SectionHeading
           eyebrow="Notre méthode"
-          title={
-            <>
-              Un processus simple,{" "}
-              <span className="text-gradient-accent">sans jargon</span>
-            </>
-          }
+          title="Un processus simple, sans jargon"
+          em="sans jargon"
           description="Pas besoin d'être un expert du web : nous vous guidons à chaque étape, en français courant."
         />
 
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, index) => (
-            <Reveal
+        {/* Les étapes s'éclairent une à une au fil du défilement :
+            celle qu'on est en train de lire est la seule pleinement lisible. */}
+        <ol className="flex flex-col border-t border-border-subtle">
+          {steps.map((step) => (
+            <motion.li
               key={step.number}
-              delay={index * 0.1}
-              className="relative flex flex-col gap-4"
+              className="grid gap-4 border-b border-border-subtle py-10 md:grid-cols-12 md:gap-10 md:py-14"
+              initial={reduceMotion ? undefined : { opacity: 0.28 }}
+              whileInView={reduceMotion ? undefined : { opacity: 1 }}
+              viewport={{ margin: "-35% 0px -35% 0px" }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span
-                className="font-display text-6xl font-bold text-accent/15"
-                aria-hidden
-              >
-                {step.number}
-              </span>
-              <h3 className="font-display text-xl font-semibold">
+              <span className="label-mono md:col-span-2">{step.number}</span>
+              <h3 className="font-display text-3xl tracking-[-0.02em] md:col-span-5 md:text-5xl">
                 {step.title}
               </h3>
-              <p className="text-sm leading-relaxed text-muted">
+              <p className="text-base leading-relaxed text-muted md:col-span-5">
                 {step.description}
               </p>
-            </Reveal>
+            </motion.li>
           ))}
-        </div>
+        </ol>
       </Container>
     </section>
   );
