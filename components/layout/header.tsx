@@ -119,7 +119,7 @@ export function Header() {
                     href={link.href}
                     aria-current={isActive(link.href) ? "page" : undefined}
                     className={cn(
-                      "block border-b border-border-subtle py-4 font-display text-3xl tracking-[-0.02em]",
+                      "block border-b border-border-subtle py-4 font-display text-2xl tracking-[-0.02em]",
                       isActive(link.href) ? "em-serif text-accent" : "text-foreground"
                     )}
                   >

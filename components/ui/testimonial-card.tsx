@@ -7,7 +7,7 @@ export function TestimonialCard({
 }) {
   return (
     <figure className="flex h-full flex-col gap-6 border-t border-border-subtle pt-8">
-      <blockquote className="font-display flex-1 text-2xl leading-[1.35] tracking-[-0.015em] text-pretty md:text-3xl">
+      <blockquote className="font-display flex-1 text-xl leading-[1.4] tracking-[-0.015em] text-pretty md:text-2xl">
         « {testimonial.quote} »
       </blockquote>
       <figcaption className="flex flex-wrap items-baseline justify-between gap-4">

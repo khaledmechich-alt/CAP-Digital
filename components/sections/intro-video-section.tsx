@@ -4,8 +4,8 @@ import { Reveal } from "@/components/ui/reveal";
 
 export function IntroVideoSection() {
   return (
-    <section className="border-t border-border-subtle py-24 md:py-36">
-      <Container className="flex flex-col gap-14 md:gap-20">
+    <section className="border-t border-border-subtle py-20 md:py-28">
+      <Container className="flex flex-col gap-12 md:gap-16">
         <SectionHeading
           eyebrow="Découvrir CAP Digital"
           title="CAP Digital en une minute"
@@ -14,7 +14,7 @@ export function IntroVideoSection() {
         />
 
         <Reveal variant="scale" duration={1} className="w-full">
-          <div className="overflow-hidden border border-border-subtle bg-background-alt">
+          <div className="overflow-hidden rounded-2xl border border-border-subtle bg-card shadow-[0_12px_48px_var(--glow)]">
             <video
               className="aspect-video w-full"
               controls

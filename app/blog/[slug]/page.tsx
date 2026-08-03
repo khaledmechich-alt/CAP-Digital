@@ -72,7 +72,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <span>{post.readingTime} de lecture</span>
             </div>
 
-            <h1 className="font-display text-4xl leading-[1.05] tracking-[-0.025em] text-balance md:text-6xl">
+            <h1 className="font-display text-3xl leading-[1.08] tracking-[-0.025em] text-balance md:text-5xl">
               {post.title}
             </h1>
 
@@ -83,7 +83,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             {post.content.map((section, index) => (
               <Reveal key={index} variant="up" className="flex flex-col gap-4">
                 {section.heading ? (
-                  <h2 className="font-display text-3xl tracking-[-0.02em]">
+                  <h2 className="font-display text-2xl tracking-[-0.02em]">
                     {section.heading}
                   </h2>
                 ) : null}

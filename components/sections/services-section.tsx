@@ -6,8 +6,8 @@ import { Reveal } from "@/components/ui/reveal";
 
 export function ServicesSection() {
   return (
-    <section className="py-24 md:py-36">
-      <Container className="flex flex-col gap-16 md:gap-24">
+    <section className="py-20 md:py-28">
+      <Container className="flex flex-col gap-14 md:gap-20">
         <SectionHeading
           eyebrow="Nos services"
           title="Tout ce qu'il faut pour réussir en ligne"
@@ -41,7 +41,7 @@ export function ServicesSection() {
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <h3 className="font-display text-2xl tracking-[-0.02em] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5 md:col-span-5 md:text-4xl">
+                <h3 className="font-display text-xl tracking-[-0.02em] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5 md:col-span-5 md:text-3xl">
                   {service.title}
                 </h3>
 

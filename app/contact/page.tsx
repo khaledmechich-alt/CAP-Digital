@@ -57,7 +57,7 @@ export default function ContactPage() {
                   <Reveal key={card.label} variant="up" delay={index * 0.07}>
                     <div className="flex flex-col gap-1 py-4">
                       <dt className="label-mono">{card.label}</dt>
-                      <dd className="font-display text-lg">
+                      <dd className="font-display text-base md:text-lg">
                         {card.href ? (
                           <a href={card.href} className="link-line">
                             {card.value}

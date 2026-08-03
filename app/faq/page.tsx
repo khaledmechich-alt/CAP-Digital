@@ -41,7 +41,7 @@ export default function FaqPage() {
           {categories.map((category, index) => (
             <Reveal key={category} variant="up" delay={index * 0.05}>
               <div className="grid gap-6 lg:grid-cols-12 lg:gap-16">
-                <h2 className="font-display text-3xl tracking-[-0.02em] lg:col-span-4 lg:text-4xl">
+                <h2 className="font-display text-2xl tracking-[-0.02em] lg:col-span-4 lg:text-3xl">
                   {category}
                 </h2>
                 <div className="lg:col-span-8">

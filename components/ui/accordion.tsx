@@ -38,7 +38,7 @@ export function Accordion({
             >
               <span
                 className={cn(
-                  "font-display text-xl tracking-[-0.015em] text-balance transition-colors md:text-2xl",
+                  "font-display text-lg tracking-[-0.015em] text-balance transition-colors md:text-xl",
                   isOpen ? "text-foreground" : "text-muted group-hover:text-foreground"
                 )}
               >

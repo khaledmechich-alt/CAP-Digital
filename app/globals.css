@@ -4,38 +4,39 @@
 
 /* ============================================
    CAP DIGITAL — Design tokens
-   Palette « papier » : neutres chauds, accent bleu
-   de la marque employé avec parcimonie.
+   Thème clair (par défaut) et thème sombre (.dark)
    ============================================ */
 
 :root {
-  --background: #fbfaf8;
-  --background-alt: #f1eee8;
-  --foreground: #16130f;
-  --muted: #6c655c;
+  --background: #fafafa;
+  --background-alt: #f4f4f5;
+  --foreground: #0b0b0b;
+  --muted: #52525b;
   --card: #ffffff;
-  --card-hover: #f7f5f1;
-  --border-subtle: rgba(22, 19, 15, 0.12);
-  --border-strong: rgba(22, 19, 15, 0.28);
-  --accent: #0a4cff;
-  --accent-strong: #0733b8;
-  --accent-soft: rgba(10, 76, 255, 0.07);
-  --grain-opacity: 0.035;
+  --card-hover: #f4f4f5;
+  --border-subtle: rgba(9, 9, 11, 0.08);
+  --border-strong: rgba(9, 9, 11, 0.2);
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --accent-soft: rgba(37, 99, 235, 0.08);
+  --glow: rgba(37, 99, 235, 0.14);
+  --grain-opacity: 0.022;
 }
 
 .dark {
-  --background: #100f0e;
-  --background-alt: #171514;
-  --foreground: #f4f1ec;
-  --muted: #9a938a;
-  --card: #191716;
-  --card-hover: #201d1b;
-  --border-subtle: rgba(244, 241, 236, 0.12);
-  --border-strong: rgba(244, 241, 236, 0.26);
-  --accent: #5b8cff;
-  --accent-strong: #8fb0ff;
-  --accent-soft: rgba(91, 140, 255, 0.12);
-  --grain-opacity: 0.05;
+  --background: #0b0b0b;
+  --background-alt: #121212;
+  --foreground: #fafafa;
+  --muted: #a1a1aa;
+  --card: #141414;
+  --card-hover: #1a1a1a;
+  --border-subtle: rgba(250, 250, 250, 0.08);
+  --border-strong: rgba(250, 250, 250, 0.2);
+  --accent: #3b82f6;
+  --accent-strong: #60a5fa;
+  --accent-soft: rgba(59, 130, 246, 0.12);
+  --glow: rgba(59, 130, 246, 0.22);
+  --grain-opacity: 0.035;
 }
 
 @theme inline {
@@ -91,8 +92,8 @@ body {
 }
 
 ::selection {
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: var(--accent);
+  color: #ffffff;
 }
 
 :focus-visible {
@@ -156,6 +157,14 @@ body {
 /* Filet horizontal qui se trace à l'entrée dans l'écran */
 .rule-draw {
   transform-origin: left;
+}
+
+/* Halo lumineux réutilisable derrière les sections */
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 /* Code qui défile — animation CSS pure (fonctionne dans l'aperçu) */

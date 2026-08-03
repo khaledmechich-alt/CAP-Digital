@@ -14,14 +14,14 @@ export function TestimonialsSection() {
   if (!testimonial) return null;
 
   return (
-    <section className="border-t border-border-subtle py-24 md:py-36">
-      <Container className="flex flex-col gap-14">
+    <section className="border-t border-border-subtle py-20 md:py-28">
+      <Container className="flex flex-col gap-10">
         <Reveal variant="fade" duration={0.6}>
           <Badge>Ce qu&apos;on nous dit</Badge>
         </Reveal>
 
         <Reveal variant="mask" duration={1}>
-          <blockquote className="font-display max-w-5xl text-[2rem] leading-[1.12] tracking-[-0.025em] text-balance md:text-6xl">
+          <blockquote className="font-display max-w-4xl text-2xl leading-[1.2] tracking-[-0.02em] text-balance md:text-4xl">
             <span className="text-muted">«&nbsp;</span>
             {testimonial.quote}
             <span className="text-muted">&nbsp;»</span>

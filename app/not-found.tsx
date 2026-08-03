@@ -6,7 +6,7 @@ export default function NotFound() {
     <section className="flex flex-1 items-center py-40">
       <Container className="flex flex-col items-start gap-8">
         <p className="label-mono">Erreur 404</p>
-        <h1 className="font-display max-w-[14ch] text-[3rem] leading-[0.98] tracking-[-0.03em] md:text-8xl">
+        <h1 className="font-display max-w-[14ch] text-4xl leading-[1.04] tracking-[-0.025em] md:text-6xl">
           Cette page <span className="em-serif">n&apos;existe pas</span>
         </h1>
         <p className="max-w-md leading-relaxed text-muted text-pretty">

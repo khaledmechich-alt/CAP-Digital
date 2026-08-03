@@ -67,7 +67,7 @@ export default async function ProjectPage({ params }: PageProps) {
                   </>
                 ) : null}
               </div>
-              <h1 className="font-display max-w-4xl text-[2.75rem] leading-[1.0] tracking-[-0.025em] text-balance md:text-7xl">
+              <h1 className="font-display max-w-4xl text-4xl leading-[1.06] tracking-[-0.025em] text-balance md:text-6xl">
                 {project.title}
               </h1>
               <p className="max-w-2xl text-lg leading-relaxed text-muted">
@@ -94,7 +94,7 @@ export default async function ProjectPage({ params }: PageProps) {
                       key={result.label}
                       className="flex flex-col gap-1 border-b border-border-subtle py-6 last:border-b-0 sm:border-b-0 sm:not-first:border-l sm:not-first:pl-8"
                     >
-                      <dd className="font-display em-serif text-4xl text-accent md:text-5xl">
+                      <dd className="font-display em-serif text-3xl text-accent md:text-4xl">
                         {result.value}
                       </dd>
                       <dt className="label-mono">{result.label}</dt>
@@ -118,7 +118,7 @@ export default async function ProjectPage({ params }: PageProps) {
                   </p>
                 </div>
               ) : (
-                <div className="overflow-hidden border border-border-subtle">
+                <div className="overflow-hidden rounded-2xl border border-border-subtle">
                   <img
                     src={project.image}
                     alt={`Aperçu du site ${project.title}`}
@@ -136,7 +136,7 @@ export default async function ProjectPage({ params }: PageProps) {
           <Container>
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
               <Reveal variant="up" className="flex flex-col gap-4">
-                <h2 className="font-display text-3xl tracking-[-0.02em] md:text-4xl">
+                <h2 className="font-display text-2xl tracking-[-0.02em] md:text-3xl">
                   Le défi
                 </h2>
                 <p className="leading-relaxed text-muted text-pretty">
@@ -144,7 +144,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 </p>
               </Reveal>
               <Reveal variant="up" delay={0.1} className="flex flex-col gap-4">
-                <h2 className="font-display text-3xl tracking-[-0.02em] md:text-4xl">
+                <h2 className="font-display text-2xl tracking-[-0.02em] md:text-3xl">
                   Notre solution
                 </h2>
                 <p className="leading-relaxed text-muted text-pretty">
@@ -179,7 +179,7 @@ export default async function ProjectPage({ params }: PageProps) {
         <section className="border-t border-border-subtle py-16 md:py-24">
           <Container className="flex flex-col gap-10">
             <Reveal variant="up">
-              <h2 className="font-display text-3xl tracking-[-0.02em] md:text-5xl">
+              <h2 className="font-display text-2xl tracking-[-0.02em] md:text-4xl">
                 D&apos;autres projets à découvrir
               </h2>
             </Reveal>

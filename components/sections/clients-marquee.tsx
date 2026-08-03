@@ -16,7 +16,7 @@ export function ClientsMarquee() {
         {services.map((service) => (
           <span
             key={service.slug}
-            className="font-display flex items-center gap-16 text-3xl whitespace-nowrap text-muted md:text-4xl"
+            className="font-display flex items-center gap-16 text-2xl whitespace-nowrap text-muted md:text-3xl"
           >
             {service.title}
             <span className="size-1.5 shrink-0 rounded-full bg-accent" aria-hidden />

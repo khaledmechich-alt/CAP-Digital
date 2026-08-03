@@ -67,7 +67,7 @@ export function ContactForm() {
   if (status === "sent") {
     return (
       <div className="flex flex-col items-start gap-6 border-y border-border-subtle py-12">
-        <h3 className="font-display text-4xl leading-[1.1] tracking-[-0.02em] md:text-5xl">
+        <h3 className="font-display text-3xl leading-[1.1] tracking-[-0.02em] md:text-4xl">
           Merci, votre demande est <span className="em-serif">bien partie</span>.
         </h3>
         <p className="max-w-md leading-relaxed text-muted">

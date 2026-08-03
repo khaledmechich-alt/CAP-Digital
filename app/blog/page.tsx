@@ -50,7 +50,7 @@ export default function BlogPage() {
                     <span>{post.readingTime} de lecture</span>
                   </div>
 
-                  <h2 className="font-display text-2xl leading-[1.15] tracking-[-0.02em] text-balance transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5 md:col-span-5 md:text-3xl">
+                  <h2 className="font-display text-xl leading-[1.2] tracking-[-0.02em] text-balance transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5 md:col-span-5 md:text-2xl">
                     {post.title}
                   </h2>
 

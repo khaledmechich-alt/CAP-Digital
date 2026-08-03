@@ -18,7 +18,7 @@ type PageHeroProps = {
  */
 export function PageHero({ eyebrow, title, em, description }: PageHeroProps) {
   return (
-    <section className="pt-36 pb-12 md:pt-44 md:pb-16">
+    <section className="pt-32 pb-10 md:pt-40 md:pb-14">
       <Container className="flex flex-col gap-10">
         <Reveal variant="fade" duration={0.6}>
           <Badge>{eyebrow}</Badge>
@@ -30,7 +30,7 @@ export function PageHero({ eyebrow, title, em, description }: PageHeroProps) {
             trigger="load"
             text={title}
             em={em}
-            className="font-display flex-1 text-[2.75rem] leading-[1.0] tracking-[-0.025em] text-balance md:text-7xl"
+            className="font-display flex-1 text-4xl leading-[1.06] tracking-[-0.025em] text-balance md:text-6xl"
           />
           {description ? (
             <Reveal

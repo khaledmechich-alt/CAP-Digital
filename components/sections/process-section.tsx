@@ -35,8 +35,8 @@ export function ProcessSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="border-t border-border-subtle py-24 md:py-36">
-      <Container className="flex flex-col gap-16 md:gap-24">
+    <section className="border-t border-border-subtle py-20 md:py-28">
+      <Container className="flex flex-col gap-14 md:gap-20">
         <SectionHeading
           eyebrow="Notre méthode"
           title="Un processus simple, sans jargon"
@@ -57,7 +57,7 @@ export function ProcessSection() {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
               <span className="label-mono md:col-span-2">{step.number}</span>
-              <h3 className="font-display text-3xl tracking-[-0.02em] md:col-span-5 md:text-5xl">
+              <h3 className="font-display text-2xl tracking-[-0.02em] md:col-span-5 md:text-3xl">
                 {step.title}
               </h3>
               <p className="text-base leading-relaxed text-muted md:col-span-5">

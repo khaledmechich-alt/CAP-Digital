@@ -7,8 +7,8 @@ import { ArrowLink } from "@/components/ui/button";
 
 export function FeaturedProjects() {
   return (
-    <section className="border-t border-border-subtle py-24 md:py-36">
-      <Container className="flex flex-col gap-16 md:gap-24">
+    <section className="border-t border-border-subtle py-20 md:py-28">
+      <Container className="flex flex-col gap-14 md:gap-20">
         <SectionHeading
           eyebrow="Nos réalisations"
           title="Des projets qui parlent d'eux-mêmes"
@@ -18,13 +18,13 @@ export function FeaturedProjects() {
 
         {/* Une colonne décalée sur deux : la grille respire au lieu
             d'aligner des cartes au cordeau. */}
-        <div className="grid gap-x-10 gap-y-20 md:grid-cols-2">
+        <div className="grid gap-x-10 gap-y-16 md:grid-cols-2">
           {featuredProjects.slice(0, 4).map((project, index) => (
             <Reveal
               key={project.slug}
               variant="blur"
               delay={(index % 2) * 0.1}
-              className={index % 2 === 1 ? "md:mt-24" : undefined}
+              className={index % 2 === 1 ? "md:mt-16" : undefined}
             >
               <ProjectCard project={project} />
             </Reveal>

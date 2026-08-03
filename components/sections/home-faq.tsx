@@ -8,7 +8,7 @@ import { ArrowLink } from "@/components/ui/button";
 
 export function HomeFaq() {
   return (
-    <section className="border-t border-border-subtle py-24 md:py-36">
+    <section className="border-t border-border-subtle py-20 md:py-28">
       <Container className="grid gap-14 lg:grid-cols-12 lg:gap-16">
         {/* Le titre reste accroché pendant qu'on parcourt les réponses. */}
         <div className="flex flex-col gap-7 lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
@@ -18,7 +18,7 @@ export function HomeFaq() {
           <SplitWords
             text="Vous vous posez sûrement ces questions"
             em="ces questions"
-            className="font-display text-[2.25rem] leading-[1.05] tracking-[-0.02em] text-balance md:text-5xl"
+            className="font-display text-3xl leading-[1.08] tracking-[-0.02em] text-balance md:text-4xl"
           />
           <Reveal variant="up" delay={0.15}>
             <p className="max-w-sm leading-relaxed text-muted text-pretty">

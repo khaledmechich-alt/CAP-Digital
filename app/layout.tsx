@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { CursorFollower } from "@/components/ui/cursor-follower";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -90,6 +91,7 @@ export default function RootLayout({
         <JsonLd data={organizationSchema} />
         <Providers>
           <ScrollProgress />
+          <CursorFollower />
           <a
             href="#contenu"
             className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-full focus:bg-accent focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-white"

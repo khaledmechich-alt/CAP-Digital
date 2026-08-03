@@ -28,7 +28,7 @@ export default function ServicesPage() {
           <section
             key={service.slug}
             id={service.slug}
-            className="scroll-mt-24 border-t border-border-subtle py-20 md:py-28"
+            className="scroll-mt-24 border-t border-border-subtle py-16 md:py-24"
           >
             <Container>
               <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
@@ -43,10 +43,10 @@ export default function ServicesPage() {
                     <span className="label-mono">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <h2 className="font-display text-4xl leading-[1.05] tracking-[-0.025em] md:text-6xl">
+                    <h2 className="font-display text-3xl leading-[1.08] tracking-[-0.025em] md:text-4xl">
                       {service.title}
                     </h2>
-                    <p className="font-display em-serif text-2xl text-accent">
+                    <p className="font-display em-serif text-lg text-accent md:text-xl">
                       {service.tagline}
                     </p>
                     <p className="max-w-xl leading-relaxed text-muted text-pretty">

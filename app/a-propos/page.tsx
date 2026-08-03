@@ -56,7 +56,7 @@ export default function AProposPage() {
         <Container>
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
             <Reveal variant="up" className="flex flex-col gap-5 lg:col-span-7">
-              <h2 className="font-display text-3xl tracking-[-0.02em] md:text-5xl">
+              <h2 className="font-display text-2xl tracking-[-0.02em] md:text-4xl">
                 Notre histoire
               </h2>
               <p className="leading-relaxed text-muted text-pretty">
@@ -96,8 +96,8 @@ export default function AProposPage() {
         </Container>
       </section>
 
-      <section className="border-t border-border-subtle py-24 md:py-36">
-        <Container className="flex flex-col gap-16 md:gap-24">
+      <section className="border-t border-border-subtle py-20 md:py-28">
+        <Container className="flex flex-col gap-14 md:gap-20">
           <SectionHeading
             eyebrow="Nos valeurs"
             title="Ce qui nous guide, projet après projet"
@@ -114,7 +114,7 @@ export default function AProposPage() {
                 <span className="label-mono">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-display text-3xl tracking-[-0.02em]">
+                <h3 className="font-display text-2xl tracking-[-0.02em]">
                   {value.title}
                 </h3>
                 <p className="max-w-sm leading-relaxed text-muted">

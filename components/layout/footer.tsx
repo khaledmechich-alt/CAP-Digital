@@ -134,7 +134,7 @@ export function Footer() {
       {/* Signature typographique en pied de page */}
       <p
         aria-hidden
-        className="font-display -mb-[0.18em] w-full px-6 text-center text-[15vw] leading-none tracking-[-0.04em] text-foreground/[0.06] select-none lg:px-8"
+        className="font-display -mb-[0.18em] w-full px-6 text-center text-[11vw] leading-none tracking-[-0.04em] text-foreground/[0.06] select-none lg:px-8"
       >
         CAP DIGITAL
       </p>

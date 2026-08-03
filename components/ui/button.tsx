@@ -5,18 +5,16 @@ type ButtonVariant = "primary" | "secondary" | "ghost";
 type ButtonSize = "md" | "lg";
 
 const variantClasses: Record<ButtonVariant, string> = {
-  // Encre pleine : c'est la couleur du texte du site, pas le bleu.
-  // Le bleu de la marque reste réservé aux petits signaux.
   primary:
-    "bg-foreground text-background hover:bg-accent hover:text-white dark:hover:text-[#0d0c0b]",
+    "bg-accent text-white hover:bg-accent-strong hover:-translate-y-0.5 hover:shadow-[0_8px_32px_var(--glow)]",
   secondary:
-    "border border-border-strong text-foreground hover:border-foreground hover:bg-foreground hover:text-background",
+    "border border-border-subtle bg-card text-foreground hover:bg-card-hover hover:-translate-y-0.5 hover:border-accent/40",
   ghost: "text-muted hover:text-foreground",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  md: "px-5 py-2.5 text-sm",
-  lg: "px-7 py-3.5 text-base",
+  md: "px-6 py-3 text-sm",
+  lg: "px-8 py-4 text-base",
 };
 
 type ButtonProps = {
@@ -43,7 +41,7 @@ export function Button({
   disabled,
 }: ButtonProps) {
   const classes = cn(
-    "group inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors duration-300 disabled:cursor-not-allowed disabled:opacity-60",
+    "group inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60",
     variantClasses[variant],
     sizeClasses[size],
     className
@@ -87,7 +85,7 @@ export function ArrowLink({
     <Link
       href={href}
       className={cn(
-        "group inline-flex items-baseline gap-2 font-display text-lg text-foreground md:text-xl",
+        "group inline-flex items-baseline gap-2 font-display text-base text-accent md:text-lg",
         className
       )}
     >

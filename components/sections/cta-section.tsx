@@ -23,12 +23,16 @@ export function CtaSection({
   description = "Parlons de votre projet autour d'un premier échange gratuit et sans engagement. Devis clair sous 48h, réponse garantie sous 24h.",
 }: CtaSectionProps) {
   return (
-    <section className="border-t border-border-subtle bg-background-alt py-24 md:py-40">
-      <Container className="flex flex-col gap-14">
+    <section className="relative overflow-hidden border-t border-border-subtle bg-background-alt py-20 md:py-28">
+      <div
+        className="glow-orb top-[-200px] right-[-140px] size-[520px]"
+        aria-hidden
+      />
+      <Container className="relative flex flex-col gap-12">
         <SplitWords
           text={title}
           em={em}
-          className="font-display max-w-[14ch] text-[2.75rem] leading-[0.98] tracking-[-0.03em] md:text-8xl"
+          className="font-display max-w-[16ch] text-4xl leading-[1.04] tracking-[-0.025em] md:text-6xl"
         />
 
         <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-16">

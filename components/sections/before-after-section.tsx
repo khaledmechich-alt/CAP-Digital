@@ -10,7 +10,7 @@ export function BeforeAfterSection() {
   if (!project || !project.beforeImage || !project.afterImage) return null;
 
   return (
-    <section className="border-t border-border-subtle py-24 md:py-36">
+    <section className="border-t border-border-subtle py-20 md:py-28">
       <Container>
         <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="flex flex-col gap-9 lg:col-span-5">
@@ -33,7 +33,7 @@ export function BeforeAfterSection() {
                       className="flex items-baseline justify-between gap-6 py-3"
                     >
                       <dt className="label-mono">{result.label}</dt>
-                      <dd className="font-display em-serif text-2xl text-accent">
+                      <dd className="font-display em-serif text-xl text-accent">
                         {result.value}
                       </dd>
                     </div>

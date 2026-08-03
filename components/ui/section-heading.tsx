@@ -53,7 +53,7 @@ export function SectionHeading({
           text={title}
           em={em}
           className={cn(
-            "font-display text-[2.5rem] leading-[1.03] tracking-[-0.02em] text-balance md:text-6xl",
+            "font-display text-3xl leading-[1.08] tracking-[-0.02em] text-balance md:text-5xl",
             centered ? "max-w-3xl" : "md:flex-1"
           )}
         />
