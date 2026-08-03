@@ -60,24 +60,14 @@ export function Hero() {
       onPointerMove={handleMove}
       className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24"
     >
-      {/* Fond : le code défile sur la moitié droite, très en retrait,
-          et se fond dans la page par un dégradé. */}
+      {/* Fond : le code défile en bande, en bas du hero, et s'efface
+          progressivement vers le haut et vers le bas. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 hidden w-[52%] overflow-hidden opacity-[0.28] dark:opacity-[0.38] md:block"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] overflow-hidden opacity-[0.22] dark:opacity-[0.32] [mask-image:linear-gradient(to_bottom,transparent,black_38%,black_82%,transparent)]"
       >
-        <div className="origin-top-left scale-[0.62]">
-          <CodeScroll />
-        </div>
+        <CodeScroll />
       </div>
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,var(--background)_38%,transparent_78%)]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,var(--background),transparent_22%,transparent_72%,var(--background))]"
-      />
 
       {/* Halos + lueur qui suit la souris */}
       <div
