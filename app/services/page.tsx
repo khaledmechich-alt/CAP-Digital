@@ -40,9 +40,6 @@ export default function ServicesPage() {
                   )}
                 >
                   <div className="flex flex-col gap-6">
-                    <span className="label-mono">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
                     <h2 className="font-display text-3xl leading-[1.08] tracking-[-0.025em] md:text-4xl">
                       {service.title}
                     </h2>

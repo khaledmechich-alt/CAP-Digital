@@ -83,9 +83,9 @@ export default function AProposPage() {
               <h2 className="label-mono">Nos engagements</h2>
               <ul className="flex flex-col divide-y divide-border-subtle border-y border-border-subtle">
                 {commitments.map((commitment, index) => (
-                  <li key={commitment} className="flex items-baseline gap-5 py-4">
-                    <span className="label-mono shrink-0" aria-hidden>
-                      {String(index + 1).padStart(2, "0")}
+                  <li key={commitment} className="flex items-baseline gap-4 py-4">
+                    <span className="shrink-0 text-accent" aria-hidden>
+                      —
                     </span>
                     <span className="leading-relaxed">{commitment}</span>
                   </li>
@@ -111,9 +111,6 @@ export default function AProposPage() {
                 delay={index * 0.08}
                 className="flex flex-col gap-4 border-b border-border-subtle py-10 sm:odd:pr-10 sm:even:border-l sm:even:pl-10"
               >
-                <span className="label-mono">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
                 <h3 className="font-display text-2xl tracking-[-0.02em]">
                   {value.title}
                 </h3>

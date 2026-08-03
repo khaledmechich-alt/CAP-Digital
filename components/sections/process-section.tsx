@@ -56,7 +56,12 @@ export function ProcessSection() {
               viewport={{ margin: "-35% 0px -35% 0px" }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="label-mono md:col-span-2">{step.number}</span>
+              <span
+                className="font-display text-4xl leading-none tracking-[-0.02em] text-accent/45 md:col-span-2 md:text-6xl"
+                aria-hidden
+              >
+                {step.number}
+              </span>
               <h3 className="font-display text-2xl tracking-[-0.02em] md:col-span-5 md:text-3xl">
                 {step.title}
               </h3>

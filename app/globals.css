@@ -120,13 +120,21 @@ body {
   letter-spacing: -0.005em;
 }
 
-/* Étiquette monospace en petites capitales espacées */
+/* Étiquette monospace en petites capitales espacées.
+   Elle sert de repère « vous êtes ici » : assez grande pour se lire
+   d'un coup d'œil. */
 .label-mono {
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
-  letter-spacing: 0.16em;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+@media (min-width: 768px) {
+  .label-mono {
+    font-size: 0.875rem;
+  }
 }
 
 /* Grain de papier appliqué au corps de page */

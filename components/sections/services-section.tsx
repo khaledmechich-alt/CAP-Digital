@@ -37,11 +37,7 @@ export function ServicesSection() {
                   className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
                 />
 
-                <span className="label-mono md:col-span-1">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <h3 className="font-display text-xl tracking-[-0.02em] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5 md:col-span-5 md:text-3xl">
+                <h3 className="font-display text-xl tracking-[-0.02em] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5 md:col-span-6 md:text-3xl">
                   {service.title}
                 </h3>
 
