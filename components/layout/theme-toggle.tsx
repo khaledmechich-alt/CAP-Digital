@@ -6,21 +6,21 @@ import { cn } from "@/lib/utils";
 
 // Étoiles du ciel de nuit : position en %, taille en px, opacité.
 const STARS = [
-  { left: 34, top: 26, size: 2, opacity: 0.9 },
-  { left: 45, top: 62, size: 1.5, opacity: 0.7 },
-  { left: 56, top: 22, size: 1.5, opacity: 0.8 },
-  { left: 63, top: 52, size: 2, opacity: 0.95 },
-  { left: 74, top: 30, size: 1.5, opacity: 0.7 },
-  { left: 83, top: 62, size: 2, opacity: 0.85 },
-  { left: 90, top: 38, size: 1.5, opacity: 0.6 },
+  { left: 36, top: 26, size: 1.5, opacity: 0.9 },
+  { left: 47, top: 62, size: 1, opacity: 0.7 },
+  { left: 58, top: 22, size: 1, opacity: 0.8 },
+  { left: 65, top: 52, size: 1.5, opacity: 0.95 },
+  { left: 76, top: 30, size: 1, opacity: 0.7 },
+  { left: 84, top: 62, size: 1.5, opacity: 0.85 },
+  { left: 91, top: 38, size: 1, opacity: 0.6 },
 ];
 
 // Nuages du ciel de jour : ellipses blanches en bas à gauche.
 const CLOUDS = [
-  { left: 4, top: 58, w: 30, h: 16 },
-  { left: 20, top: 46, w: 24, h: 14 },
-  { left: 30, top: 62, w: 28, h: 15 },
-  { left: 48, top: 54, w: 20, h: 12 },
+  { left: 2, top: 56, w: 20, h: 11 },
+  { left: 18, top: 44, w: 16, h: 9 },
+  { left: 28, top: 60, w: 19, h: 10 },
+  { left: 46, top: 52, w: 14, h: 8 },
 ];
 
 /**
@@ -46,7 +46,7 @@ export function ThemeToggle() {
       aria-label={isDark ? "Passer au thème clair" : "Passer au thème sombre"}
       title={isDark ? "Passer au thème clair" : "Passer au thème sombre"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative h-10 w-[76px] shrink-0 overflow-hidden rounded-full border border-border-subtle transition-shadow duration-300 hover:shadow-[0_4px_20px_var(--glow)]"
+      className="relative h-7 w-[52px] shrink-0 overflow-hidden rounded-full border border-border-subtle transition-shadow duration-300 hover:shadow-[0_3px_14px_var(--glow)]"
     >
       {/* Ciel de nuit */}
       <span
@@ -114,10 +114,10 @@ export function ThemeToggle() {
       <span
         aria-hidden
         className={cn(
-          "absolute top-1 left-1 size-8 rounded-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "absolute top-1 left-1 size-5 rounded-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
           isDark
-            ? "translate-x-0 bg-[radial-gradient(circle_at_35%_30%,#ffffff,#d7d7dd_70%,#b9b9c2)] shadow-[0_0_12px_rgba(255,255,255,0.45)]"
-            : "translate-x-10 bg-[radial-gradient(circle_at_35%_30%,#ffe680,#ffd23f_60%,#f7b500)] shadow-[0_0_14px_rgba(255,196,0,0.55)]"
+            ? "translate-x-0 bg-[radial-gradient(circle_at_35%_30%,#ffffff,#d7d7dd_70%,#b9b9c2)] shadow-[0_0_8px_rgba(255,255,255,0.45)]"
+            : "translate-x-7 bg-[radial-gradient(circle_at_35%_30%,#ffe680,#ffd23f_60%,#f7b500)] shadow-[0_0_9px_rgba(255,196,0,0.55)]"
         )}
       />
     </button>
