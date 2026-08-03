@@ -1,11 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { JsonLd } from "@/components/seo/json-ld";
-import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { CursorFollower } from "@/components/ui/cursor-follower";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -15,21 +13,10 @@ const inter = Inter({
   display: "swap",
 });
 
-// Serif à axes variables (graisse, taille optique, SOFT/WONK) :
-// c'est lui qui donne au site son caractère « imprimé ».
-const fraunces = Fraunces({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-space-grotesk",
   display: "swap",
-  style: ["normal", "italic"],
-  axes: ["SOFT", "WONK", "opsz"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -60,8 +47,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#100f0e" },
-    { media: "(prefers-color-scheme: light)", color: "#fbfaf8" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0b0b" },
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
   ],
 };
 
@@ -86,12 +73,10 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} grain font-sans bg-background text-foreground`}
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans bg-background text-foreground`}
       >
         <JsonLd data={organizationSchema} />
         <Providers>
-          <ScrollProgress />
-          <CursorFollower />
           <a
             href="#contenu"
             className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-full focus:bg-accent focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-white"

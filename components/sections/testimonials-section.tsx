@@ -1,45 +1,37 @@
 import { testimonials } from "@/lib/testimonials";
 import { Container } from "@/components/ui/container";
-import { Badge } from "@/components/ui/badge";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
-import { ArrowLink } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
+import { TestimonialCard } from "@/components/ui/testimonial-card";
 
-/**
- * Nous n'avons pour l'instant qu'un seul avis client réel : il est
- * traité en grande citation plutôt qu'en grille de cartes, pour ne pas
- * faire croire qu'il y en a beaucoup.
- */
 export function TestimonialsSection() {
-  const testimonial = testimonials[0];
-  if (!testimonial) return null;
-
   return (
-    <section className="border-t border-border-subtle py-20 md:py-28">
-      <Container className="flex flex-col gap-10">
-        <Reveal variant="fade" duration={0.6}>
-          <Badge>Ce qu&apos;on nous dit</Badge>
-        </Reveal>
+    <section className="border-t border-border-subtle py-24 md:py-32">
+      <Container className="flex flex-col gap-16">
+        <SectionHeading
+          eyebrow="Témoignages"
+          title={
+            <>
+              Ils ont fait le pari du web.{" "}
+              <span className="text-gradient-accent">Ils ont gagné.</span>
+            </>
+          }
+          description="La plus belle preuve de notre travail, ce sont les mots — et les résultats — de nos clients."
+        />
 
-        <Reveal variant="mask" duration={1}>
-          <blockquote className="font-display max-w-4xl text-2xl leading-[1.2] tracking-[-0.02em] text-balance md:text-4xl">
-            <span className="text-muted">«&nbsp;</span>
-            {testimonial.quote}
-            <span className="text-muted">&nbsp;»</span>
-          </blockquote>
-        </Reveal>
+        <div className="mx-auto grid w-full max-w-2xl gap-6">
+          {testimonials.slice(0, 3).map((testimonial, index) => (
+            <Reveal key={testimonial.name} delay={index * 0.1}>
+              <TestimonialCard testimonial={testimonial} />
+            </Reveal>
+          ))}
+        </div>
 
-        <Reveal variant="up" delay={0.1}>
-          <div className="label-mono flex flex-wrap items-baseline gap-x-4 gap-y-1">
-            <span className="text-foreground">{testimonial.name}</span>
-            <span aria-hidden>·</span>
-            <span>{testimonial.role}</span>
-            <span aria-hidden>·</span>
-            <span className="text-accent">{testimonial.rating}/5</span>
-          </div>
-        </Reveal>
-
-        <Reveal variant="up" delay={0.15}>
-          <ArrowLink href="/temoignages">Voir la page témoignages</ArrowLink>
+        <Reveal className="flex justify-center">
+          <Button href="/temoignages" variant="ghost">
+            Lire tous les témoignages →
+          </Button>
         </Reveal>
       </Container>
     </section>

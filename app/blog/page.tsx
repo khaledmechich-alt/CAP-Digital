@@ -17,54 +17,65 @@ export default function BlogPage() {
     <>
       <PageHero
         eyebrow="Blog"
-        title="Des conseils concrets, zéro jargon"
-        em="zéro jargon"
+        title={
+          <>
+            Des conseils concrets,{" "}
+            <span className="text-gradient-accent">zéro jargon</span>
+          </>
+        }
         description="Tout ce qu'un entrepreneur doit savoir sur le web : combien ça coûte, comment être visible sur Google, quand refondre son site — expliqué simplement."
       />
 
-      {/* Les articles sont présentés en sommaire de revue, pas en cartes. */}
-      <section className="pt-4 pb-24 md:pb-32">
+      <section className="pb-24 md:pb-32">
         <Container>
-          <ul className="border-t border-border-subtle">
+          <div className="grid gap-6 md:grid-cols-2">
             {blogPosts.map((post, index) => (
-              <Reveal
-                as="li"
-                key={post.slug}
-                variant="fade"
-                delay={index * 0.05}
-                duration={0.6}
-                className="border-b border-border-subtle"
-              >
+              <Reveal key={post.slug} delay={(index % 2) * 0.1}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group relative grid gap-3 py-8 md:grid-cols-12 md:items-baseline md:gap-8 md:py-10"
+                  className="group flex h-full flex-col gap-5 rounded-2xl border border-border-subtle bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-card-hover hover:shadow-[0_12px_48px_var(--glow)]"
                 >
-                  <span
-                    aria-hidden
-                    className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
-                  />
-
-                  <div className="label-mono flex flex-wrap gap-x-3 md:col-span-3 md:flex-col md:gap-y-1">
-                    <time dateTime={post.date}>{formatBlogDate(post.date)}</time>
-                    <span className="text-accent">{post.category}</span>
-                    <span>{post.readingTime} de lecture</span>
+                  <div className="flex flex-wrap items-center gap-3 text-xs">
+                    <span className="rounded-full bg-accent-soft px-3 py-1 font-medium text-accent">
+                      {post.category}
+                    </span>
+                    <time dateTime={post.date} className="text-muted">
+                      {formatBlogDate(post.date)}
+                    </time>
+                    <span className="text-muted">
+                      {post.readingTime} de lecture
+                    </span>
                   </div>
-
-                  <h2 className="font-display text-xl leading-[1.2] tracking-[-0.02em] text-balance transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5 md:col-span-5 md:text-2xl">
+                  <h2 className="font-display text-2xl font-semibold tracking-tight text-balance transition-colors group-hover:text-accent">
                     {post.title}
                   </h2>
-
-                  <p className="text-sm leading-relaxed text-muted md:col-span-4">
+                  <p className="flex-1 text-sm leading-relaxed text-muted">
                     {post.excerpt}
                   </p>
+                  <span className="flex items-center gap-1.5 text-sm font-medium text-accent">
+                    Lire l&apos;article
+                    <span
+                      className="transition-transform group-hover:translate-x-0.5"
+                      aria-hidden
+                    >
+                      →
+                    </span>
+                  </span>
                 </Link>
               </Reveal>
             ))}
-          </ul>
+          </div>
         </Container>
       </section>
 
-      <CtaSection title="Assez lu. Passons à l'action." em="Passons à l'action." />
+      <CtaSection
+        title={
+          <>
+            Assez lu.{" "}
+            <span className="text-gradient-accent">Passons à l&apos;action.</span>
+          </>
+        }
+      />
     </>
   );
 }

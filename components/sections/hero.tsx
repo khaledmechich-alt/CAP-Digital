@@ -1,142 +1,145 @@
 "use client";
 
-import { useRef } from "react";
-import {
-  motion,
-  useMotionTemplate,
-  useMotionValue,
-  useReducedMotion,
-  useSpring,
-  type Transition,
-} from "motion/react";
+import { motion, type Variants } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CodeScroll } from "@/components/ui/code-scroll";
 import { Container } from "@/components/ui/container";
-import { Magnetic } from "@/components/ui/magnetic";
-import { SplitWords } from "@/components/ui/split-words";
 
-const facts = [
-  "Réponse sous 24 h",
-  "Devis gratuit, sans engagement",
-  "Espace client pour suivre le projet",
+const headlineWords = [
+  "Des",
+  "sites",
+  "web",
+  "qui",
+  "transforment",
+  "vos",
+  "visiteurs",
+  "en",
+  "clients.",
 ];
 
+const containerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.07, delayChildren: 0.15 },
+  },
+};
+
+const wordVariants: Variants = {
+  hidden: { opacity: 0, y: 26 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
 export function Hero() {
-  const reduceMotion = useReducedMotion();
-  const sectionRef = useRef<HTMLElement>(null);
-
-  // Lueur qui suit la souris dans le hero.
-  const mx = useMotionValue(50);
-  const my = useMotionValue(35);
-  const glowX = useSpring(mx, { stiffness: 120, damping: 26, mass: 0.6 });
-  const glowY = useSpring(my, { stiffness: 120, damping: 26, mass: 0.6 });
-  const glow = useMotionTemplate`radial-gradient(420px circle at ${glowX}% ${glowY}%, var(--glow), transparent 70%)`;
-
-  const handleMove = (event: React.PointerEvent<HTMLElement>) => {
-    if (reduceMotion || event.pointerType !== "mouse" || !sectionRef.current)
-      return;
-    const rect = sectionRef.current.getBoundingClientRect();
-    mx.set(((event.clientX - rect.left) / rect.width) * 100);
-    my.set(((event.clientY - rect.top) / rect.height) * 100);
-  };
-
-  const rise = (delay: number) =>
-    reduceMotion
-      ? {}
-      : {
-          initial: { opacity: 0, y: 18 },
-          animate: { opacity: 1, y: 0 },
-          transition: {
-            duration: 0.8,
-            ease: [0.16, 1, 0.3, 1],
-            delay,
-          } satisfies Transition,
-        };
-
   return (
-    <section
-      ref={sectionRef}
-      onPointerMove={handleMove}
-      className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24"
-    >
-      {/* Fond : le code défile en bande, en bas du hero, et s'efface
-          progressivement vers le haut et vers le bas. */}
+    <section className="relative overflow-hidden pt-40 pb-20 md:pt-52 md:pb-28">
+      {/* Fond : code qui défile */}
       <div
+        className="absolute inset-0 overflow-hidden opacity-30 dark:opacity-40"
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] overflow-hidden opacity-[0.22] dark:opacity-[0.32] [mask-image:linear-gradient(to_bottom,transparent,black_38%,black_82%,transparent)]"
       >
         <CodeScroll />
       </div>
-
-      {/* Halos + lueur qui suit la souris */}
       <div
-        className="glow-orb top-[-220px] left-[-120px] size-[560px]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_75%_70%_at_50%_35%,transparent_30%,var(--background))]"
         aria-hidden
       />
-      {!reduceMotion ? (
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{ background: glow }}
-        />
-      ) : null}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background"
+        aria-hidden
+      />
 
-      <Container className="relative flex flex-col gap-10">
-        <motion.div {...rise(0.05)}>
-          <Badge>Agence web — création de sites sur mesure</Badge>
+      {/* Fond : trame + halos lumineux */}
+      <div
+        className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_35%,black,transparent)]"
+        aria-hidden
+      />
+      <div
+        className="glow-orb top-[-240px] left-1/2 size-[640px] -translate-x-1/2"
+        aria-hidden
+      />
+      <div
+        className="glow-orb top-[160px] left-[-200px] size-[420px] opacity-60"
+        aria-hidden
+      />
+
+      <Container className="relative flex flex-col items-center gap-8 text-center">
+        <motion.div variants={fadeUp} initial="hidden" animate="visible">
+          <Badge>Agence web premium</Badge>
         </motion.div>
 
-        <SplitWords
-          as="h1"
-          trigger="load"
-          delay={0.15}
-          stagger={0.05}
-          text="Des sites web qui transforment vos visiteurs en clients."
-          em="en clients."
-          className="font-display max-w-[15ch] text-4xl leading-[1.04] tracking-[-0.025em] sm:text-5xl md:text-6xl lg:text-7xl"
-        />
-
-        <div className="flex flex-col gap-7 md:max-w-2xl">
-          <motion.p
-            className="text-base leading-relaxed text-muted text-pretty md:text-lg"
-            {...rise(0.7)}
-          >
-            Sites vitrines, boutiques e-commerce et référencement Google.
-            CAP&nbsp;DIGITAL conçoit des sites rapides et élégants qui
-            développent l&apos;activité des PME, artisans et entrepreneurs.
-          </motion.p>
-
-          <motion.div
-            className="flex flex-col items-start gap-4 sm:flex-row sm:items-center"
-            {...rise(0.85)}
-          >
-            <Magnetic>
-              <Button href="/contact" size="lg">
-                Demander un devis gratuit
-              </Button>
-            </Magnetic>
-            <Magnetic strength={0.2}>
-              <Button href="/realisations" variant="secondary" size="lg">
-                Voir nos réalisations
-              </Button>
-            </Magnetic>
-          </motion.div>
-        </div>
-
-        <motion.ul
-          className="mt-4 flex flex-col divide-y divide-border-subtle border-y border-border-subtle sm:flex-row sm:divide-x sm:divide-y-0"
-          {...rise(1)}
+        <motion.h1
+          className="font-display max-w-4xl text-5xl leading-[1.08] font-bold tracking-tight text-balance md:text-7xl"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          {facts.map((fact) => (
-            <li
-              key={fact}
-              className="label-mono py-3.5 sm:flex-1 sm:px-6 sm:first:pl-0"
+          {headlineWords.map((word, index) => (
+            <motion.span
+              key={`${word}-${index}`}
+              variants={wordVariants}
+              className={
+                word === "clients."
+                  ? "text-gradient-accent inline-block"
+                  : "inline-block"
+              }
             >
-              {fact}
-            </li>
+              {word}
+              {index < headlineWords.length - 1 ? " " : ""}
+            </motion.span>
           ))}
-        </motion.ul>
+        </motion.h1>
+
+        <motion.p
+          className="max-w-2xl text-lg leading-relaxed text-muted text-pretty md:text-xl"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.7 }}
+        >
+          Sites vitrines, boutiques e-commerce et référencement Google.
+          CAP&nbsp;DIGITAL conçoit des sites rapides et élégants qui développent
+          l&apos;activité des PME, artisans et entrepreneurs.
+        </motion.p>
+
+        <motion.div
+          className="flex flex-col items-center gap-4 sm:flex-row"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.85 }}
+        >
+          <Button href="/contact" size="lg">
+            Demander un devis gratuit
+          </Button>
+          <Button href="/realisations" variant="secondary" size="lg">
+            Voir nos réalisations
+          </Button>
+        </motion.div>
+
+        <motion.div
+          className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 1 }}
+        >
+          <span>Réponse sous 24h</span>
+          <span>Devis gratuit, sans engagement</span>
+        </motion.div>
       </Container>
     </section>
   );

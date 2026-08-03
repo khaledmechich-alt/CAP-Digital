@@ -16,22 +16,30 @@ export default function RealisationsPage() {
     <>
       <PageHero
         eyebrow="Portfolio"
-        title="Nos réalisations, vos futurs résultats"
-        em="vos futurs résultats"
+        title={
+          <>
+            Nos réalisations,{" "}
+            <span className="text-gradient-accent">vos futurs résultats</span>
+          </>
+        }
         description="Derrière chaque projet, il y a une entreprise qui voulait grandir. Voici comment nous l'avons aidée — chiffres à l'appui."
       />
 
-      <section className="pt-8 pb-24 md:pb-32">
+      <section className="pb-24 md:pb-32">
         <Container>
-          <Reveal variant="fade">
+          <Reveal>
             <ProjectsGrid />
           </Reveal>
         </Container>
       </section>
 
       <CtaSection
-        title="Votre projet mérite sa place sur cette page."
-        em="sur cette page."
+        title={
+          <>
+            Votre projet mérite sa place{" "}
+            <span className="text-gradient-accent">sur cette page.</span>
+          </>
+        }
       />
     </>
   );

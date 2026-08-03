@@ -47,16 +47,22 @@ export default function AProposPage() {
     <>
       <PageHero
         eyebrow="À propos"
-        title="Une agence à taille humaine, une exigence de grand groupe"
-        em="une exigence de grand groupe"
+        title={
+          <>
+            Une agence à taille humaine,{" "}
+            <span className="text-gradient-accent">
+              une exigence de grand groupe
+            </span>
+          </>
+        }
         description="CAP DIGITAL est née d'une conviction : les PME, artisans et indépendants méritent des sites aussi soignés que ceux des grandes entreprises — sans les budgets démesurés ni le jargon."
       />
 
       <section className="py-16 md:py-24">
         <Container>
-          <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
-            <Reveal variant="up" className="flex flex-col gap-5 lg:col-span-7">
-              <h2 className="font-display text-2xl tracking-[-0.02em] md:text-4xl">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+            <Reveal className="flex flex-col gap-5">
+              <h2 className="font-display text-3xl font-bold tracking-tight">
                 Notre histoire
               </h2>
               <p className="leading-relaxed text-muted text-pretty">
@@ -75,18 +81,17 @@ export default function AProposPage() {
               </p>
             </Reveal>
 
-            <Reveal
-              variant="up"
-              delay={0.12}
-              className="flex flex-col gap-6 lg:col-span-5"
-            >
-              <h2 className="label-mono">Nos engagements</h2>
-              <ul className="flex flex-col divide-y divide-border-subtle border-y border-border-subtle">
-                {commitments.map((commitment, index) => (
-                  <li key={commitment} className="flex items-baseline gap-5 py-4">
-                    <span className="label-mono shrink-0" aria-hidden>
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
+            <Reveal delay={0.12} className="flex flex-col gap-5">
+              <h2 className="font-display text-3xl font-bold tracking-tight">
+                Nos engagements
+              </h2>
+              <ul className="flex flex-col gap-4 rounded-2xl border border-border-subtle bg-card p-8">
+                {commitments.map((commitment) => (
+                  <li key={commitment} className="flex items-start gap-3">
+                    <span
+                      className="mt-2.5 size-1.5 shrink-0 rounded-full bg-accent"
+                      aria-hidden
+                    />
                     <span className="leading-relaxed">{commitment}</span>
                   </li>
                 ))}
@@ -96,28 +101,28 @@ export default function AProposPage() {
         </Container>
       </section>
 
-      <section className="border-t border-border-subtle py-20 md:py-28">
-        <Container className="flex flex-col gap-14 md:gap-20">
+      <section className="border-t border-border-subtle py-24 md:py-32">
+        <Container className="flex flex-col gap-16">
           <SectionHeading
             eyebrow="Nos valeurs"
-            title="Ce qui nous guide, projet après projet"
-            em="projet après projet"
+            title={
+              <>
+                Ce qui nous guide,{" "}
+                <span className="text-gradient-accent">projet après projet</span>
+              </>
+            }
           />
-          <div className="grid border-t border-border-subtle sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((value, index) => (
               <Reveal
                 key={value.title}
-                variant="up"
                 delay={index * 0.08}
-                className="flex flex-col gap-4 border-b border-border-subtle py-10 sm:odd:pr-10 sm:even:border-l sm:even:pl-10"
+                className="flex flex-col gap-4 rounded-2xl border border-border-subtle bg-card p-8"
               >
-                <span className="label-mono">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="font-display text-2xl tracking-[-0.02em]">
+                <h3 className="font-display text-xl font-semibold">
                   {value.title}
                 </h3>
-                <p className="max-w-sm leading-relaxed text-muted">
+                <p className="text-sm leading-relaxed text-muted">
                   {value.description}
                 </p>
               </Reveal>
@@ -127,8 +132,12 @@ export default function AProposPage() {
       </section>
 
       <CtaSection
-        title="Envie de travailler avec une équipe qui vous écoute ?"
-        em="qui vous écoute ?"
+        title={
+          <>
+            Envie de travailler avec une équipe{" "}
+            <span className="text-gradient-accent">qui vous écoute&nbsp;?</span>
+          </>
+        }
       />
     </>
   );

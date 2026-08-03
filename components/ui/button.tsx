@@ -8,7 +8,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   primary:
     "bg-accent text-white hover:bg-accent-strong hover:-translate-y-0.5 hover:shadow-[0_8px_32px_var(--glow)]",
   secondary:
-    "border border-border-subtle bg-card text-foreground hover:bg-card-hover hover:-translate-y-0.5 hover:border-accent/40",
+    "border border-border-subtle bg-card text-foreground hover:bg-card-hover hover:-translate-y-0.5",
   ghost: "text-muted hover:text-foreground",
 };
 
@@ -65,37 +65,5 @@ export function Button({
     >
       {children}
     </button>
-  );
-}
-
-/**
- * Lien de fin de section, avec une flèche qui part vers la droite
- * et un soulignement qui se dessine au survol.
- */
-export function ArrowLink({
-  href,
-  children,
-  className,
-}: {
-  href: string;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className={cn(
-        "group inline-flex items-baseline gap-2 font-display text-base text-accent md:text-lg",
-        className
-      )}
-    >
-      <span className="link-line">{children}</span>
-      <span
-        className="font-sans transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5"
-        aria-hidden
-      >
-        →
-      </span>
-    </Link>
   );
 }

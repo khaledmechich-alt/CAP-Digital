@@ -17,8 +17,12 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Nos services"
-        title="Des solutions complètes pour votre présence en ligne"
-        em="votre présence en ligne"
+        title={
+          <>
+            Des solutions complètes pour{" "}
+            <span className="text-gradient-accent">votre présence en ligne</span>
+          </>
+        }
         description="De la création de votre premier site à l'optimisation de votre visibilité sur Google, chaque prestation est pensée pour un seul objectif : développer votre activité."
       />
 
@@ -31,48 +35,33 @@ export default function ServicesPage() {
             className="scroll-mt-24 border-t border-border-subtle py-16 md:py-24"
           >
             <Container>
-              <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-                <Reveal
-                  variant="up"
-                  className={cn(
-                    "lg:col-span-6",
-                    reversed && "lg:order-2 lg:col-start-7"
-                  )}
-                >
-                  <div className="flex flex-col gap-6">
-                    <span className="label-mono">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <h2 className="font-display text-3xl leading-[1.08] tracking-[-0.025em] md:text-4xl">
+              <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+                <Reveal className={cn(reversed && "lg:order-2")}>
+                  <div className="flex flex-col gap-5">
+                    <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
                       {service.title}
                     </h2>
-                    <p className="font-display em-serif text-lg text-accent md:text-xl">
+                    <p className="text-lg font-medium text-accent">
                       {service.tagline}
                     </p>
-                    <p className="max-w-xl leading-relaxed text-muted text-pretty">
+                    <p className="leading-relaxed text-muted text-pretty">
                       {service.description}
                     </p>
                   </div>
                 </Reveal>
 
                 <Reveal
-                  variant="up"
                   delay={0.12}
-                  className={cn(
-                    "lg:col-span-5 lg:col-start-8 lg:pt-14",
-                    reversed && "lg:order-1 lg:col-start-1"
-                  )}
+                  className={cn(reversed && "lg:order-1")}
                 >
-                  <ul className="flex flex-col divide-y divide-border-subtle border-y border-border-subtle">
+                  <ul className="flex flex-col gap-4 rounded-2xl border border-border-subtle bg-card p-8">
                     {service.benefits.map((benefit) => (
-                      <li
-                        key={benefit}
-                        className="flex items-baseline gap-4 py-4 leading-relaxed"
-                      >
-                        <span className="label-mono shrink-0 text-accent" aria-hidden>
-                          —
-                        </span>
-                        <span>{benefit}</span>
+                      <li key={benefit} className="flex items-start gap-3">
+                        <span
+                          className="mt-2.5 size-1.5 shrink-0 rounded-full bg-accent"
+                          aria-hidden
+                        />
+                        <span className="leading-relaxed">{benefit}</span>
                       </li>
                     ))}
                   </ul>
@@ -84,8 +73,12 @@ export default function ServicesPage() {
       })}
 
       <CtaSection
-        title="Un projet en tête ? Parlons-en."
-        em="Parlons-en."
+        title={
+          <>
+            Un projet en tête&nbsp;?{" "}
+            <span className="text-gradient-accent">Parlons-en.</span>
+          </>
+        }
         description="Chaque projet commence par un échange gratuit et sans engagement. Expliquez-nous votre besoin, nous vous conseillons honnêtement — même si la meilleure solution n'est pas chez nous."
       />
     </>

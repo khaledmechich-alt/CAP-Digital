@@ -41,41 +41,45 @@ export default async function ProjectPage({ params }: PageProps) {
   return (
     <>
       <article>
-        <section className="pt-36 pb-12 md:pt-44">
-          <Container className="flex flex-col gap-10">
-            <Reveal variant="fade">
+        <section className="relative overflow-hidden pt-36 pb-12 md:pt-44">
+          <div
+            className="glow-orb top-[-260px] left-1/2 size-[560px] -translate-x-1/2"
+            aria-hidden
+          />
+          <Container className="relative flex flex-col gap-8">
+            <Reveal>
               <Link
                 href="/realisations"
-                className="label-mono link-line inline-flex w-fit items-center gap-2 hover:text-foreground"
+                className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
               >
                 <span aria-hidden>←</span>
                 Toutes les réalisations
               </Link>
             </Reveal>
 
-            <Reveal variant="up" delay={0.05} className="flex flex-col gap-6">
-              <div className="label-mono flex flex-wrap items-center gap-x-3 gap-y-1">
-                <span className="text-accent">{project.category}</span>
-                <span aria-hidden>·</span>
-                <span>
-                  {project.client} — {project.year}
+            <Reveal delay={0.05} className="flex flex-col gap-5">
+              <div className="flex flex-wrap items-center gap-3 text-sm">
+                <span className="rounded-full bg-accent-soft px-3 py-1 font-medium text-accent">
+                  {project.category}
                 </span>
                 {project.demo ? (
-                  <>
-                    <span aria-hidden>·</span>
-                    <span>Démonstration</span>
-                  </>
+                  <span className="rounded-full border border-border-subtle px-3 py-1 font-medium text-muted">
+                    Démonstration
+                  </span>
                 ) : null}
+                <span className="text-muted">
+                  {project.client} · {project.year}
+                </span>
               </div>
-              <h1 className="font-display max-w-4xl text-4xl leading-[1.06] tracking-[-0.025em] text-balance md:text-6xl">
+              <h1 className="font-display max-w-3xl text-4xl font-bold tracking-tight text-balance md:text-6xl">
                 {project.title}
               </h1>
               <p className="max-w-2xl text-lg leading-relaxed text-muted">
                 {project.shortDescription}
               </p>
               {project.demo ? (
-                <p className="max-w-2xl border-l-2 border-accent py-1 pl-5 text-sm leading-relaxed text-muted">
-                  <strong className="font-medium text-foreground">
+                <p className="max-w-2xl rounded-2xl border border-border-subtle bg-card p-5 text-sm leading-relaxed text-muted">
+                  <strong className="font-semibold text-foreground">
                     Projet de démonstration.
                   </strong>{" "}
                   Ce cabinet est fictif. Cette fiche illustre notre méthode de
@@ -87,24 +91,24 @@ export default async function ProjectPage({ params }: PageProps) {
             </Reveal>
 
             {project.results.length > 0 ? (
-              <Reveal variant="up" delay={0.1}>
-                <dl className="grid border-y border-border-subtle sm:grid-cols-3">
+              <Reveal delay={0.1}>
+                <div className="grid gap-4 sm:grid-cols-3">
                   {project.results.map((result) => (
                     <div
                       key={result.label}
-                      className="flex flex-col gap-1 border-b border-border-subtle py-6 last:border-b-0 sm:border-b-0 sm:not-first:border-l sm:not-first:pl-8"
+                      className="flex flex-col gap-1 rounded-2xl border border-border-subtle bg-card p-6"
                     >
-                      <dd className="font-display em-serif text-3xl text-accent md:text-4xl">
+                      <span className="font-display text-3xl font-bold text-gradient-accent md:text-4xl">
                         {result.value}
-                      </dd>
-                      <dt className="label-mono">{result.label}</dt>
+                      </span>
+                      <span className="text-sm text-muted">{result.label}</span>
                     </div>
                   ))}
-                </dl>
+                </div>
               </Reveal>
             ) : null}
 
-            <Reveal variant="blur" delay={0.15}>
+            <Reveal delay={0.15}>
               {project.beforeImage && project.afterImage ? (
                 <div>
                   <BeforeAfterSlider
@@ -112,7 +116,7 @@ export default async function ProjectPage({ params }: PageProps) {
                     afterSrc={project.afterImage}
                     alt={`Refonte du site ${project.title}`}
                   />
-                  <p className="label-mono mt-4">
+                  <p className="mt-4 text-center text-xs text-muted">
                     Faites glisser le curseur pour comparer l&apos;avant et
                     l&apos;après
                   </p>
@@ -135,16 +139,16 @@ export default async function ProjectPage({ params }: PageProps) {
         <section className="py-16 md:py-24">
           <Container>
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
-              <Reveal variant="up" className="flex flex-col gap-4">
-                <h2 className="font-display text-2xl tracking-[-0.02em] md:text-3xl">
+              <Reveal className="flex flex-col gap-4">
+                <h2 className="font-display text-2xl font-semibold">
                   Le défi
                 </h2>
                 <p className="leading-relaxed text-muted text-pretty">
                   {project.challenge}
                 </p>
               </Reveal>
-              <Reveal variant="up" delay={0.1} className="flex flex-col gap-4">
-                <h2 className="font-display text-2xl tracking-[-0.02em] md:text-3xl">
+              <Reveal delay={0.1} className="flex flex-col gap-4">
+                <h2 className="font-display text-2xl font-semibold">
                   Notre solution
                 </h2>
                 <p className="leading-relaxed text-muted text-pretty">
@@ -153,12 +157,12 @@ export default async function ProjectPage({ params }: PageProps) {
               </Reveal>
             </div>
 
-            <Reveal
-              variant="up"
-              className="mt-14 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-border-subtle pt-8"
-            >
+            <Reveal className="mt-12 flex flex-wrap items-center gap-3">
               {project.technologies.map((tech) => (
-                <span key={tech} className="label-mono">
+                <span
+                  key={tech}
+                  className="rounded-full border border-border-subtle bg-card px-4 py-1.5 text-sm text-muted"
+                >
                   {tech}
                 </span>
               ))}
@@ -178,14 +182,14 @@ export default async function ProjectPage({ params }: PageProps) {
 
         <section className="border-t border-border-subtle py-16 md:py-24">
           <Container className="flex flex-col gap-10">
-            <Reveal variant="up">
-              <h2 className="font-display text-2xl tracking-[-0.02em] md:text-4xl">
+            <Reveal>
+              <h2 className="font-display text-3xl font-bold tracking-tight">
                 D&apos;autres projets à découvrir
               </h2>
             </Reveal>
-            <div className="grid gap-x-10 gap-y-16 sm:grid-cols-2">
+            <div className="grid gap-x-8 gap-y-14 sm:grid-cols-2">
               {otherProjects.map((other, index) => (
-                <Reveal key={other.slug} variant="blur" delay={index * 0.1}>
+                <Reveal key={other.slug} delay={index * 0.1}>
                   <ProjectCard project={other} />
                 </Reveal>
               ))}
@@ -195,8 +199,12 @@ export default async function ProjectPage({ params }: PageProps) {
       </article>
 
       <CtaSection
-        title="Et si le prochain projet, c'était le vôtre ?"
-        em="c'était le vôtre ?"
+        title={
+          <>
+            Et si le prochain projet,{" "}
+            <span className="text-gradient-accent">c&apos;était le vôtre&nbsp;?</span>
+          </>
+        }
       />
     </>
   );

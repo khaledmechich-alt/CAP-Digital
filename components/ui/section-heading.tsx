@@ -1,77 +1,40 @@
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/ui/reveal";
-import { SplitWords } from "@/components/ui/split-words";
 
 type SectionHeadingProps = {
-  /** Libellé monospace au-dessus du titre. */
   eyebrow?: string;
-  /** Titre en texte simple (il est animé mot à mot). */
-  title: string;
-  /** Portion du titre mise en italique. */
-  em?: string;
+  title: React.ReactNode;
   description?: string;
-  align?: "left" | "center";
+  align?: "center" | "left";
   className?: string;
 };
 
-/**
- * Titre de section : étiquette + titre serif animé mot à mot,
- * texte d'accompagnement décalé dans une seconde colonne.
- */
 export function SectionHeading({
   eyebrow,
   title,
-  em,
   description,
-  align = "left",
+  align = "center",
   className,
 }: SectionHeadingProps) {
-  const centered = align === "center";
-
   return (
-    <div
+    <Reveal
       className={cn(
-        "flex flex-col gap-8",
-        centered ? "items-center text-center" : "items-start",
+        "flex flex-col gap-5",
+        align === "center" && "items-center text-center",
+        align === "left" && "items-start text-left",
         className
       )}
     >
-      {eyebrow ? (
-        <Reveal variant="fade" duration={0.6}>
-          <Badge>{eyebrow}</Badge>
-        </Reveal>
+      {eyebrow ? <Badge>{eyebrow}</Badge> : null}
+      <h2 className="font-display max-w-3xl text-4xl font-bold tracking-tight text-balance md:text-5xl">
+        {title}
+      </h2>
+      {description ? (
+        <p className="max-w-2xl text-lg leading-relaxed text-muted text-pretty">
+          {description}
+        </p>
       ) : null}
-
-      <div
-        className={cn(
-          "flex w-full flex-col gap-8",
-          !centered && description && "md:flex-row md:items-end md:gap-16"
-        )}
-      >
-        <SplitWords
-          text={title}
-          em={em}
-          className={cn(
-            "font-display text-3xl leading-[1.08] tracking-[-0.02em] text-balance md:text-5xl",
-            centered ? "max-w-3xl" : "md:flex-1"
-          )}
-        />
-
-        {description ? (
-          <Reveal
-            variant="up"
-            delay={0.15}
-            className={cn(
-              centered ? "max-w-2xl" : "md:max-w-sm md:flex-1 md:pb-2"
-            )}
-          >
-            <p className="text-base leading-relaxed text-muted text-pretty md:text-lg">
-              {description}
-            </p>
-          </Reveal>
-        ) : null}
-      </div>
-    </div>
+    </Reveal>
   );
 }

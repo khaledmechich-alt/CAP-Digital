@@ -3,58 +3,61 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { BeforeAfterSlider } from "@/components/ui/before-after-slider";
-import { ArrowLink } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 export function BeforeAfterSection() {
   const project = beforeAfterProject;
   if (!project || !project.beforeImage || !project.afterImage) return null;
 
   return (
-    <section className="border-t border-border-subtle py-20 md:py-28">
+    <section className="relative overflow-hidden border-t border-border-subtle py-24 md:py-32">
+      <div
+        className="glow-orb top-1/2 right-[-260px] size-[520px] -translate-y-1/2"
+        aria-hidden
+      />
       <Container>
-        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
-          <div className="flex flex-col gap-9 lg:col-span-5">
+        <div className="grid items-center gap-14 lg:grid-cols-2">
+          <div className="flex flex-col gap-8">
             <SectionHeading
+              align="left"
               eyebrow="Avant / Après"
-              title="La différence, en une image"
-              em="en une image"
+              title={
+                <>
+                  La différence,{" "}
+                  <span className="text-gradient-accent">en une image</span>
+                </>
+              }
+              description={`${project.title} — ${project.challenge}`}
             />
-            <Reveal variant="up" delay={0.1}>
-              <p className="max-w-md leading-relaxed text-muted text-pretty">
-                {project.title} — {project.challenge}
-              </p>
+            <Reveal delay={0.1}>
+              <div className="flex flex-wrap gap-3">
+                {project.results.map((result) => (
+                  <span
+                    key={result.label}
+                    className="rounded-full border border-border-subtle bg-card px-4 py-2 text-sm"
+                  >
+                    <span className="font-semibold text-accent">
+                      {result.value}
+                    </span>{" "}
+                    <span className="text-muted">{result.label}</span>
+                  </span>
+                ))}
+              </div>
             </Reveal>
-            {project.results.length > 0 ? (
-              <Reveal variant="up" delay={0.15}>
-                <dl className="flex flex-col divide-y divide-border-subtle border-y border-border-subtle">
-                  {project.results.map((result) => (
-                    <div
-                      key={result.label}
-                      className="flex items-baseline justify-between gap-6 py-3"
-                    >
-                      <dt className="label-mono">{result.label}</dt>
-                      <dd className="font-display em-serif text-xl text-accent">
-                        {result.value}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </Reveal>
-            ) : null}
-            <Reveal variant="up" delay={0.2}>
-              <ArrowLink href={`/realisations/${project.slug}`}>
+            <Reveal delay={0.2}>
+              <Button href={`/realisations/${project.slug}`} variant="secondary">
                 Découvrir cette refonte
-              </ArrowLink>
+              </Button>
             </Reveal>
           </div>
 
-          <Reveal variant="blur" delay={0.15} className="lg:col-span-7">
+          <Reveal delay={0.15}>
             <BeforeAfterSlider
               beforeSrc={project.beforeImage}
               afterSrc={project.afterImage}
               alt={`Refonte du site ${project.title}`}
             />
-            <p className="label-mono mt-4">
+            <p className="mt-4 text-center text-xs text-muted">
               Faites glisser le curseur pour comparer
             </p>
           </Reveal>

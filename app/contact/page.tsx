@@ -39,54 +39,72 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Et si on parlait de votre projet ?"
-        em="votre projet ?"
+        title={
+          <>
+            Et si on parlait de{" "}
+            <span className="text-gradient-accent">votre projet&nbsp;?</span>
+          </>
+        }
         description="Racontez-nous votre activité et vos objectifs. Vous recevrez une réponse sous 24h et un devis détaillé sous 48h — gratuitement et sans engagement."
       />
 
-      <section className="pt-8 pb-24 md:pb-32">
+      <section className="pb-24 md:pb-32">
         <Container>
-          <div className="grid items-start gap-14 lg:grid-cols-12 lg:gap-16">
-            <Reveal variant="up" className="lg:col-span-7">
+          <div className="grid items-start gap-10 lg:grid-cols-[1fr_360px]">
+            <Reveal>
               <ContactForm />
             </Reveal>
 
-            <div className="flex flex-col gap-12 lg:col-span-4 lg:col-start-9">
-              <dl className="flex flex-col divide-y divide-border-subtle border-y border-border-subtle">
-                {contactCards.map((card, index) => (
-                  <Reveal key={card.label} variant="up" delay={index * 0.07}>
-                    <div className="flex flex-col gap-1 py-4">
-                      <dt className="label-mono">{card.label}</dt>
-                      <dd className="font-display text-base md:text-lg">
-                        {card.href ? (
-                          <a href={card.href} className="link-line">
-                            {card.value}
-                          </a>
-                        ) : (
-                          card.value
-                        )}
-                      </dd>
-                    </div>
+            <div className="flex flex-col gap-4">
+              {contactCards.map((card, index) => {
+                const content = (
+                  <div className="flex flex-col gap-1 rounded-2xl border border-border-subtle bg-card p-6 transition-colors hover:bg-card-hover">
+                    <p className="text-xs font-medium uppercase tracking-widest text-muted">
+                      {card.label}
+                    </p>
+                    <p className="truncate font-medium">{card.value}</p>
+                  </div>
+                );
+                return (
+                  <Reveal key={card.label} delay={index * 0.07}>
+                    {card.href ? (
+                      <a href={card.href} className="block">
+                        {content}
+                      </a>
+                    ) : (
+                      content
+                    )}
                   </Reveal>
-                ))}
-              </dl>
+                );
+              })}
 
-              <Reveal variant="up" delay={0.3}>
-                <p className="label-mono mb-5">Comment ça se passe ensuite ?</p>
-                <ol className="flex flex-col gap-5">
-                  {[
-                    "Nous vous répondons sous 24h pour convenir d'un échange téléphonique.",
-                    "Vous recevez un devis clair et détaillé sous 48h.",
-                    "Vous validez, et votre projet démarre.",
-                  ].map((step, index) => (
-                    <li key={step} className="flex gap-4 text-sm leading-relaxed">
-                      <span className="label-mono shrink-0 text-accent">
-                        {String(index + 1).padStart(2, "0")}
+              <Reveal delay={0.3}>
+                <div className="rounded-2xl border border-border-subtle bg-card p-6">
+                  <p className="mb-4 text-xs font-medium uppercase tracking-widest text-muted">
+                    Comment ça se passe ensuite ?
+                  </p>
+                  <ol className="flex flex-col gap-3 text-sm leading-relaxed">
+                    <li className="flex gap-3">
+                      <span className="font-display font-bold text-accent">
+                        1.
                       </span>
-                      {step}
+                      Nous vous répondons sous 24h pour convenir d&apos;un
+                      échange téléphonique.
                     </li>
-                  ))}
-                </ol>
+                    <li className="flex gap-3">
+                      <span className="font-display font-bold text-accent">
+                        2.
+                      </span>
+                      Vous recevez un devis clair et détaillé sous 48h.
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="font-display font-bold text-accent">
+                        3.
+                      </span>
+                      Vous validez, et votre projet démarre.
+                    </li>
+                  </ol>
+                </div>
               </Reveal>
             </div>
           </div>

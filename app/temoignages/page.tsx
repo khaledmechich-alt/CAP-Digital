@@ -17,20 +17,20 @@ export default function TemoignagesPage() {
     <>
       <PageHero
         eyebrow="Témoignages"
-        title="Nos clients parlent mieux que nous"
-        em="mieux que nous"
+        title={
+          <>
+            Nos clients parlent{" "}
+            <span className="text-gradient-accent">mieux que nous</span>
+          </>
+        }
         description="Voici ce que nos clients retiennent de leur collaboration avec CAP DIGITAL."
       />
 
       <section className="py-16 md:py-24">
         <Container>
-          <div className="grid w-full gap-14 md:grid-cols-2 md:gap-x-16">
+          <div className="mx-auto grid w-full max-w-2xl gap-6">
             {testimonials.map((testimonial, index) => (
-              <Reveal
-                key={testimonial.name}
-                variant="up"
-                delay={(index % 2) * 0.1}
-              >
+              <Reveal key={testimonial.name} delay={(index % 3) * 0.08}>
                 <TestimonialCard testimonial={testimonial} />
               </Reveal>
             ))}
@@ -39,8 +39,14 @@ export default function TemoignagesPage() {
       </section>
 
       <CtaSection
-        title="Le prochain témoignage, ce sera peut-être le vôtre."
-        em="ce sera peut-être le vôtre."
+        title={
+          <>
+            Le prochain témoignage,{" "}
+            <span className="text-gradient-accent">
+              ce sera peut-être le vôtre.
+            </span>
+          </>
+        }
       />
     </>
   );

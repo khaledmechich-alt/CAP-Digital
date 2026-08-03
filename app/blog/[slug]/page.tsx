@@ -53,37 +53,45 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <>
       <JsonLd data={articleSchema} />
-      <article className="pt-36 pb-16 md:pt-44 md:pb-24">
-        <Container className="max-w-3xl">
-          <Reveal variant="up" className="flex flex-col gap-7">
+      <article className="relative overflow-hidden pt-36 pb-16 md:pt-44 md:pb-24">
+        <div
+          className="glow-orb top-[-260px] left-1/2 size-[560px] -translate-x-1/2"
+          aria-hidden
+        />
+        <Container className="relative max-w-3xl">
+          <Reveal className="flex flex-col gap-6">
             <Link
               href="/blog"
-              className="label-mono link-line inline-flex w-fit items-center gap-2 hover:text-foreground"
+              className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
             >
               <span aria-hidden>←</span>
               Tous les articles
             </Link>
 
-            <div className="label-mono flex flex-wrap items-center gap-x-3 gap-y-1">
-              <span className="text-accent">{post.category}</span>
-              <span aria-hidden>·</span>
-              <time dateTime={post.date}>{formatBlogDate(post.date)}</time>
-              <span aria-hidden>·</span>
-              <span>{post.readingTime} de lecture</span>
+            <div className="flex flex-wrap items-center gap-3 text-xs">
+              <span className="rounded-full bg-accent-soft px-3 py-1 font-medium text-accent">
+                {post.category}
+              </span>
+              <time dateTime={post.date} className="text-muted">
+                {formatBlogDate(post.date)}
+              </time>
+              <span className="text-muted">
+                {post.readingTime} de lecture
+              </span>
             </div>
 
-            <h1 className="font-display text-3xl leading-[1.08] tracking-[-0.025em] text-balance md:text-5xl">
+            <h1 className="font-display text-3xl leading-tight font-bold tracking-tight text-balance md:text-5xl">
               {post.title}
             </h1>
 
             <p className="text-lg leading-relaxed text-muted">{post.excerpt}</p>
           </Reveal>
 
-          <div className="mt-14 flex flex-col gap-12">
+          <div className="mt-12 flex flex-col gap-10">
             {post.content.map((section, index) => (
-              <Reveal key={index} variant="up" className="flex flex-col gap-4">
+              <Reveal key={index} className="flex flex-col gap-4">
                 {section.heading ? (
-                  <h2 className="font-display text-2xl tracking-[-0.02em]">
+                  <h2 className="font-display text-2xl font-semibold tracking-tight">
                     {section.heading}
                   </h2>
                 ) : null}
@@ -96,12 +104,13 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </p>
                 ))}
                 {section.list ? (
-                  <ul className="mt-2 flex flex-col divide-y divide-border-subtle border-y border-border-subtle">
+                  <ul className="flex flex-col gap-3 rounded-2xl border border-border-subtle bg-card p-6">
                     {section.list.map((item) => (
-                      <li key={item} className="flex items-baseline gap-4 py-3.5">
-                        <span className="label-mono shrink-0 text-accent" aria-hidden>
-                          —
-                        </span>
+                      <li key={item} className="flex items-start gap-3">
+                        <span
+                          className="mt-2 size-1.5 shrink-0 rounded-full bg-accent"
+                          aria-hidden
+                        />
                         <span className="leading-relaxed">{item}</span>
                       </li>
                     ))}
@@ -111,10 +120,12 @@ export default async function BlogPostPage({ params }: PageProps) {
             ))}
           </div>
 
-          <Reveal variant="up" className="mt-16">
-            <div className="flex flex-col items-start gap-4 border-t border-border-subtle pt-8 sm:flex-row sm:items-center sm:justify-between">
-              <Logo />
-              <p className="label-mono">
+          <Reveal className="mt-14">
+            <div className="flex flex-col items-start gap-4 rounded-2xl border border-border-subtle bg-card p-8 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-4">
+                <Logo />
+              </div>
+              <p className="text-sm text-muted">
                 Article rédigé par l&apos;équipe CAP DIGITAL
               </p>
             </div>
@@ -122,7 +133,14 @@ export default async function BlogPostPage({ params }: PageProps) {
         </Container>
       </article>
 
-      <CtaSection title="Un projet web en tête ? On en parle ?" em="On en parle ?" />
+      <CtaSection
+        title={
+          <>
+            Un projet web en tête&nbsp;?{" "}
+            <span className="text-gradient-accent">On en parle&nbsp;?</span>
+          </>
+        }
+      />
     </>
   );
 }

@@ -1,43 +1,33 @@
 import { homeFaqItems } from "@/lib/faq";
 import { Container } from "@/components/ui/container";
-import { Badge } from "@/components/ui/badge";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
-import { SplitWords } from "@/components/ui/split-words";
 import { Accordion } from "@/components/ui/accordion";
-import { ArrowLink } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 export function HomeFaq() {
   return (
-    <section className="border-t border-border-subtle py-20 md:py-28">
-      <Container className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-        {/* Le titre reste accroché pendant qu'on parcourt les réponses. */}
-        <div className="flex flex-col gap-7 lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
-          <Reveal variant="fade" duration={0.6}>
-            <Badge>Questions fréquentes</Badge>
-          </Reveal>
-          <SplitWords
-            text="Vous vous posez sûrement ces questions"
-            em="ces questions"
-            className="font-display text-3xl leading-[1.08] tracking-[-0.02em] text-balance md:text-4xl"
-          />
-          <Reveal variant="up" delay={0.15}>
-            <p className="max-w-sm leading-relaxed text-muted text-pretty">
-              Prix, délais, autonomie : voici des réponses honnêtes aux
-              questions qu&apos;on nous pose le plus.
-            </p>
-          </Reveal>
-          <Reveal variant="up" delay={0.2}>
-            <ArrowLink href="/faq">Voir toutes les questions</ArrowLink>
-          </Reveal>
-        </div>
+    <section className="border-t border-border-subtle py-24 md:py-32">
+      <Container className="flex flex-col items-center gap-12">
+        <SectionHeading
+          eyebrow="Questions fréquentes"
+          title="Vous vous posez sûrement ces questions"
+          description="Prix, délais, autonomie : voici des réponses honnêtes aux questions qu'on nous pose le plus."
+        />
 
-        <Reveal variant="up" delay={0.1} className="lg:col-span-7">
+        <Reveal className="w-full max-w-3xl">
           <Accordion
             items={homeFaqItems.map(({ question, answer }) => ({
               question,
               answer,
             }))}
           />
+        </Reveal>
+
+        <Reveal>
+          <Button href="/faq" variant="ghost">
+            Voir toutes les questions →
+          </Button>
         </Reveal>
       </Container>
     </section>

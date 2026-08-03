@@ -1,51 +1,36 @@
 import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/ui/container";
-import { Reveal, RuleDraw } from "@/components/ui/reveal";
-import { SplitWords } from "@/components/ui/split-words";
+import { Reveal } from "@/components/ui/reveal";
 
 type PageHeroProps = {
   eyebrow: string;
-  /** Titre en texte simple (animé mot à mot). */
-  title: string;
-  /** Portion du titre mise en italique. */
-  em?: string;
+  title: React.ReactNode;
   description?: string;
 };
 
-/**
- * En-tête commun aux pages internes : cadré à gauche, gros titre serif,
- * texte d'accompagnement en seconde colonne, filet qui se trace en bas.
- */
-export function PageHero({ eyebrow, title, em, description }: PageHeroProps) {
+export function PageHero({ eyebrow, title, description }: PageHeroProps) {
   return (
-    <section className="pt-32 pb-10 md:pt-40 md:pb-14">
-      <Container className="flex flex-col gap-10">
-        <Reveal variant="fade" duration={0.6}>
+    <section className="relative overflow-hidden pt-36 pb-14 md:pt-48 md:pb-20">
+      <div
+        className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,black,transparent)]"
+        aria-hidden
+      />
+      <div
+        className="glow-orb top-[-260px] left-1/2 size-[560px] -translate-x-1/2"
+        aria-hidden
+      />
+      <Container className="relative">
+        <Reveal className="flex flex-col items-center gap-6 text-center">
           <Badge>{eyebrow}</Badge>
-        </Reveal>
-
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:gap-16">
-          <SplitWords
-            as="h1"
-            trigger="load"
-            text={title}
-            em={em}
-            className="font-display flex-1 text-4xl leading-[1.06] tracking-[-0.025em] text-balance md:text-6xl"
-          />
+          <h1 className="font-display max-w-3xl text-4xl leading-[1.1] font-bold tracking-tight text-balance md:text-6xl">
+            {title}
+          </h1>
           {description ? (
-            <Reveal
-              variant="up"
-              delay={0.25}
-              className="md:max-w-sm md:flex-1 md:pb-3"
-            >
-              <p className="text-base leading-relaxed text-muted text-pretty md:text-lg">
-                {description}
-              </p>
-            </Reveal>
+            <p className="max-w-2xl text-lg leading-relaxed text-muted text-pretty">
+              {description}
+            </p>
           ) : null}
-        </div>
-
-        <RuleDraw delay={0.35} />
+        </Reveal>
       </Container>
     </section>
   );
