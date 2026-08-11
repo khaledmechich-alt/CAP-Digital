@@ -8,8 +8,8 @@ export function IntroVideoSection() {
       <Container className="flex flex-col gap-12 md:gap-16">
         <SectionHeading
           eyebrow="Découvrir CAP Digital"
-          title="CAP Digital en une minute"
-          em="une minute"
+          title="CAP Digital en moins d'une minute"
+          em="moins d'une minute"
           description="Une courte vidéo pour comprendre qui nous sommes et comment nous transformons votre présence en ligne."
         />
 
@@ -20,7 +20,7 @@ export function IntroVideoSection() {
               controls
               playsInline
               preload="metadata"
-              poster="/video/cap-digital-intro-poster.jpg"
+              poster="/video/cap-digital-intro-poster.png"
             >
               <source src="/video/cap-digital-intro.mp4" type="video/mp4" />
               Votre navigateur ne prend pas en charge la lecture vidéo.
