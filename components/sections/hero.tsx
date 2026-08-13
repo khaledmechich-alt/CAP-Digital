@@ -110,7 +110,7 @@ export function Hero() {
             className="text-base leading-relaxed text-muted text-pretty md:text-lg"
             {...rise(0.7)}
           >
-            Sites vitrines, boutiques e-commerce et référencement Google.
+            Création de sites vitrines, refonte et maintenance.
             CAP&nbsp;DIGITAL conçoit des sites rapides et élégants qui
             développent l&apos;activité des PME, artisans et entrepreneurs.
           </motion.p>

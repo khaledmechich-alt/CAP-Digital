@@ -21,19 +21,6 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "e-commerce",
-    title: "Boutique e-commerce",
-    tagline: "Vendez en ligne, jour et nuit",
-    description:
-      "Une boutique en ligne complète et sécurisée : catalogue produits, paiement en ligne, gestion des commandes. Tout est pensé pour maximiser vos ventes.",
-    benefits: [
-      "Paiement en ligne 100 % sécurisé",
-      "Gestion simple de vos produits et commandes",
-      "Parcours d'achat optimisé pour la conversion",
-      "Livraison, stocks et promotions intégrés",
-    ],
-  },
-  {
     slug: "refonte",
     title: "Refonte de site web",
     tagline: "Donnez une seconde vie à votre site",
@@ -44,19 +31,6 @@ export const services: Service[] = [
       "Vitesse de chargement optimisée",
       "Référencement Google préservé et amélioré",
       "Migration de vos contenus incluse",
-    ],
-  },
-  {
-    slug: "seo",
-    title: "Optimisation SEO",
-    tagline: "Soyez trouvé par vos futurs clients",
-    description:
-      "Le plus beau site du monde ne sert à rien s'il est invisible. Nous optimisons votre référencement pour que vos clients vous trouvent sur Google, avant vos concurrents.",
-    benefits: [
-      "Audit complet de votre visibilité actuelle",
-      "Optimisation technique et contenu",
-      "Référencement local (Google Maps, avis)",
-      "Suivi mensuel de vos positions",
     ],
   },
   {

@@ -6,9 +6,7 @@ import { Logo } from "@/components/layout/logo";
 
 const serviceLinks = [
   "Sites vitrines",
-  "Boutiques e-commerce",
   "Refonte de site",
-  "Optimisation SEO",
   "Maintenance",
   "Accompagnement digital",
 ];
@@ -28,8 +26,8 @@ export function Footer() {
           <div className="flex flex-col gap-5">
             <Logo />
             <p className="max-w-xs text-sm leading-relaxed text-muted">
-              {siteConfig.tagline}. Sites vitrines, e-commerce et SEO pour PME,
-              artisans et entrepreneurs.
+              {siteConfig.tagline}. Sites vitrines, refonte et maintenance pour
+              PME, artisans et entrepreneurs.
             </p>
             {socials.length > 0 ? (
               <div className="flex flex-wrap gap-x-5 gap-y-2">

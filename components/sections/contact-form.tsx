@@ -14,10 +14,9 @@ const labelClasses = "label-mono";
 
 const projectTypes = [
   "Site vitrine",
-  "Boutique e-commerce",
   "Refonte de site",
-  "Référencement SEO",
   "Maintenance",
+  "Accompagnement digital",
   "Autre / Je ne sais pas encore",
 ];
 

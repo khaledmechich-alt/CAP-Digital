@@ -7,9 +7,9 @@ import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Nos services — Création de sites, e-commerce, SEO",
+  title: "Nos services — Création de sites, refonte, maintenance",
   description:
-    "Création de sites vitrines, boutiques e-commerce, refonte, référencement Google, maintenance et accompagnement digital. Des solutions clé en main pour PME et artisans.",
+    "Création de sites vitrines, refonte de site web, maintenance et accompagnement digital. Des solutions clé en main pour PME, artisans et entrepreneurs.",
 };
 
 export default function ServicesPage() {

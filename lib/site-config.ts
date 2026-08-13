@@ -25,7 +25,7 @@ export const siteConfig: SiteConfig = {
   name: "CAP DIGITAL",
   tagline: "L'agence web qui transforme vos visiteurs en clients",
   description:
-    "CAP DIGITAL crée des sites vitrines, boutiques e-commerce et refontes de sites web pour PME, artisans et entrepreneurs. Design premium, SEO et accompagnement digital.",
+    "CAP DIGITAL crée et refond des sites web pour PME, artisans et entrepreneurs. Design premium, maintenance et accompagnement digital.",
 
   // Remplacez par votre vrai nom de domaine une fois le site en ligne
   url: "https://www.cap-digital.fr",
