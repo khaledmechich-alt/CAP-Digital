@@ -78,9 +78,10 @@ export default async function ProjectPage({ params }: PageProps) {
                   <strong className="font-medium text-foreground">
                     Projet de démonstration.
                   </strong>{" "}
-                  Ce client est fictif. Cette fiche illustre notre méthode et le
-                  rendu que nous produisons — ce n&apos;est pas une réalisation
-                  client, et nous ne lui associons aucun résultat chiffré.
+                  Ce site a été conçu pour montrer notre travail : ce n&apos;est
+                  pas la commande d&apos;un client. La fiche illustre notre
+                  méthode et le rendu que nous produisons — nous ne lui
+                  associons donc aucun résultat chiffré.
                 </p>
               ) : null}
             </Reveal>

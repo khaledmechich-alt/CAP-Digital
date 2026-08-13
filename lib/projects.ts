@@ -109,9 +109,9 @@ export const projects: Project[] = [
     category: "Site vitrine",
     year: 2026,
     shortDescription:
-      "Site vitrine d'un artisan électricien, plombier et chauffagiste à Paris : appeler ou demander un devis en deux clics, jour et nuit.",
+      "Exemple de site vitrine pour un artisan électricien, plombier et chauffagiste : appeler ou demander un devis en deux clics, jour et nuit.",
     challenge:
-      "Quand une panne de courant ou une fuite d'eau arrive, personne ne lit une plaquette : on cherche un artisan joignable tout de suite. CTM avait besoin d'un site qui inspire confiance en quelques secondes et qui mette le contact à portée de doigt, sur mobile comme sur ordinateur.",
+      "Quand une panne de courant ou une fuite d'eau arrive, personne ne lit une plaquette : on cherche un artisan joignable tout de suite. Pour un métier du dépannage, tout se joue là — le site doit inspirer confiance en quelques secondes et mettre le contact à portée de doigt, sur mobile comme sur ordinateur.",
     solution:
       "Un site vitrine clair et rassurant : le numéro d'urgence 24h/24 présent en haut de chaque page, les trois métiers (électricité, plomberie, chauffage) expliqués simplement, le déroulé d'une intervention en trois étapes, une FAQ qui lève les doutes sur les tarifs, et un formulaire de demande d'intervention pour ceux qui préfèrent écrire.",
     technologies: [
@@ -120,14 +120,12 @@ export const projects: Project[] = [
       "Appel en un clic",
       "Optimisé mobile",
     ],
-    results: [
-      { value: "24h/24", label: "le numéro d'urgence visible partout" },
-      { value: "3 étapes", label: "du premier appel à la réparation" },
-      { value: "Appel ou devis", label: "deux façons de vous joindre" },
-    ],
+    // Projet de démonstration : aucun résultat chiffré, ce ne serait pas réel.
+    results: [],
     url: "https://ctm-site-jade.vercel.app/",
     image: "/projects/ctm.png",
     featured: true,
+    demo: true,
   },
 ];
 

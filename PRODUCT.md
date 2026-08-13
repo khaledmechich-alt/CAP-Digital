@@ -71,16 +71,17 @@ Contact public : capdigital4118@gmail.com.
 **Réel :**
 - Un témoignage authentique : Houssem T., 5/5 (`lib/testimonials.ts`).
 - Deux produits développés par le propriétaire, présentés avec de vraies captures d'écran : **AutoSearchPro** (extension Chrome, recherche de pièces automobiles) et **Partrelay** (SaaS de distribution de pièces détachées).
-- **CTM Électricité Plomberie Chauffage** (`lib/projects.ts`, ajouté le 13/08/2026) : site vitrine en ligne sur https://ctm-site-jade.vercel.app/, présenté avec une vraie capture d'écran (`public/projects/ctm.png`). Ses trois « résultats » décrivent le site livré (urgence 24h/24 visible partout, parcours en 3 étapes, appel ou devis) — ce ne sont pas des performances mesurées, et il ne faut pas les remplacer par des chiffres de trafic ou de conversion non vérifiés.
 - L'espace client de suivi, fonctionnel et déployé.
 
-**Historique — le projet fictif a été retiré :**
-- « Cabinet Delcourt » était un cabinet d'avocats fictif, conservé pour illustrer un avant/après de refonte, avec la mention « Démonstration » pilotée par `demo: true`. Le propriétaire l'a fait remplacer par CTM le 13/08/2026 ; ses images ont été supprimées de `public/projects/`.
-- Le mécanisme `demo: true` reste en place dans `lib/projects.ts` et dans la fiche projet : tout futur projet de démonstration doit le porter et laisser `results` vide. Plus aucun projet ne l'utilise aujourd'hui.
+**Démonstration assumée :**
+- **CTM Électricité Plomberie Chauffage** (`lib/projects.ts`, ajouté le 13/08/2026 en remplacement de « Cabinet Delcourt ») : site vitrine réellement en ligne sur https://ctm-site-jade.vercel.app/, présenté avec une vraie capture d'écran (`public/projects/ctm.png`). **Ce n'est pas une commande d'un client** — le propriétaire l'a confirmé le 13/08/2026. Il porte donc `demo: true` et `results: []`, la mention « Démonstration » apparaît sur la vignette et sur la fiche, et l'encadré dit explicitement que le site n'a pas été commandé par un client. Ne jamais le présenter comme une référence client, ne jamais lui attacher de chiffres.
+- « Cabinet Delcourt » (cabinet d'avocats fictif, avant/après de refonte) a été **supprimé** le 13/08/2026 à la demande du propriétaire ; ses images ont été retirées de `public/projects/`.
+- Le mécanisme `demo: true` est la convention à respecter pour tout projet de démonstration : le porter **et** laisser `results` vide.
 - Le composant `components/sections/before-after-section.tsx` et le comparateur avant/après ne sont plus alimentés (aucun projet ne porte `beforeImage`/`afterImage`) : ils ne s'affichent nulle part tant qu'un projet de refonte n'est pas ajouté.
 
 **Absences à ne pas combler par de l'invention :**
 - Aucun autre témoignage client.
+- Aucun site vitrine livré à un client tiers n'est présenté aujourd'hui.
 - Les chiffres « 40+ projets livrés », « 98 % de clients satisfaits » et « 5 années d'expérience » étaient faux : confirmé par le propriétaire le 02/08/2026, `lib/stats.ts` et son composant ont été supprimés, ainsi que la ligne correspondante du fond animé du hero. Ne rien réintroduire de tel sans nombres réels et confirmés.
 
 ## Product Principles
