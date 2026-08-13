@@ -91,6 +91,15 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Tailwind v4 laisse la flèche sur les boutons : on remet la main,
+   partout où l'on peut cliquer. */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+label[for],
+summary {
+  cursor: pointer;
+}
+
 ::selection {
   background-color: var(--accent);
   color: #ffffff;
