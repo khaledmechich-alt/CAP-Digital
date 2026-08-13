@@ -129,6 +129,11 @@ export function Footer() {
         </div>
       </Container>
 
+      {/* Invitation, juste au-dessus de la signature */}
+      <p className="font-display mt-14 px-6 text-center text-2xl tracking-[-0.02em] text-muted sm:text-3xl lg:px-8">
+        Êtes-vous prêt à passer <span className="em-serif">le cap</span> ?
+      </p>
+
       {/* Signature typographique en pied de page */}
       <p
         aria-hidden
