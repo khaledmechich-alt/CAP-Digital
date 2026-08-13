@@ -5,12 +5,12 @@ import { projects, type ProjectCategory } from "@/lib/projects";
 import { ProjectCard } from "@/components/ui/project-card";
 import { cn } from "@/lib/utils";
 
+// Les filtres se déduisent des projets réellement présents : pas d'onglet
+// qui ne renvoie aucun résultat.
 const allCategories: ("Tous" | ProjectCategory)[] = [
   "Tous",
-  "Application web",
-  "Site vitrine",
-  "E-commerce",
-  "Refonte",
+  ...(["Application web", "Site vitrine", "E-commerce", "Refonte"] as const
+  ).filter((category) => projects.some((p) => p.category === category)),
 ];
 
 export function ProjectsGrid() {

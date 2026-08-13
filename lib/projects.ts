@@ -103,26 +103,31 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "cabinet-delcourt",
-    title: "Cabinet Delcourt",
-    client: "Cabinet d'avocats",
-    category: "Refonte",
+    slug: "ctm",
+    title: "CTM Électricité Plomberie Chauffage",
+    client: "Artisan dépannage — Paris",
+    category: "Site vitrine",
     year: 2026,
     shortDescription:
-      "Exemple de refonte pour un cabinet d'avocats : d'un site de 2014 illisible sur mobile à une image à la hauteur du cabinet.",
+      "Site vitrine d'un artisan électricien, plombier et chauffagiste à Paris : appeler ou demander un devis en deux clics, jour et nuit.",
     challenge:
-      "Le site du cabinet datait de 2014 : design dépassé, illisible sur mobile, très lent. Il renvoyait une image en décalage total avec le sérieux du cabinet et ne générait quasiment aucune demande.",
+      "Quand une panne de courant ou une fuite d'eau arrive, personne ne lit une plaquette : on cherche un artisan joignable tout de suite. CTM avait besoin d'un site qui inspire confiance en quelques secondes et qui mette le contact à portée de doigt, sur mobile comme sur ordinateur.",
     solution:
-      "Refonte intégrale : design sobre et prestigieux, présentation claire des domaines d'expertise, prise de rendez-vous en ligne. Migration soignée pour conserver le référencement acquis, puis amélioration des positions.",
-    technologies: ["Next.js", "Refonte", "Prise de RDV en ligne", "SEO"],
-    // Projet de démonstration : aucun résultat chiffré, ce ne serait pas réel.
-    results: [],
-    url: "",
-    image: "/projects/cabinet-delcourt.svg",
+      "Un site vitrine clair et rassurant : le numéro d'urgence 24h/24 présent en haut de chaque page, les trois métiers (électricité, plomberie, chauffage) expliqués simplement, le déroulé d'une intervention en trois étapes, une FAQ qui lève les doutes sur les tarifs, et un formulaire de demande d'intervention pour ceux qui préfèrent écrire.",
+    technologies: [
+      "Site vitrine",
+      "Formulaire de devis",
+      "Appel en un clic",
+      "Optimisé mobile",
+    ],
+    results: [
+      { value: "24h/24", label: "le numéro d'urgence visible partout" },
+      { value: "3 étapes", label: "du premier appel à la réparation" },
+      { value: "Appel ou devis", label: "deux façons de vous joindre" },
+    ],
+    url: "https://ctm-site-jade.vercel.app/",
+    image: "/projects/ctm.png",
     featured: true,
-    demo: true,
-    beforeImage: "/projects/cabinet-delcourt-avant.svg",
-    afterImage: "/projects/cabinet-delcourt-apres.svg",
   },
 ];
 
