@@ -27,10 +27,10 @@ export const siteConfig: SiteConfig = {
   description:
     "CAP DIGITAL crée et refond des sites web pour PME, artisans et entrepreneurs. Design premium, maintenance et accompagnement digital.",
 
-  // Remplacez par votre vrai nom de domaine une fois le site en ligne
-  url: "https://www.cap-digital.fr",
+  // Domaine canonique : Vercel redirige capdigitalagency.fr vers la version www.
+  url: "https://www.capdigitalagency.fr",
 
-  email: "capdigital4118@gmail.com",
+  email: "contact@capdigitalagency.fr",
 
   // Les espaces sont automatiquement retirés pour les liens « appeler ».
   phone: "+33 1 85 78 29 41",

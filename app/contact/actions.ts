@@ -17,9 +17,8 @@ export type ContactResult = { ok: boolean; error?: string };
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Expéditeur de test fourni par Resend : fonctionne immédiatement, sans domaine
-// à vérifier. À remplacer plus tard par une adresse de ton propre domaine.
-const EMAIL_FROM = "CAP DIGITAL <onboarding@resend.dev>";
+// Adresse de notre domaine, vérifié dans Resend (DKIM + SPF + DMARC).
+const EMAIL_FROM = "CAP DIGITAL <contact@capdigitalagency.fr>";
 
 function escapeHtml(value: string): string {
   return value

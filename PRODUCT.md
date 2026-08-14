@@ -46,7 +46,7 @@ Un seul compte administrateur (le propriétaire). Les clients ont chacun leur co
 
 **Faits produit non tranchés** — à ne jamais inventer :
 - ~~Numéro de téléphone~~ : réglé le 02/08/2026 — `+33 1 85 78 29 41`.
-- Nom de domaine : `www.cap-digital.fr` n'est pas actif ; le site tourne sur une URL Vercel.
+- ~~Nom de domaine~~ : réglé le 14/08/2026 — `www.capdigitalagency.fr` (Vercel redirige le domaine nu vers la version www).
 - Mentions légales : SIRET, forme juridique et adresse sont encore entre crochets.
 - Réseaux sociaux : les liens pointent vers les accueils génériques, aucun compte réel.
 - Zone géographique : `location` vaut « France », jamais précisé davantage. Aucune stratégie de référencement local n'a été décidée.
@@ -64,7 +64,7 @@ Accent de l'interface : bleu électrique (#3b82f6 en sombre, #2563eb en clair).
 
 **Honnêteté des preuves — engagement explicite du propriétaire.** Six faux témoignages et une note « 4,9/5 » inventée ont été supprimés le 17/07/2026 à sa demande. Aucun avis, chiffre, logo client ou récompense ne doit être fabriqué, sous aucun prétexte.
 
-Contact public : capdigital4118@gmail.com.
+Contact public : contact@capdigitalagency.fr (redirection OVH vers capdigital4118@gmail.com).
 
 ## Evidence on Hand
 

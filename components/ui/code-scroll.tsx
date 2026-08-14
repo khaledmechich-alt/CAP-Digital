@@ -16,7 +16,7 @@ const COLORS = {
 } as const;
 
 const LINES: Segment[][] = [
-  [["// Déploiement — cap-digital.fr", "com"]],
+  [["// Déploiement — capdigitalagency.fr", "com"]],
   [["import", "kw"], [" { createSite } ", "txt"], ["from", "kw"], [" \"@cap-digital/core\"", "str"], [";", "txt"]],
   [["import", "kw"], [" { seo, performance } ", "txt"], ["from", "kw"], [" \"@cap-digital/web\"", "str"], [";", "txt"]],
   [[""]],
