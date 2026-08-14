@@ -65,7 +65,7 @@ async function sendNotification(input: ContactInput): Promise<void> {
   }
 
   const to =
-    process.env.CONTACT_NOTIFICATION_EMAIL || "khaled.mechich@gmail.com";
+    process.env.CONTACT_NOTIFICATION_EMAIL || "contact@capdigitalagency.fr";
 
   try {
     const resend = new Resend(apiKey);
