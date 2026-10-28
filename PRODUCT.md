@@ -70,12 +70,13 @@ Contact public : contact@capdigitalagency.fr (redirection OVH vers capdigital411
 
 **Réel :**
 - Un témoignage authentique : Houssem T., 5/5 (`lib/testimonials.ts`).
-- Deux produits développés par le propriétaire, présentés avec de vraies captures d'écran : **AutoSearchPro** (extension Chrome, recherche de pièces automobiles) et **Partrelay** (SaaS de distribution de pièces détachées).
 - L'espace client de suivi, fonctionnel et déployé.
+- La démonstration de site de garage (`/demo/garage`), seule vitrine du savoir-faire présentée aujourd'hui.
 
 **Démonstration assumée :**
 - **CTM Électricité Plomberie Chauffage** : **retiré du site le 28/10/2026** à la demande du propriétaire, qui concentre l'agence sur les métiers de l'automobile et ne veut plus de contenu lié à la plomberie. Rien n'a été supprimé : le bloc est conservé tel quel dans `projetsRetires` (`lib/projects.ts`) et la capture d'écran reste dans `public/projects/ctm.png` ; il suffit de replacer le bloc dans `projects` pour le remettre en ligne. Le site lui-même reste en ligne sur https://ctm-site-jade.vercel.app/ (déploiement séparé, hors de ce dépôt). Historique : ajouté le 13/08/2026 en remplacement de « Cabinet Delcourt », il portait `demo: true` et `results: []` car **ce n'était pas une commande d'un client**.
-- Depuis ce retrait, la page `/realisations` et la page d'accueil ne présentent plus que les deux produits de l'agence (AutoSearchPro et Partrelay), tous deux marqués « Produit de l'agence ». Le portfolio ne contient donc **aucun projet de démonstration** : la seule démonstration du site est `/demo/garage`.
+- Les **deux produits de l'agence** ont été retirés du site le 28/10/2026 à la demande du propriétaire. Leurs blocs sont conservés dans `projetsRetires` (`lib/projects.ts`) et leurs captures dans `public/projects/`. **Ne pas les republier, ni les citer nulle part sur le site, sans son accord explicite** : la mention qui les nommait sur `/garages` a été reformulée en conséquence.
+- **Le portfolio est donc vide** (`projects: []`). La page `/realisations` l'annonce franchement et renvoie vers `/demo/garage` ; la section projets a été retirée de l'accueil (son composant est conservé) ; le lien « Réalisations » est descendu du menu principal vers le pied de page. Tout revient en place en remettant un projet dans `projects`.
 - « Cabinet Delcourt » (cabinet d'avocats fictif, avant/après de refonte) a été **supprimé** le 13/08/2026 à la demande du propriétaire ; ses images ont été retirées de `public/projects/`.
 - Le mécanisme `demo: true` est la convention à respecter pour tout projet de démonstration : le porter **et** laisser `results` vide.
 - Le composant `components/sections/before-after-section.tsx` et le comparateur avant/après ne sont plus alimentés (aucun projet ne porte `beforeImage`/`afterImage`) : ils ne s'affichent nulle part tant qu'un projet de refonte n'est pas ajouté.

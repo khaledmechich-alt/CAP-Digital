@@ -120,8 +120,8 @@ export function Hero() {
               </Button>
             </Magnetic>
             <Magnetic strength={0.2}>
-              <Button href="/realisations" variant="secondary" size="lg">
-                Voir nos réalisations
+              <Button href="/demo/garage" variant="secondary" size="lg">
+                Voir une démonstration
               </Button>
             </Magnetic>
           </motion.div>

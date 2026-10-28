@@ -56,7 +56,26 @@ export type Project = {
   ownProduct?: boolean;
 };
 
-export const projects: Project[] = [
+/**
+ * Aucun projet publié pour le moment : la page /realisations l'annonce
+ * franchement et renvoie vers la démonstration. Pour republier un projet,
+ * déplacez son bloc depuis "projetsRetires" ci-dessous vers ce tableau.
+ */
+export const projects: Project[] = [];
+
+/**
+ * Projets retirés du site, conservés ici tels quels. Leurs captures d'écran
+ * restent dans /public/projects/.
+ *
+ * AutoSearchPro et Partrelay — retirés le 28/10/2026 à la demande du
+ * propriétaire. Ne pas les remettre en ligne, ni les mentionner ailleurs sur
+ * le site, sans son accord explicite.
+ *
+ * CTM Électricité Plomberie Chauffage — retiré le 28/10/2026 : CAP DIGITAL se
+ * concentre sur les métiers de l'automobile, et cette démonstration portait sur
+ * la plomberie, l'électricité et le chauffage.
+ */
+export const projetsRetires: Project[] = [
   {
     slug: "autosearchpro",
     title: "AutoSearchPro",
@@ -111,18 +130,6 @@ export const projects: Project[] = [
     featured: true,
     ownProduct: true,
   },
-];
-
-/**
- * Projets retirés du site, conservés ici tels quels.
- *
- * CTM Électricité Plomberie Chauffage — retiré le 28/10/2026 : CAP DIGITAL se
- * concentre sur les métiers de l'automobile, et cette démonstration portait sur
- * la plomberie, l'électricité et le chauffage. Rien n'est perdu : pour la
- * remettre en ligne, déplacez le bloc ci-dessous dans le tableau "projects".
- * Sa capture d'écran est toujours dans /public/projects/ctm.png.
- */
-export const projetsRetires: Project[] = [
   {
     slug: "ctm",
     title: "CTM Électricité Plomberie Chauffage",

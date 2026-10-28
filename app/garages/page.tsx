@@ -211,12 +211,12 @@ export default function GaragesPage() {
             <div className="flex flex-col gap-6 md:col-span-7">
               <p className="text-lg leading-relaxed text-muted">
                 Avant de faire des sites pour les garages, nous avons construit
-                des outils pour ceux qui cherchent et distribuent des pièces
-                détachées : <strong className="text-foreground">AutoSearchPro</strong>,
-                une extension qui compare les fournisseurs à partir d&apos;une
-                plaque ou d&apos;un VIN, et{" "}
-                <strong className="text-foreground">Partrelay</strong>, un
-                logiciel de distribution de pièces.
+                des outils pour ceux qui cherchent et distribuent des{" "}
+                <strong className="text-foreground">pièces détachées</strong>
+                {" : "}
+                retrouver la bonne référence à partir d&apos;une plaque ou
+                d&apos;un VIN, comparer les fournisseurs, suivre une commande du
+                comptoir jusqu&apos;à la livraison.
               </p>
               <p className="leading-relaxed text-muted">
                 Concrètement, vous n&apos;aurez pas à nous expliquer ce

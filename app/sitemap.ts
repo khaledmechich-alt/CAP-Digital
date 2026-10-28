@@ -8,10 +8,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", priority: 1, changeFrequency: "weekly" as const },
     { path: "/services", priority: 0.9, changeFrequency: "monthly" as const },
     { path: "/garages", priority: 0.9, changeFrequency: "monthly" as const },
+    // Priorité abaissée tant que le portfolio est vide : la page renvoie vers
+    // la démonstration, ce n'est plus une page clé.
     {
       path: "/realisations",
-      priority: 0.9,
-      changeFrequency: "weekly" as const,
+      priority: 0.4,
+      changeFrequency: "monthly" as const,
     },
     { path: "/a-propos", priority: 0.7, changeFrequency: "monthly" as const },
     {
