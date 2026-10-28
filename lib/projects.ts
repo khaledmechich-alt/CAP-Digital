@@ -111,6 +111,18 @@ export const projects: Project[] = [
     featured: true,
     ownProduct: true,
   },
+];
+
+/**
+ * Projets retirés du site, conservés ici tels quels.
+ *
+ * CTM Électricité Plomberie Chauffage — retiré le 28/10/2026 : CAP DIGITAL se
+ * concentre sur les métiers de l'automobile, et cette démonstration portait sur
+ * la plomberie, l'électricité et le chauffage. Rien n'est perdu : pour la
+ * remettre en ligne, déplacez le bloc ci-dessous dans le tableau "projects".
+ * Sa capture d'écran est toujours dans /public/projects/ctm.png.
+ */
+export const projetsRetires: Project[] = [
   {
     slug: "ctm",
     title: "CTM Électricité Plomberie Chauffage",

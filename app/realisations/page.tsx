@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Nos réalisations — Portfolio de sites web",
   description:
-    "Découvrez les sites vitrines, applications et refontes réalisés par CAP DIGITAL : le contexte de chaque projet, ce que nous avons construit et les technologies utilisées.",
+    "Les projets de CAP DIGITAL en détail : le besoin de départ de chacun, ce que nous avons construit et les technologies utilisées.",
 };
 
 export default function RealisationsPage() {
@@ -18,7 +18,7 @@ export default function RealisationsPage() {
         eyebrow="Portfolio"
         title="Nos réalisations, dans le détail."
         em="dans le détail."
-        description="Pour chaque projet : le besoin de départ, ce que nous avons construit et avec quoi. Quand un projet est une démonstration ou un produit de l'agence, c'est écrit noir sur blanc."
+        description="Pour chaque projet : le besoin de départ, ce que nous avons construit et avec quoi. Quand un projet est un produit de l'agence et non une commande d'un client, c'est écrit noir sur blanc."
       />
 
       <section className="pt-8 pb-24 md:pb-32">

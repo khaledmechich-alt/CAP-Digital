@@ -56,7 +56,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Être trouvé sur Google, un avantage décisif",
         paragraphs: [
-          "Quand quelqu'un tape « plombier », « restaurant » ou « coiffeur » suivi du nom de votre ville, Google affiche en priorité les entreprises qui disposent d'un site optimisé. Chaque jour sans site, ce sont des clients qui partent chez un concurrent mieux référencé.",
+          "Quand quelqu'un tape « garagiste », « restaurant » ou « coiffeur » suivi du nom de votre ville, Google affiche en priorité les entreprises qui disposent d'un site optimisé. Chaque jour sans site, ce sont des clients qui partent chez un concurrent mieux référencé.",
         ],
         list: [
           "La grande majorité des clients se renseignent en ligne avant d'acheter ou d'appeler",
@@ -186,7 +186,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Pourquoi le SEO local est si rentable",
         paragraphs: [
-          "Une personne qui cherche « plombier + votre ville » n'est pas en train de se renseigner vaguement : elle a besoin d'un plombier, maintenant, près de chez elle. Ces visiteurs-là se transforment en clients bien plus souvent que la moyenne.",
+          "Une personne qui cherche « garagiste + votre ville » n'est pas en train de se renseigner vaguement : elle a besoin d'un garagiste, maintenant, près de chez elle. Ces visiteurs-là se transforment en clients bien plus souvent que la moyenne.",
         ],
       },
       {

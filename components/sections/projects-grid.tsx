@@ -25,8 +25,12 @@ export function ProjectsGrid() {
 
   return (
     <div className="flex flex-col gap-12">
+      {/* Une seule catégorie présente : le filtre n'aurait rien à filtrer. */}
       <div
-        className="flex flex-wrap justify-center gap-3"
+        className={cn(
+          "flex flex-wrap justify-center gap-3",
+          allCategories.length < 3 && "hidden"
+        )}
         role="group"
         aria-label="Filtrer les projets par catégorie"
       >
