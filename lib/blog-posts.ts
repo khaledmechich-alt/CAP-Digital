@@ -59,9 +59,9 @@ export const blogPosts: BlogPost[] = [
           "Quand quelqu'un tape « plombier », « restaurant » ou « coiffeur » suivi du nom de votre ville, Google affiche en priorité les entreprises qui disposent d'un site optimisé. Chaque jour sans site, ce sont des clients qui partent chez un concurrent mieux référencé.",
         ],
         list: [
-          "81 % des consommateurs recherchent en ligne avant d'acheter",
-          "Les recherches « près de chez moi » ont triplé en 5 ans",
-          "Un site rapide et clair peut doubler vos demandes de contact",
+          "La grande majorité des clients se renseignent en ligne avant d'acheter ou d'appeler",
+          "Les recherches « près de chez moi » sont devenues un réflexe sur téléphone",
+          "Un site lent ou illisible sur téléphone fait fuir une partie des visiteurs",
         ],
       },
       {
@@ -139,13 +139,13 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "1. Votre site est illisible sur téléphone",
         paragraphs: [
-          "Plus de 60 % des visites se font sur mobile. Si vos visiteurs doivent zoomer pour lire vos textes ou que les boutons sont impossibles à toucher du doigt, la majorité d'entre eux repart en quelques secondes — direction un concurrent.",
+          "Près d'une visite sur deux se fait depuis un téléphone (StatCounter, France, 2026). Si vos visiteurs doivent zoomer pour lire vos textes ou que les boutons sont impossibles à toucher du doigt, la majorité d'entre eux repart en quelques secondes — direction un concurrent.",
         ],
       },
       {
         heading: "2. Il met plus de 3 secondes à charger",
         paragraphs: [
-          "53 % des visiteurs quittent un site qui met plus de 3 secondes à s'afficher. Et Google pénalise les sites lents dans ses résultats. Testez le vôtre : si vous avez le temps de soupirer avant que la page s'affiche, il y a un problème.",
+          "53 % des visiteurs quittent un site mobile qui met plus de 3 secondes à s'afficher (étude Google, 2016). Et Google pénalise les sites lents dans ses résultats. Testez le vôtre : si vous avez le temps de soupirer avant que la page s'affiche, il y a un problème.",
         ],
       },
       {

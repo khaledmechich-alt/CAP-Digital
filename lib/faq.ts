@@ -52,7 +52,7 @@ export const faqItems: FaqItem[] = [
     category: "Technique & autonomie",
     question: "Mon site fonctionnera-t-il sur mobile ?",
     answer:
-      "Absolument. Plus de 60 % des visites se font aujourd'hui sur téléphone : tous nos sites sont conçus d'abord pour mobile, puis adaptés aux tablettes et ordinateurs. Ils sont testés sur tous les formats d'écran avant la mise en ligne.",
+      "Absolument. Près d'une visite sur deux se fait aujourd'hui depuis un téléphone : tous nos sites sont conçus d'abord pour mobile, puis adaptés aux tablettes et ordinateurs. Ils sont testés sur tous les formats d'écran avant la mise en ligne.",
   },
   {
     category: "SEO & visibilité",

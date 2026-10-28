@@ -9,7 +9,7 @@ import { TestimonialCard } from "@/components/ui/testimonial-card";
 export const metadata: Metadata = {
   title: "Témoignages clients",
   description:
-    "Découvrez ce que nos clients disent de CAP DIGITAL : des sites livrés dans les temps, des résultats concrets et un accompagnement humain.",
+    "Ce que les clients de CAP DIGITAL retiennent de leur projet : des sites livrés dans les temps, un travail soigné et un accompagnement humain.",
 };
 
 export default function TemoignagesPage() {

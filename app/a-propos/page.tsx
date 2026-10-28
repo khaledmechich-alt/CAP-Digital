@@ -30,7 +30,7 @@ const values = [
   {
     title: "Résultats",
     description:
-      "Un beau site ne suffit pas : il doit vous rapporter des clients. Nous mesurons nos réussites aux vôtres, chiffres à l'appui.",
+      "Un beau site ne suffit pas : il doit vous servir à trouver des clients. C'est le but de chaque page que nous construisons, et nous vous expliquons comment la faire vivre ensuite.",
   },
 ];
 

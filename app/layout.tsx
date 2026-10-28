@@ -66,6 +66,8 @@ export const viewport: Viewport = {
   ],
 };
 
+const reseaux = Object.values(siteConfig.socials).filter((url) => url !== "");
+
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -76,7 +78,9 @@ const organizationSchema = {
   telephone: siteConfig.phone,
   areaServed: "FR",
   priceRange: "€€",
-  sameAs: Object.values(siteConfig.socials).filter((url) => url !== ""),
+  // Les comptes de réseaux sociaux ne sont pas renseignés : on omet alors
+  // sameAs, plutôt que d'annoncer une liste vide à Google.
+  ...(reseaux.length ? { sameAs: reseaux } : {}),
 };
 
 export default function RootLayout({
