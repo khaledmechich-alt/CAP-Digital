@@ -29,3 +29,10 @@ next-env.d.ts
 /.claude/
 
 .vercel
+
+# copie locale d'un site tiers (reference de design, 34 Mo) : ne pas versionner
+/reference/nubien-framer/
+
+# sauvegardes de la base : contiennent des donnees personnelles
+# et les empreintes de mots de passe. Ne jamais versionner.
+/sauvegardes/

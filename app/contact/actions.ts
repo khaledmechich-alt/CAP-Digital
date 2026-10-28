@@ -1,7 +1,17 @@
 "use server";
 
-import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
+import { tooManyRequests } from "@/lib/rate-limit";
+
+/**
+ * Formulaire de contact du site.
+ *
+ * Depuis la mise en pause du projet Supabase, la demande n'est plus
+ * enregistrée en base : l'e-mail de notification EST la demande. C'est
+ * pourquoi un échec d'envoi doit être annoncé au visiteur, et jamais masqué
+ * derrière une fausse confirmation : sinon la demande est perdue pour tout
+ * le monde, sans que personne ne le sache.
+ */
 
 export type ContactInput = {
   name: string;
@@ -17,15 +27,37 @@ export type ContactResult = { ok: boolean; error?: string };
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Adresse de notre domaine, vérifié dans Resend (DKIM + SPF + DMARC).
-const EMAIL_FROM = "CAP DIGITAL <contact@capdigitalagency.fr>";
+// Longueurs maximales : un formulaire public reçoit parfois n'importe quoi.
+const LIMITS = {
+  name: 80,
+  email: 120,
+  phone: 25,
+  company: 80,
+  projectType: 60,
+  budget: 60,
+  message: 3000,
+} as const;
+
+/**
+ * Adresse d'expédition. Le domaine doit être vérifié dans Resend, sinon
+ * l'envoi est refusé. CONTACT_FROM_EMAIL permet d'en changer sans toucher
+ * au code.
+ */
+const EMAIL_FROM =
+  process.env.CONTACT_FROM_EMAIL ||
+  "CAP DIGITAL <contact@capdigitalagency.fr>";
 
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function oneLine(value: string | undefined, max: number): string {
+  return (value ?? "").replace(/\s+/g, " ").trim().slice(0, max);
 }
 
 function buildEmailHtml(input: ContactInput): string {
@@ -57,41 +89,19 @@ function buildEmailHtml(input: ContactInput): string {
   </div>`;
 }
 
-async function sendNotification(input: ContactInput): Promise<void> {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.error("[contact] RESEND_API_KEY manquante — e-mail non envoyé.");
-    return;
-  }
-
-  const to =
-    process.env.CONTACT_NOTIFICATION_EMAIL || "contact@capdigitalagency.fr";
-
-  try {
-    const resend = new Resend(apiKey);
-    const { error } = await resend.emails.send({
-      from: EMAIL_FROM,
-      to,
-      replyTo: input.email,
-      subject: `Nouvelle demande — ${input.name} (${input.projectType || "projet"})`,
-      html: buildEmailHtml(input),
-    });
-    if (error) {
-      console.error("[contact] Échec de l'envoi de l'e-mail :", error);
-    }
-  } catch (err) {
-    console.error("[contact] Erreur inattendue à l'envoi de l'e-mail :", err);
-  }
-}
-
 export async function submitContact(
   input: ContactInput
 ): Promise<ContactResult> {
-  const name = input.name?.trim() ?? "";
-  const email = input.email?.trim() ?? "";
-  const message = input.message?.trim() ?? "";
+  // --- 1. Validation côté serveur : on ne fait jamais confiance au client ---
+  const name = oneLine(input.name, LIMITS.name);
+  const email = oneLine(input.email, LIMITS.email).toLowerCase();
+  const message = (input.message ?? "")
+    .replace(/\r\n/g, "\n")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim()
+    .slice(0, LIMITS.message);
 
-  // Validation minimale côté serveur (on ne fait jamais confiance au client).
   if (!name || !email || !message) {
     return {
       ok: false,
@@ -103,49 +113,73 @@ export async function submitContact(
     return { ok: false, error: "Votre adresse e-mail semble incorrecte." };
   }
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!supabaseUrl || !supabaseKey) {
-    console.error("[contact] Variables d'environnement Supabase manquantes.");
+  // --- 2. Garde-fou anti-robot ---
+  if (
+    await tooManyRequests({
+      scope: "contact",
+      max: 5,
+      windowMs: 15 * 60 * 1000,
+    })
+  ) {
     return {
       ok: false,
       error:
-        "Le serveur n'est pas configuré pour le moment. Réessayez plus tard.",
+        "Vous avez déjà envoyé plusieurs messages. Merci de patienter quelques minutes.",
     };
   }
 
   const cleaned: ContactInput = {
     name,
     email,
-    phone: input.phone?.trim() ?? "",
-    company: input.company?.trim() ?? "",
-    projectType: input.projectType?.trim() ?? "",
-    budget: input.budget?.trim() ?? "",
+    phone: oneLine(input.phone, LIMITS.phone),
+    company: oneLine(input.company, LIMITS.company),
+    projectType: oneLine(input.projectType, LIMITS.projectType),
+    budget: oneLine(input.budget, LIMITS.budget),
     message,
   };
 
-  const supabase = createClient(supabaseUrl, supabaseKey, {
-    auth: { persistSession: false },
-  });
-
-  const { error } = await supabase.from("contacts").insert({
-    name: cleaned.name,
-    email: cleaned.email,
-    phone: cleaned.phone || null,
-    company: cleaned.company || null,
-    project_type: cleaned.projectType || null,
-    budget: cleaned.budget || null,
-    message: cleaned.message,
-  });
-
-  if (error) {
-    console.error("[contact] Échec de l'enregistrement :", error.message);
-    return { ok: false, error: "L'envoi a échoué. Réessayez dans un instant." };
+  // --- 3. Envoi : c'est la seule trace de la demande, il doit réussir ---
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("[contact] RESEND_API_KEY manquante — e-mail non envoyé.");
+    return {
+      ok: false,
+      // L'adresse de l'agence est ajoutée par le formulaire, en lien cliquable.
+      error:
+        "Votre message n'a pas pu être envoyé : notre service d'e-mail ne répond pas.",
+    };
   }
 
-  // La demande est enregistrée. On envoie la notification e-mail sans bloquer
-  // la réponse au visiteur (si l'e-mail échoue, la demande reste sauvegardée).
-  await sendNotification(cleaned);
+  const to =
+    process.env.CONTACT_NOTIFICATION_EMAIL || "contact@capdigitalagency.fr";
+
+  try {
+    const resend = new Resend(apiKey);
+    const { error } = await resend.emails.send({
+      from: EMAIL_FROM,
+      to,
+      replyTo: cleaned.email,
+      subject: `Nouvelle demande — ${cleaned.name} (${cleaned.projectType || "projet"})`,
+      html: buildEmailHtml(cleaned),
+    });
+
+    if (error) {
+      // Le détail part dans les journaux du serveur, jamais chez le visiteur.
+      console.error("[contact] Échec de l'envoi de l'e-mail :", error);
+      return {
+        ok: false,
+        error:
+          "Votre message n'a pas pu être envoyé et ne nous est pas parvenu.",
+      };
+    }
+  } catch (err) {
+    console.error("[contact] Erreur inattendue à l'envoi de l'e-mail :", err);
+    return {
+      ok: false,
+      error:
+        "Votre message n'a pas pu être envoyé et ne nous est pas parvenu.",
+    };
+  }
 
   return { ok: true };
 }

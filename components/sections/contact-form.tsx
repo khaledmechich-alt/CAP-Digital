@@ -203,8 +203,7 @@ export function ContactForm() {
 
       {status === "error" && (
         <p className="border-l-2 border-red-500 py-1 pl-4 text-sm leading-relaxed text-red-500">
-          {errorMsg ?? "Une erreur est survenue."} Vous pouvez aussi nous écrire
-          directement à{" "}
+          {errorMsg ?? "Une erreur est survenue."} Écrivez-nous directement à{" "}
           <a
             href={`mailto:${siteConfig.email}`}
             className="font-medium underline"

@@ -3,6 +3,7 @@ import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { HideOnDemo } from "@/components/layout/hide-on-demo";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { CursorFollower } from "@/components/ui/cursor-follower";
@@ -90,19 +91,26 @@ export default function RootLayout({
       >
         <JsonLd data={organizationSchema} />
         <Providers>
-          <ScrollProgress />
-          <CursorFollower />
+          <HideOnDemo>
+            <ScrollProgress />
+            <CursorFollower />
+          </HideOnDemo>
           <a
             href="#contenu"
             className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-full focus:bg-accent focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-white"
           >
             Aller au contenu
           </a>
-          <Header />
+          {/* Masqués sur /demo/* : la démonstration a son propre habillage. */}
+          <HideOnDemo>
+            <Header />
+          </HideOnDemo>
           <main id="contenu" className="flex min-h-screen flex-col">
             {children}
           </main>
-          <Footer />
+          <HideOnDemo>
+            <Footer />
+          </HideOnDemo>
         </Providers>
       </body>
     </html>
