@@ -47,6 +47,13 @@ export type Project = {
    * chiffré : laissez `results` vide.
    */
   demo?: boolean;
+  /**
+   * `true` pour un produit développé par l'agence pour elle-même. Ce n'est
+   * ni la commande d'un client, ni une démonstration : le produit existe
+   * vraiment. Le site l'indique pour qu'on ne le prenne pas pour une
+   * référence client.
+   */
+  ownProduct?: boolean;
 };
 
 export const projects: Project[] = [
@@ -75,6 +82,7 @@ export const projects: Project[] = [
     url: "",
     image: "/projects/autosearchpro.png",
     featured: true,
+    ownProduct: true,
   },
   {
     slug: "partrelay",
@@ -101,6 +109,7 @@ export const projects: Project[] = [
     url: "",
     image: "/projects/partrelay.png",
     featured: true,
+    ownProduct: true,
   },
   {
     slug: "ctm",

@@ -38,6 +38,12 @@ export function ProjectCard({ project }: { project: Project }) {
               <span className="text-accent">Démonstration</span>
             </>
           ) : null}
+          {project.ownProduct ? (
+            <>
+              <span aria-hidden>·</span>
+              <span className="text-accent">Produit de l&apos;agence</span>
+            </>
+          ) : null}
         </div>
 
         <h3 className="font-display text-2xl tracking-[-0.02em] md:text-3xl">

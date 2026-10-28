@@ -74,11 +74,8 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <span className="hidden lg:block">
-            <Button href="/espace-client" size="md" variant="secondary">
-              Espace client
-            </Button>
-          </span>
+          {/* Bouton « Espace client » retiré : l'espace est suspendu.
+              À remettre ici quand il rouvrira (voir _desactive/README.md). */}
           <span className="hidden lg:block">
             <Button href="/contact" size="md">
               Devis gratuit
@@ -129,14 +126,7 @@ export function Header() {
               ))}
             </ul>
             <div className="flex flex-col gap-3">
-              <Button
-                href="/espace-client"
-                size="lg"
-                variant="secondary"
-                className="w-full"
-              >
-                Espace client
-              </Button>
+              {/* Bouton « Espace client » retiré : l'espace est suspendu. */}
               <Button href="/contact" size="lg" className="w-full">
                 Demander un devis gratuit
               </Button>

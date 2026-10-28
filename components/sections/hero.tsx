@@ -11,7 +11,6 @@ import {
 } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CodeScroll } from "@/components/ui/code-scroll";
 import { Container } from "@/components/ui/container";
 import { Magnetic } from "@/components/ui/magnetic";
 import { SplitWords } from "@/components/ui/split-words";
@@ -60,14 +59,10 @@ export function Hero() {
       onPointerMove={handleMove}
       className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24"
     >
-      {/* Fond : code qui défile, traité comme sur l'ancienne version du
-          site — plein cadre, puis estompé par deux dégradés. */}
-      <div
-        className="pointer-events-none absolute inset-0 overflow-hidden opacity-30 dark:opacity-40"
-        aria-hidden
-      >
-        <CodeScroll />
-      </div>
+      {/* Le fond « code qui défile » a été retiré : du faux code en décor
+          n'apprend rien au visiteur. Le composant reste disponible dans
+          components/ui/code-scroll.tsx. Les dégradés ci-dessous sont
+          conservés : ils donnent sa profondeur au hero. */}
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_70%_at_50%_35%,transparent_30%,var(--background))]"
         aria-hidden

@@ -66,6 +66,12 @@ export default async function ProjectPage({ params }: PageProps) {
                     <span>Démonstration</span>
                   </>
                 ) : null}
+                {project.ownProduct ? (
+                  <>
+                    <span aria-hidden>·</span>
+                    <span>Produit de l&apos;agence</span>
+                  </>
+                ) : null}
               </div>
               <h1 className="font-display max-w-4xl text-4xl leading-[1.06] tracking-[-0.025em] text-balance md:text-6xl">
                 {project.title}
@@ -82,6 +88,16 @@ export default async function ProjectPage({ params }: PageProps) {
                   pas la commande d&apos;un client. La fiche illustre notre
                   méthode et le rendu que nous produisons — nous ne lui
                   associons donc aucun résultat chiffré.
+                </p>
+              ) : null}
+              {project.ownProduct ? (
+                <p className="max-w-2xl border-l-2 border-accent py-1 pl-5 text-sm leading-relaxed text-muted">
+                  <strong className="font-medium text-foreground">
+                    Produit de l&apos;agence.
+                  </strong>{" "}
+                  Nous avons conçu et développé cet outil pour nous-mêmes :
+                  ce n&apos;est pas la commande d&apos;un client. Il figure ici
+                  parce qu&apos;il montre ce que nous savons construire.
                 </p>
               ) : null}
             </Reveal>

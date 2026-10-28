@@ -58,7 +58,7 @@ export const faqItems: FaqItem[] = [
     category: "SEO & visibilité",
     question: "Serai-je premier sur Google ?",
     answer:
-      "Personne ne peut honnêtement vous garantir la première position — méfiez-vous de ceux qui le promettent. En revanche, nous appliquons toutes les bonnes pratiques qui permettent de progresser durablement : site rapide, contenu optimisé, référencement local. Nos clients constatent des résultats concrets en quelques mois.",
+      "Personne ne peut honnêtement vous garantir la première position — méfiez-vous de ceux qui le promettent. Votre place dépend de votre concurrence, de votre ancienneté et de l'algorithme de Google, trois choses qu'aucune agence ne contrôle. En revanche, nous appliquons les bonnes pratiques qui mettent toutes les chances de votre côté : site rapide, contenu clair, référencement local et fiche Google bien remplie.",
   },
   {
     category: "SEO & visibilité",

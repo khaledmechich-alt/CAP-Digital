@@ -119,12 +119,8 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-            {/* Accès discret à l'espace privé (réservé à l'administrateur) */}
-            <li>
-              <Link href="/admin" className="label-mono link-line hover:text-foreground">
-                Espace admin
-              </Link>
-            </li>
+            {/* Lien « Espace admin » retiré : l'espace est suspendu.
+                À remettre quand il rouvrira (voir _desactive/README.md). */}
           </ul>
         </div>
       </Container>

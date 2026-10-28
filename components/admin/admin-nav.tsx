@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { signOut } from "@/app/admin/actions";
+// L'espace admin est désactivé : son code attend dans _desactive/ (voir le
+// README de ce dossier). Ce composant n'est plus utilisé par le site tant
+// que l'espace reste fermé.
+import { signOut } from "@/_desactive/admin/actions";
 
 const onglets = [
   { cle: "demandes", label: "Demandes de contact", href: "/admin" },

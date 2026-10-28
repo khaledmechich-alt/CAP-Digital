@@ -38,10 +38,14 @@ export const siteConfig: SiteConfig = {
   // Ville / zone d'activité (utilisée pour le SEO local)
   location: "France",
 
-  // Laissez vide ("") pour masquer un réseau social
+  // Laissez vide ("") pour masquer un réseau social.
+  // Les trois liens pointaient sur les pages d'accueil des réseaux, pas sur
+  // des comptes CAP DIGITAL : ils ont été retirés. Remettez l'adresse
+  // complète du compte (ex. https://www.instagram.com/capdigital/) pour
+  // réafficher l'icône.
   socials: {
-    instagram: "https://www.instagram.com/",
-    linkedin: "https://www.linkedin.com/",
-    facebook: "https://www.facebook.com/",
+    instagram: "",
+    linkedin: "",
+    facebook: "",
   },
 };

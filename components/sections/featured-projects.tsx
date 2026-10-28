@@ -13,7 +13,7 @@ export function FeaturedProjects() {
           eyebrow="Nos réalisations"
           title="Des projets qui parlent d'eux-mêmes"
           em="d'eux-mêmes"
-          description="Chaque site que nous livrons a un objectif : apporter des résultats concrets et mesurables à nos clients."
+          description="Des contextes différents, une même exigence de finition. Le détail de chaque projet, et ce que nous y avons construit."
         />
 
         {/* Une colonne décalée sur deux : la grille respire au lieu
